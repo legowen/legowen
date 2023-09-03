@@ -6,6 +6,16 @@
      I'm Owen, Junior Fullstack Developer from :kr:, currently living in Vancouver, 🇨🇦
   </em>
 </p>
+<br/>
+
+<p align="center">
+  <a href="https://github.com/legowen">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/github/white">
+      <img alt="GitHub" title="GitHub" height="48" width="48" src="https://cdn.simpleicons.org/github"></picture></a>
+  <a href="https://www.linkedin.com/in/seongyeong-owen-kim-8a06651b8/">
+    <img alt="LinkedIn" title="LinkedIn" height="48" width="48" src="https://cdn.simpleicons.org/linkedin"></a>
+</p>
 
 <br />
 <h2> My tech Stack 💻 </h2>
