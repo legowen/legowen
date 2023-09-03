@@ -20,12 +20,52 @@
 
 <h2> My Project </h2>
 
-<p>
-  Title - Movie Infomation database
+<div>
+  <h3>Title - Movie Information database</h3>
 
-  About This project : 
-</p>
+  <h3>About This project : </h3>
 
-### Link : https://dbmoviesinfo.netlify.app
+  <h3> Link : https://dbmoviesinfo.netlify.app</h3>
 
-<picture class="tw-border-none tw-m-0 tw-p-0 tw-block tw-w-full tw-align-middle tw-max-w-full tw-h-auto"><source srcset="https://screenshot-proxy.netlify.app/f_avif,fit_cover,s_336x210/https://d33wubrfki0l68.cloudfront.net/64e52c4519e6ce312ed136ea/screenshot_2023-08-22-21-45-21-0000.png" type="image/avif"><source srcset="https://screenshot-proxy.netlify.app/f_webp,fit_cover,s_336x210/https://d33wubrfki0l68.cloudfront.net/64e52c4519e6ce312ed136ea/screenshot_2023-08-22-21-45-21-0000.png" type="image/webp"><img src="https://screenshot-proxy.netlify.app/f_jpg,fit_cover,s_336x210/https://d33wubrfki0l68.cloudfront.net/64e52c4519e6ce312ed136ea/screenshot_2023-08-22-21-45-21-0000.png" alt="" width="168" height="105" loading="lazy" class="tw-align-top tw-h-full tw-w-full"></picture>
+  </br>
+   <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/dbmoviesinfo.png?raw=true"/>
+</div>
+
+  </br></br></br></br>
+
+<div>
+  <h3>Title - Weather App</h3>
+
+  <h3>About This project : </h3>
+
+  <h3> Link : https://hopenorain.netlify.app</h3>
+
+  </br>
+    <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/weatherapp.png?raw=true"/>
+</div>
+
+  </br></br></br></br>
+
+<div>
+  <h3>Title - Phonebook</h3>
+
+  <h3>About This project : </h3>
+
+  <h3> Link : https://simplephonebook.netlify.app</h3>
+
+  </br>
+    <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/Phonebook.png?raw=true"/>
+</div>
+
+  </br></br></br></br>
+
+  <div>
+  <h3>Title - Todo List</h3>
+
+  <h3>About This project : </h3>
+
+  <h3> Link : https://nopressuretodolist.netlify.app</h3>
+
+  </br>
+    <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/todolist.png?raw=true"/>
+</div>
