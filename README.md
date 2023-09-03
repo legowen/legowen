@@ -1,6 +1,6 @@
 ### Hi, Nice to see you :open_hands:
 
-<p>
+<p align="center">
   <em>
      Welcome to my page!
      I'm Owen, Junior Fullstack Developer from :kr:, currently living in Vancouver, 🇨🇦
