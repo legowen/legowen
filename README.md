@@ -3,7 +3,7 @@
 <p>
   <em>
      Welcome to my page!
-     I'm Owen, Junior fullstack developer from :kr:, currently living in Vancouver, 🇨🇦
+     I'm Owen, Junior Fullstack Developer from :kr:, currently living in Vancouver, 🇨🇦
   </em>
 </p>
 
