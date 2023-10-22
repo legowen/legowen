@@ -44,8 +44,6 @@
 <div>
   <h3>Title - Movie Information database</h3>
   
-  <h3>About This project : </h3>
-  
   <h3>
       Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
              <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
@@ -65,8 +63,6 @@
 <div>
   <h3>Title - Shoppingmall example</h3>
   
-  <h3>About This project : </h3>
-  
   <h3>
       Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
              <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
@@ -85,8 +81,6 @@
 <div>
   <h3>Title - Weather App</h3>
   
-  <h3>About This project : </h3>
-  
    <h3> Link : https://hopenorain.netlify.app</h3>
   
   <h3> Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
@@ -103,8 +97,6 @@
 <div>
   <h3>Title - Phonebook</h3>
   
-  <h3>About This project : </h3>
-  
   <h3> Link : https://simplephonebook.netlify.app</h3>
 
   <h3> Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
@@ -120,8 +112,6 @@
 
 <div>
   <h3>Title - Todo List</h3>
-  
-  <h3>About This project : </h3>
   
   <h3> Link : https://nopressuretodolist.netlify.app</h3>
 
