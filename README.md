@@ -115,9 +115,9 @@
   
   <h3> Link : https://nopressuretodolist.netlify.app</h3>
 
-  <h3> Tech - <img src = "https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=for-the-badge&logo=javascript"/>
+  <h3> Tech - <img src = "https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=for-the-badge&logo=javascript&logoColor=000000&labelColor=%23FDF1C&color=%23FFCE5A"/>
               <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
-             <img src = "https://img.shields.io/badge/-HTML5-F05032?style=for-the-badge&logo=html5"/>
+             <img src = "https://img.shields.io/badge/-HTML5-F05032?style=for-the-badge&logo=html5&logoColor=ffffff"/>
   </h3>
 
   </br>
