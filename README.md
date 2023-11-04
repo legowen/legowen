@@ -27,6 +27,7 @@
 ![React](https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react)
 ![Redux](https://img.shields.io/badge/-Redux-purple?style=for-the-badge&logo=Redux)
 ![ReactRouter](https://img.shields.io/badge/-ReactRouter-white?style=for-the-badge&logo=ReactRouter)
+![ReactDom](https://img.shields.io/badge/-ReactDom-white?style=for-the-badge&logo=ReactDom)
 </br>
 ![MUI](https://img.shields.io/badge/-MUI-grey?style=for-the-badge&logo=MUI)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-purple?style=for-the-badge&logo=Bootstrap)
