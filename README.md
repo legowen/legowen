@@ -37,8 +37,11 @@
 ![MongoDB](https://img.shields.io/badge/-MongoDB-7FFF00?style=for-the-badge&logo=MongoDB)
 ![Mongoose](https://img.shields.io/badge/-Mongoose-6B8E23?style=for-the-badge&logo=Mongoose)
 </br>
-![AWS](https://img.shields.io/badge/-AWS-white?style=for-the-badge&logo=AWS)
+![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
+![AWS](https://img.shields.io/badge/AWS-%230072C6.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Git](https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=ffffff)
+![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
+</br>
 ![Unity](https://img.shields.io/badge/-Unity-black?style=for-the-badge&logo=Unity)
 
 
