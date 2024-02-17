@@ -64,7 +64,7 @@
   <h3> Link : https://dbmoviesinfo.netlify.app</h3>
   
   </br>
-     <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/dbmoviesinfo.png?raw=true"/>
+     <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/dbmoviesinfo.png?raw=true"/>
 </div>
 
   </br></br></br></br>
@@ -83,7 +83,7 @@
   <h3> Link : https://shoppingmallfe.netlify.app</h3>
   
   </br>
-     <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/shoppingmallfe.png?raw=true"/>
+     <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/shoppingmallfe.png?raw=true"/>
 </div>
 
   </br></br></br></br>
@@ -100,7 +100,7 @@
   </h3>
   
   </br>
-      <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/weatherapp.png?raw=true"/>
+      <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/weatherapp.png?raw=true"/>
 </div>
 
   </br></br></br></br>
@@ -117,7 +117,7 @@
   </h3>
   
   </br>
-      <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/Phonebook.png?raw=true"/>
+      <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/Phonebook.png?raw=true"/>
 </div>
 
   </br></br></br></br>
@@ -134,5 +134,5 @@
   </h3>
 
   </br>
-    <img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/todolist.png?raw=true"/>
+    <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/todolist.png?raw=true"/>
 </div>
