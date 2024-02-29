@@ -51,7 +51,7 @@
 <h2> My Project </h2>
 
 <div>
-  <h3>Title - Movie Information database</h3>
+  <h3>Title - Movie Database project</h3>
   
   <h3>
       Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
@@ -71,7 +71,7 @@
   </br></br></br></br>
 
 <div>
-  <h3>Title - Shoppingmall example</h3>
+  <h3>Title - On Hanger Project</h3>
   
   <h3>
       Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
@@ -81,7 +81,7 @@
              <img src = "https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify"/>
   </h3>
   
-  <h3> Link : https://shoppingmallfe.netlify.app</h3>
+  <h3> Link : https://onhanger.netlify.app</h3>
   
   </br>
      <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/shoppingmallfe.png?raw=true"/>
