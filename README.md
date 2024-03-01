@@ -98,7 +98,7 @@
   </h3>
   
   </br>
-      <img width='70%' src="[https://github.com/legowen/Portfolio-img/blob/main/img/weatherapp.png?raw=true](https://github.com/legowen/Portfolio-img/blob/main/img/weatherproject.png?raw=true)"/>
+      <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/weatherproject.png?raw=true"/>
 </div>
 
   </br></br></br></br>
