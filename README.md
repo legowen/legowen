@@ -120,13 +120,14 @@
   </br></br></br></br>
 
 <div>
-  <h3>Title - Todo List</h3>
+  <h3>Title - Justplan Todo List</h3>
   
-  <h3> Link : https://nopressuretodolist.netlify.app</h3>
+  <h3> Link : https://justplan.netlify.app</h3>
 
-  <h3> Tech - <img src = "https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=for-the-badge&logo=javascript&logoColor=000000&labelColor=%23FDF1C&color=%23FFCE5A"/>
+  <h3> Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
+              <img src = "https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=for-the-badge&logo=javascript&logoColor=000000&labelColor=%23FDF1C&color=%23FFCE5A"/>
               <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
-             <img src = "https://img.shields.io/badge/-HTML5-F05032?style=for-the-badge&logo=html5&logoColor=ffffff"/>
+              <img src = "https://img.shields.io/badge/-HTML5-F05032?style=for-the-badge&logo=html5&logoColor=ffffff"/>
               <img src = "https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify"/>
   </h3>
 
