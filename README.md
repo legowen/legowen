@@ -17,6 +17,12 @@
     <img alt="LinkedIn" title="LinkedIn" height="48" width="48" src="https://cdn.simpleicons.org/linkedin"></a>
 </p>
 
+<p align="center">
+  <a href="https://legowen.github.io/portfolio/">
+    Legowen
+  </a>
+</p>
+
 <br />
 <h2> My Tech Stack 💻 </h2>
 
