@@ -75,6 +75,7 @@
 
 <div>
   <h3>Title - On Hanger Project</h3>
+  <p>Under AWS Deploy in progress</p>
   
   <h3>
       Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
