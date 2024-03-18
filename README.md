@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="https://legowen.github.io/portfolio/">
-    Legowen
+    Go to See Legowen
   </a>
 </p>
 
