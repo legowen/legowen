@@ -1,144 +1,129 @@
-### Hi, Nice to see you :open_hands:
-
-<p align="center">
-  <em>
-     Welcome to my page!!
-     I'm Owen, Junior Fullstack Developer from :kr:, currently living in Vancouver 🇨🇦
-  </em>
-</p>
-<br/>
-
-<p align="center">
-  <a href="https://github.com/legowen">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/github/white">
-      <img alt="GitHub" title="GitHub" height="48" width="48" src="https://cdn.simpleicons.org/github"></picture></a>
-  <a href="https://www.linkedin.com/in/seongyeong-owen-kim-8a06651b8/">
-    <img alt="LinkedIn" title="LinkedIn" height="48" width="48" src="https://cdn.simpleicons.org/linkedin"></a>
-</p>
-
-<p align="center">
-  <a href="https://legowen.github.io/portfolio/">
-    Go to See Legowen
-  </a>
-</p>
-
-<br />
-<h2> My Tech Stack 💻 </h2>
+# Hi there, I'm Owen 👋
 
 <div align="center">
-    <img src="https://img.shields.io/badge/-HTML5-F05032?style=for-the-badge&logo=html5&logoColor=ffffff">
-    <img src="https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3">
-    <img src="https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=for-the-badge&logo=javascript&logoColor=000000&labelColor=%23FDF1C&color=%23FFCE5A"><br>
-    <img src="https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react">
-    <img src="https://img.shields.io/badge/-tailwindcss-0F172A?style=for-the-badge&logo=Tailwindcss">
-    <img src="https://img.shields.io/badge/-SCSS-F7EAF3?style=for-the-badge&logo=SASS">
-    <img src="https://img.shields.io/badge/-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=FFF&labelColor=3178C6&color=3178C6">
-    <img src="https://img.shields.io/badge/-nextjs-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"><br>
-    <img src="https://img.shields.io/badge/-Redux-purple?style=for-the-badge&logo=Redux">
-    <img src="https://img.shields.io/badge/-ReactRouter-white?style=for-the-badge&logo=ReactRouter"><br>
-    <img src="https://img.shields.io/badge/-MUI-grey?style=for-the-badge&logo=MUI">
-    <img src="https://img.shields.io/badge/-Bootstrap-purple?style=for-the-badge&logo=Bootstrap"><br>
-    <img src="https://img.shields.io/badge/-Nodejs-43853d?style=for-the-badge&logo=Node.js&logoColor=white"><br>
-    <img src="https://img.shields.io/badge/-PostgrreSQL-ivory?style=for-the-badge&logo=PostgreSQL">
-    <img src="https://img.shields.io/badge/-MongoDB-7FFF00?style=for-the-badge&logo=MongoDB">
-    <img src="https://img.shields.io/badge/-Mongoose-6B8E23?style=for-the-badge&logo=Mongoose"><br>
-    <img src="https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7">
-    <img src="https://img.shields.io/badge/AWS-%230072C6.svg?style=for-the-badge&logo=amazon-aws&logoColor=white">
-    <img src="https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=ffffff">
-    <img src="https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white"><br>
-    <img src="https://img.shields.io/badge/-Unity-black?style=for-the-badge&logo=Unity">
+  
+### 🚀  Creative Developer | 🇰🇷 → 🇨🇦
+
+*Building scalable web applications with modern technologies*
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://legowen.github.io/portfolio/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/seongyeong-owen-kim-8a06651b8/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/legowen)
+
 </div>
 
+---
 
-<h2> My Project </h2>
+## 💻 Tech Stack
 
-<div>
-  <h3>Title - Movie Database project</h3>
+### Frontend
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-CC6699?style=flat-square&logo=sass&logoColor=white)
+
+### State Management & Routing
+![Redux](https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=redux&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white)
+
+### UI Libraries
+![MUI](https://img.shields.io/badge/MUI-007FFF?style=flat-square&logo=mui&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+
+### Backend
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=flat-square&logo=mongoose&logoColor=white)
+
+### DevOps & Tools
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white)
+
+### Game Development
+![Unity](https://img.shields.io/badge/Unity-000000?style=flat-square&logo=unity&logoColor=white)
+
+---
+
+## 🚀 Featured Projects
+
+<table>
+<tr>
+<td width="50%">
+
+### 🎬 Movie Database
+Full-featured movie search and information platform
+
+**Tech Stack:**  
+`React` `Redux` `MUI` `React Router` `CSS3`
+
+[🔗 Live Demo](https://dbmoviesinfo.netlify.app)
+
+</td>
+<td width="50%">
+
+### 👕 On Hanger
+E-commerce shopping mall application
+
+**Tech Stack:**  
+`React` `Bootstrap` `React Router` `CSS3`
+
+[🔗 Live Demo](https://onhanger.netlify.app)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🌤️ Weather App
+Real-time weather information application
+
+**Tech Stack:**  
+`React` `Bootstrap` `CSS3`
+
+[🔗 Live Demo](https://hopenorain.netlify.app)
+
+</td>
+<td width="50%">
+
+### ✅ Justplan Todo List
+Minimalist task management application
+
+**Tech Stack:**  
+`React` `JavaScript` `CSS3` `HTML5`
+
+[🔗 Live Demo](https://justplan.netlify.app)
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📊 GitHub Stats
+
+<div align="center">
   
-  <h3>
-      Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
-             <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
-             <img src = "https://img.shields.io/badge/-MUI-grey?style=for-the-badge&logo=MUI"/>
-             <img src = "https://img.shields.io/badge/-ReactRouter-white?style=for-the-badge&logo=ReactRouter"/>
-             <img src = "https://img.shields.io/badge/-Redux-purple?style=for-the-badge&logo=Redux"/>
-             <img src = "https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify"/>
-  </h3>
-  
-  <h3> Link : https://dbmoviesinfo.netlify.app</h3>
-  
-  </br>
-     <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/dbmoviesinfo.png?raw=true"/>
+![Owen's GitHub stats](https://github-readme-stats.vercel.app/api?username=legowen&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117)
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=legowen&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117)
+
 </div>
 
-  </br></br></br></br>
+---
 
-<div>
-  <h3>Title - On Hanger Project</h3>
-  <p>Under AWS Deploy in progress</p>
-  
-  <h3>
-      Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
-             <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
-             <img src = "https://img.shields.io/badge/-Bootstrap-purple?style=for-the-badge&logo=Bootstrap"/>
-             <img src = "https://img.shields.io/badge/-ReactRouter-white?style=for-the-badge&logo=ReactRouter"/>
-             <img src = "https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify"/>
-  </h3>
-  
-  <h3> Link : https://onhanger.netlify.app</h3>
-  
-  </br>
-     <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/shoppingmallfe.png?raw=true"/>
-</div>
+<div align="center">
 
-  </br></br></br></br>
+### 💬 Let's Connect!
 
-<div>
-  <h3>Title - Weather App</h3>
-  
-   <h3> Link : https://hopenorain.netlify.app</h3>
-  
-  <h3> Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
-             <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
-             <img src = "https://img.shields.io/badge/-Bootstrap-purple?style=for-the-badge&logo=Bootstrap"/>
-             <img src = "https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify"/>
-  </h3>
-  
-  </br>
-      <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/weatherproject.png?raw=true"/>
-</div>
+*Always open to interesting projects and collaborations*
 
-  </br></br></br></br>
-  
-<div>
-  <h3>Title - Justplan Todo List</h3>
-  
-  <h3> Link : https://justplan.netlify.app</h3>
+![Profile Views](https://komarev.com/ghpvc/?username=legowen&color=brightgreen&style=flat-square)
 
-  <h3> Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
-              <img src = "https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=for-the-badge&logo=javascript&logoColor=000000&labelColor=%23FDF1C&color=%23FFCE5A"/>
-              <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
-              <img src = "https://img.shields.io/badge/-HTML5-F05032?style=for-the-badge&logo=html5&logoColor=ffffff"/>
-              <img src = "https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify"/>
-  </h3>
-
-  </br>
-    <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/todolist.png?raw=true"/>
-</div>
-
-  </br></br></br></br>
-
-<div>
-  <h3>Title - Phonebook</h3>
-  
-  <h3> Link : https://simplephonebook.netlify.app</h3>
-
-  <h3> Tech - <img src = "https://img.shields.io/badge/-React-222222?style=for-the-badge&logo=react"/>
-             <img src = "https://img.shields.io/badge/-CSS3-007ACC?style=for-the-badge&logo=css3"/>
-             <img src = "https://img.shields.io/badge/-Bootstrap-purple?style=for-the-badge&logo=Bootstrap"/>
-             <img src = "https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify"/>
-  </h3>
-  
-  </br>
-      <img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/Phonebook.png?raw=true"/>
 </div>
