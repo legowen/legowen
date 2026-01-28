@@ -2,7 +2,7 @@
 
 <div align="center">
   
-### 🚀  Creative Developer | 🇰🇷 → 🇨🇦
+### 🚀  Creative Developer | 🇨🇦
 
 *Building scalable web applications with modern technologies*
 
