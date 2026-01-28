@@ -20,7 +20,11 @@ const skills = {
   frontend: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
   backend: ['Node.js', 'Python', 'PHP'],
   database: ['PostgreSQL', 'MongoDB'],
-  tools: ['Git', 'AWS', 'Netlify']
+  ai_ml: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Keras'],
+  devops: ['Docker', 'Kubernetes', 'CI/CD', 'Azure DevOps', 'PowerShell'],
+  cloud: ['AWS', 'Azure'],
+  tools: ['Git', 'Netlify'],
+  enterprise: ['MS Business Central ERP', 'Dynamics 365']
 };
 ```
 
