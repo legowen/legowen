@@ -2,7 +2,7 @@
 
 <div align="center">
   
-### 🚀 Developer | 🇰🇷 → 🇨🇦
+### 🚀 Developer | 🇰🇷  🇨🇦
 
 *Building scalable web applications with modern technologies*
 
