@@ -1,0 +1,52 @@
+[
+  [
+    "Owned Tier 3 and Tier 4 escalation for both studios and led the Tier 1 and Tier 2 support function, setting the triage path and response standards, and driving vendor cases with Microsoft, Jamf, Apple, and hardware partners to resolution.",
+    "Led the migration from Google Workspace to Microsoft 365 across both studios, covering Exchange Online, SharePoint architecture, OneDrive, and Teams, and consolidated Jira and Confluence into a single governed platform.",
+    "Designed and ran hybrid identity across both studios on Entra Connect with on-premises Active Directory as the source of truth, covering domain controller health, Group Policy management, Conditional Access design, and PowerShell-driven server administration and automation.",
+    "Managed the Mac and Windows endpoint fleet on Jamf Pro and Intune, building the enrollment pipeline through Apple Business Manager and PreStage, and standardizing configuration profiles, application delivery, and device lifecycle.",
+    "Built out the Microsoft platform for the studios: SharePoint architecture and Teams governance, a Power Apps and SharePoint List service desk replacing Jira Service Management, Power Automate workflows for recurring IT processes, and Copilot Studio agents governed by access control and data handling rules that kept NDA-covered client material out of them.",
+    "Established the endpoint security baseline across the fleet on Bitdefender GravityZone and Microsoft Defender — policy scheme, exclusion standards, and compliance reporting — mapped controls to client security requirements, and automated recurring checks and reporting with PowerShell.",
+    "Managed the Palo Alto next-generation firewall estate: maintained the security policy rule base and zone design, tuned App-ID and threat prevention profiles, administered GlobalProtect VPN authenticated against on-premises Active Directory, and ran every change through log review and commit control, aligning policy to the requirements of EA and Microsoft studio clients.",
+    "Rebuilt the studio server room and core infrastructure to a documented business standard: Hyper-V hosts and virtual machines, Synology NAS storage and backup, and the UniFi network controller, moving every service and SaaS platform onto documented service accounts with credentials held in Bitwarden.",
+    "Ran the studio AWS footprint for backup and archive — S3 and Glacier with IAM access control and retention aligned to client contracts — and worked in Azure DevOps to keep build and development environments consistent with client-side pipelines.",
+    "Restructured IT governance and spend: consolidated overlapping tools, reclaimed unused and duplicate licenses, renegotiated renewals, and rebuilt the documentation and roadmap so the environment could be run and audited to a standard.",
+    "Ran recurring account and access reviews for studio clients including EA, covering contractor audits and contract-required data destruction."
+  ],
+  [
+    "Handled Tier 3 escalations for all nine offices and ran Tier 4 vendor cases with clients including Lenovo to resolution, working in English, Korean, and Chinese.",
+    "Built and maintained the company’s Microsoft data and reporting stack on Dataverse, Power BI, and Microsoft Fabric, and used it for business analysis across project and infrastructure planning.",
+    "Ran the SharePoint and OneDrive tenant domain rename with Microsoft Support during the rebrand from Sunia to FluxInk.",
+    "Deployed a Conditional Access policy requiring Entra ID joined devices for Azure DevOps, and resolved enrollment issues across regions involving Mac Platform SSO, Windows MDM scope, and device join states.",
+    "Configured and maintained Palo Alto firewall policy, VPN access, and access control protecting internal systems and company data across all regions.",
+    "Operated and maintained Azure Kubernetes Service clusters running production AI workloads — scaling, upgrades, and troubleshooting — and kept the GPU training servers and their Docker, GitLab, Harbor, and MLflow tooling running for the AI team.",
+    "Ran Grafana and Prometheus monitoring with capacity and availability alerting, and administered VMware and Hyper-V hosts including resource allocation and virtual machine migrations.",
+    "Administered Azure DevOps across regions — build and release pipelines, repository and permission structure — with a PowerShell runbook in Azure Automation that warns owners before their access tokens expire.",
+    "Deployed Dynamics 365 Business Central and Sales with outside consultants, introduced Jira as the project and workflow system, and wrote the internal IT documentation in English and Chinese.",
+    "Designed and maintained the company’s SharePoint intranet sites and Microsoft 365 ecosystem, centralizing document management and team collaboration.",
+    "Oversaw server room infrastructure, ensuring reliable network connectivity, data integrity, and system uptime.",
+    "Supported AI annotation and data pipeline tasks, bridging IT operations and machine learning workflows."
+  ],
+  [
+    "Built and maintained B2B and B2C e-commerce platforms on Shopify, Amazon, AWS, and GoDaddy, and connected them to internal systems.",
+    "Administered Microsoft 365, Azure, SharePoint, Power Automate, Power BI, and Power Apps, and built automated workflows for order handling and reporting.",
+    "Managed on-site and remote networks including LAN and WAN, routers, switches, and firewalls, and handled TCP/IP and DNS troubleshooting.",
+    "Managed Microsoft Azure, SharePoint, Power Automate, Power BI, and Power Apps, implementing automated workflows and enhancing collaboration.",
+    "Ran NAS storage for user access, data protection, and backup continuity.",
+    "Provided technical support, IT documentation, and cross-departmental training, improving overall system reliability and operational efficiency",
+    "Supported business operations by integrating multiple e-commerce platforms with internal systems."
+  ],
+  [
+    "Taught students programming logic, problem solving, and debugging.",
+    "Helped update curriculum and tracked student progress using Excel and internal platforms.",
+    "Recognized for building strong mentor-student relationships and promoting interest in STEM and technology education."
+  ],
+  [
+    "Performed diagnostic programming and system setup for new electric vehicles using Audi proprietary scan tools and software management systems.",
+    "Utilized Audi Service App to monitor, calibrate, and control electronic and electrical components during vehicle maintenance and repair processes.",
+    "Took on IT support for the shop, including network and connectivity troubleshooting, application tickets, and coordination with Audi’s technical service portal."
+  ],
+  [
+    "Built interactive user interface components in JavaScript, HTML5, and CSS3 for internal web applications.",
+    "Supported system configuration and internal web application testing."
+  ]
+]
