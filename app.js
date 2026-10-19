@@ -1,4 +1,4 @@
-import { mountDemo } from './demos.js';
+import { mountProjectCards, mountOriginalProject } from './project-cards.js';
 
 const capabilities = {
   endpoints: { icon:'▣', title:'A better first login.', description:'Mac, Windows, and Android management that supports the whole device lifecycle — enrollment, configuration, application delivery, compliance, and retirement.', example:'Managed mixed Mac and Windows fleets at Sprung Studios with Jamf Pro and Intune. Built enrollment through Apple Business Manager and PreStage, and standardized profiles and application delivery.', tags:['Microsoft Intune','Jamf Pro','Apple Business Manager','Windows 11','macOS'] },
@@ -30,10 +30,10 @@ fetch('./career.json').then(r=>{if(!r.ok)throw new Error('Resume details unavail
 
 const dialog=document.querySelector('#project-dialog'),content=document.querySelector('#demo-content');
 let cleanupDemo=()=>{},lastTrigger;
-document.querySelectorAll('[data-demo]').forEach(button=>button.addEventListener('click',()=>{lastTrigger=button;cleanupDemo();content.replaceChildren();cleanupDemo=mountDemo(button.dataset.demo,content)||(()=>{});content.querySelector('h3')?.setAttribute('id','demo-title');dialog.showModal();document.body.classList.add('modal-open');const layer=document.querySelector('#cat-layer');layer.classList.add('in-dialog');dialog.append(layer);dialog.scrollTop=0;document.querySelector('#close-demo').focus();}));
+mountProjectCards(document.querySelector('#project-cards'),(project,button)=>{lastTrigger=button;cleanupDemo();content.replaceChildren();cleanupDemo=mountOriginalProject(project,content);dialog.showModal();document.body.classList.add('modal-open');roomController?.setActive(false);const layer=document.querySelector('#cat-layer');layer.classList.add('in-dialog');dialog.append(layer);dialog.scrollTop=0;document.querySelector('#close-demo').focus();});
 document.querySelector('#close-demo').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',e=>{if(e.target===dialog){const rect=dialog.getBoundingClientRect();if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom)dialog.close();}});
-dialog.addEventListener('close',()=>{cleanupDemo();cleanupDemo=()=>{};document.body.classList.remove('modal-open');const layer=document.querySelector('#cat-layer');layer.classList.remove('in-dialog');document.body.append(layer);lastTrigger?.focus();});
+dialog.addEventListener('close',()=>{cleanupDemo();cleanupDemo=()=>{};document.body.classList.remove('modal-open');const layer=document.querySelector('#cat-layer');layer.classList.remove('in-dialog');document.body.append(layer);syncRoomVisibility();lastTrigger?.focus();});
 document.querySelector('#year').textContent=new Date().getFullYear();
 const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)document.querySelectorAll('.topbar nav a').forEach(a=>a.classList.toggle('active',a.hash===`#${entry.target.id}`));});},{rootMargin:'-20% 0px -50% 0px'});document.querySelectorAll('main>section').forEach(s=>observer.observe(s));
 
@@ -43,11 +43,46 @@ let catsMoving=!reducedMotion.matches;
 try{const stored=localStorage.getItem('owen-cats');if(stored!==null)catsMoving=stored==='on'&&!reducedMotion.matches;}catch{}
 const toggle=document.querySelector('#cat-toggle');
 function updateToggle(){toggle.innerHTML=`<span>🐾</span> ${catsMoving?'Cats on':'Cats resting'}`;toggle.setAttribute('aria-pressed',String(catsMoving));toggle.setAttribute('aria-label',catsMoving?'Pause roaming cats':'Let cats roam');}
-toggle.addEventListener('click',()=>{catsMoving=!catsMoving;updateToggle();try{localStorage.setItem('owen-cats',catsMoving?'on':'off');}catch{}});updateToggle();
-reducedMotion.addEventListener('change',e=>{if(e.matches){catsMoving=false;updateToggle();}});
+toggle.addEventListener('click',()=>{catsMoving=!catsMoving;roomController?.setCatsMoving(catsMoving);updateToggle();try{localStorage.setItem('owen-cats',catsMoving?'on':'off');}catch{}});updateToggle();
+reducedMotion.addEventListener('change',e=>{if(e.matches){catsMoving=false;roomController?.setCatsMoving(false);updateToggle();}});
 const cats=[{el:document.querySelector('#bomi'),x:70,target:200,speed:20,idleUntil:0},{el:document.querySelector('#seoli'),x:190,target:420,speed:25,idleUntil:0}];
 let last=0;
 function moveCats(time){const dt=Math.min((time-last)/1000,.05);last=time;const max=Math.max(0,(dialog.open?dialog.clientWidth-85:innerWidth-165));cats.forEach((cat,index)=>{cat.x=Math.max(0,Math.min(cat.x,max));cat.target=Math.min(cat.target,max);const sprite=cat.el.firstElementChild;let frame=0;if(catsMoving&&!document.hidden&&time>cat.idleUntil){if(Math.abs(cat.x-cat.target)<2){cat.target=Math.random()*max;cat.idleUntil=time+2000+Math.random()*3500;}else{const dir=cat.target>cat.x?1:-1;cat.x+=dir*cat.speed*dt;sprite.style.transform=`scaleX(${dir})`;frame=2+Math.floor(time/170)%4;}}else if(catsMoving&&Math.floor(time/2500)%4===0)frame=1;sprite.style.setProperty('--frame-x',`${(frame%4)*100/3}%`);sprite.style.setProperty('--frame-y',`${Math.floor(frame/4)*100/3}%`);cat.el.style.left=`${cat.x}px`;cat.el.style.bottom=`${8+index*5}px`;});requestAnimationFrame(moveCats);}requestAnimationFrame(moveCats);
-const room=document.querySelector('#room');room.addEventListener('pointermove',e=>{if(reducedMotion.matches||e.pointerType==='touch')return;const r=room.getBoundingClientRect();room.style.transform=`perspective(1000px) rotateY(${(e.clientX-r.left-r.width/2)/r.width*5}deg) rotateX(${-(e.clientY-r.top-r.height/2)/r.height*3}deg)`;});room.addEventListener('pointerleave',()=>{room.style.transform='';});
 
-
+// The résumé and project sections work independently of the optional 3D module.
+let roomController=null,roomAbort=null,roomInView=true,roomSkipped=false,roomLoading=false;
+const roomHost=document.querySelector('#room-canvas');
+const roomFallback=document.querySelector('#room-fallback');
+const roomStart=document.querySelector('#enable-3d');
+const roomStatus=document.querySelector('#room-status');
+const roomReset=document.querySelector('#reset-room');
+function syncRoomVisibility(){
+  const active=!!roomController&&roomInView&&!dialog.open&&!document.hidden;
+  roomController?.setActive(active);
+  document.body.classList.toggle('room-live',active);
+}
+function releaseRoom(){roomAbort?.abort();roomAbort=null;roomController?.dispose();roomController=null;roomLoading=false;roomFallback.hidden=false;roomStart.hidden=false;roomStart.disabled=false;roomReset.hidden=true;syncRoomVisibility();}
+function navigateTo(id){const target=document.getElementById(id);if(target){target.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth'});history.replaceState(null,'',`#${id}`);const heading=target.querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}}
+async function startRoom(){
+  if(roomLoading||roomController)return;
+  roomSkipped=false;roomLoading=true;roomStart.disabled=true;roomStatus.textContent='Opening the workspace…';
+  const abort=new AbortController();roomAbort=abort;
+  try{
+    const {mountRoom}=await import('./room3d.js?v=2');
+    if(abort.signal.aborted)return;
+    const controller=await mountRoom(roomHost,{signal:abort.signal,catsMoving,onNavigate:navigateTo,onError:()=>{roomStatus.textContent='3D unavailable. All experience and projects are still below.';}});
+    if(abort.signal.aborted){controller.dispose();return;}
+    roomController=controller;roomFallback.hidden=true;roomStart.hidden=true;roomReset.hidden=false;roomStatus.textContent='Drag to look around. Click a screen, server, or frame.';syncRoomVisibility();
+  }catch(error){if(!abort.signal.aborted){releaseRoom();roomStatus.textContent='3D unavailable. Continue to experience and projects below.';}}
+  finally{if(roomAbort===abort){roomLoading=false;roomStart.disabled=false;}}
+}
+roomStart.addEventListener('click',startRoom);
+roomReset.addEventListener('click',()=>roomController?.resetView());
+document.querySelector('#skip-3d').addEventListener('click',e=>{e.preventDefault();roomSkipped=true;releaseRoom();roomStatus.textContent='3D is off. Explore it whenever you like.';navigateTo('experience');});
+const roomObserver=new IntersectionObserver(([entry])=>{roomInView=entry.isIntersecting;syncRoomVisibility();},{threshold:.08});roomObserver.observe(document.querySelector('#home'));
+document.addEventListener('visibilitychange',syncRoomVisibility);
+window.addEventListener('pagehide',()=>{roomAbort?.abort();roomController?.dispose();});
+if(!reducedMotion.matches&&!matchMedia('(max-width:760px)').matches&&!navigator.connection?.saveData){
+  const begin=()=>{if(!roomSkipped&&roomInView)startRoom();};
+  if('requestIdleCallback' in window)requestIdleCallback(begin,{timeout:1200});else setTimeout(begin,300);
+}
