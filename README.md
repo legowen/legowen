@@ -25,7 +25,7 @@ Preview records and scores last only while a preview is open. Cat motion prefere
 - `index.html`, `style.css`, `projects.css`: page structure and responsive layout.
 - `app.js`: expertise, résumé timeline, navigation, cat companions and 3D lifecycle.
 - `career.json`: responsibilities transcribed from the supplied résumé; the original PDF is in `assets/`.
-- `room3d.js`: first-screen Three.js workspace with upright sprite cats. Skip 3D releases the renderer and takes visitors to experience. Mobile and reduced-motion visitors opt in; offscreen or hidden scenes pause.
+- `room3d.js`: first-screen Three.js workspace with upright sprite cats. Skip 3D releases the renderer and takes visitors to experience. 3D opens automatically on desktop and mobile. Reduced-motion preferences pause cat movement; offscreen or hidden scenes pause.
 - `project-cards.js`: reusable project cards and lazy-loaded interactive viewers.
 - `boso-demo.*`, `myeongcat-demo.*`, `lotto-demo.*`, `utility-demos.*`: isolated local interactions and styles. Each mount function returns cleanup for timers and listeners.
 - `assets/`: original artwork, project thumbnails, résumé and licensed fonts; provenance notes accompany adapted assets where relevant.

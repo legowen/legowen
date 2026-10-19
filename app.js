@@ -65,7 +65,7 @@ function releaseRoom(){roomAbort?.abort();roomAbort=null;roomController?.dispose
 function navigateTo(id){const target=document.getElementById(id);if(target){target.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth'});history.replaceState(null,'',`#${id}`);const heading=target.querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}}
 async function startRoom(){
   if(roomLoading||roomController)return;
-  roomSkipped=false;roomLoading=true;roomStart.disabled=true;roomStatus.textContent='Opening the workspace…';
+  roomSkipped=false;roomLoading=true;roomStart.disabled=true;roomStart.hidden=true;roomStatus.textContent='Opening the workspace…';
   const abort=new AbortController();roomAbort=abort;
   try{
     const {mountRoom}=await import('./room3d.js?v=3');
@@ -82,7 +82,5 @@ document.querySelector('#skip-3d').addEventListener('click',e=>{e.preventDefault
 const roomObserver=new IntersectionObserver(([entry])=>{roomInView=entry.isIntersecting;syncRoomVisibility();},{threshold:.08});roomObserver.observe(document.querySelector('#home'));
 document.addEventListener('visibilitychange',syncRoomVisibility);
 window.addEventListener('pagehide',()=>{roomAbort?.abort();roomController?.dispose();});
-if(!reducedMotion.matches&&!matchMedia('(max-width:760px)').matches&&!navigator.connection?.saveData){
-  const begin=()=>{if(!roomSkipped&&roomInView)startRoom();};
-  if('requestIdleCallback' in window)requestIdleCallback(begin,{timeout:1200});else setTimeout(begin,300);
-}
+// Open 3D by default on every screen size. Reduced-motion still pauses the cats.
+startRoom();
