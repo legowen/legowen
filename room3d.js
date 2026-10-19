@@ -95,7 +95,8 @@ export async function mountRoom(container, options = {}) {
   const floorMat = [mat(0xb59b80), mat(0xc2a58a), mat(0xbca088)];
   for (let i = 0; i < 13; i++) box(-3.03 + i * .505, .012, 0, .493, .025, 5.14, floorMat[i % 3]);
   box(0, 1.53, -2.6, 6.5, 3.05, .13, materials.wall);
-  box(-3.2, 1.53, 0, .13, 3.05, 5.3, mat(0x85829a));
+  const leftWallMaterial = mat(0x85829a);
+  box(-3.2, 1.53, 0, .13, 3.05, 5.3, leftWallMaterial);
   box(0, .12, -2.49, 6.3, .22, .08, materials.edge);
   box(-3.09, .12, 0, .08, .22, 5.15, materials.edge);
   box(0, 3.07, -2.6, 6.53, .08, .16, materials.edge);
@@ -436,6 +437,29 @@ export async function mountRoom(container, options = {}) {
         else createCat(keep(result.value), index);
       }
     });
+    // Original maps baked in Blender; geometry and lighting stay lightweight Three.js.
+    await Promise.all([
+      ['wood', [materials.wood, ...floorMat], [1, 1], .012],
+      ['plaster', [materials.wall, leftWallMaterial], [3, 2], .018],
+      ['woven', [rug.material], [1.5, 1], .025],
+    ].map(async ([name, targets, repeat, bumpScale]) => {
+      const maps = await Promise.allSettled(['color', 'roughness'].map(kind => loader.loadAsync(new URL(`./assets/materials/${name}-${kind}.png`, import.meta.url).href)));
+      maps.forEach((result, index) => {
+        if (result.status !== 'fulfilled') return; // Plain materials remain a valid fallback.
+        const texture = result.value;
+        if (disposed) { texture.dispose(); return; }
+        keep(texture);
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(...repeat);
+        texture.anisotropy = Math.min(mobile ? 2 : 4, renderer.capabilities.getMaxAnisotropy());
+        if (index === 0) texture.colorSpace = THREE.SRGBColorSpace;
+        targets.forEach(material => {
+          if (index === 0) material.map = texture;
+          else { material.roughnessMap = texture; material.bumpMap = texture; material.bumpScale = bumpScale; }
+          material.needsUpdate = true;
+        });
+      });
+    }));
     if (disposed) throw new DOMException('Room loading cancelled', 'AbortError');
     renderer.render(scene, camera);
     requestRender(); onReady?.();

@@ -1,0 +1,16 @@
+.boso-demo{color:#f4eddd;background:#161721;border:1px solid #514554;border-radius:14px;overflow:hidden;font-family:system-ui,sans-serif}.boso-demo [hidden]{display:none!important}
+.boso-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#22222f;flex-wrap:wrap}
+.boso-toolbar strong{font-size:14px;color:#ffdd92}.boso-toolbar span{display:block;font-size:11px;color:#c5bbca;margin-top:3px}
+.boso-demo button{font:inherit;cursor:pointer;border:1px solid #796b85;border-radius:7px;color:#f6eddf;background:#393343;padding:8px 12px;font-size:13px;min-height:38px}
+.boso-demo button:hover{background:#514458}.boso-demo button:focus-visible,.boso-demo canvas:focus-visible{outline:3px solid #83e2ce;outline-offset:-3px}.boso-demo button:disabled{opacity:.5;cursor:wait}
+.boso-toolbar-actions{display:flex;gap:7px}.boso-stage{position:relative;display:flex;justify-content:center;background:#0b1018}
+.boso-stage canvas{display:block;width:auto;max-width:100%;height:auto;max-height:50svh;aspect-ratio:2/1;image-rendering:pixelated;touch-action:none}
+.boso-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0b1018b8;padding:12px}
+.boso-overlay-card{width:440px;max-width:100%;text-align:center;padding:22px;background:#222330eb;border:1px solid #827286;border-radius:12px;box-shadow:0 20px 60px #0008}
+.boso-overlay h3{margin:0 0 7px;font-size:clamp(20px,3vw,30px);color:#ffe2a0}.boso-overlay p{font-size:13px;line-height:1.55;margin:8px 0 16px;color:#e2d9de}
+.boso-characters{display:flex;justify-content:center;gap:8px;margin-bottom:14px}.boso-characters button[aria-pressed=true]{border-color:#8de5d3;background:#264b48}.boso-characters small{display:block;font-size:10px;margin-top:3px;color:#ccc}
+.boso-demo .boso-start{background:#f4cf79;color:#211b22;font-weight:800;border-color:#ffe2a0;min-width:150px}.boso-demo .boso-start:hover{background:#ffe2a0}
+.boso-help{padding:9px 14px;font-size:11px;color:#c7bfcc;line-height:1.6;margin:0!important}.boso-help kbd{font:inherit;color:#ffdf92;font-weight:700}.boso-touch{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px 12px}.boso-touch-group{display:flex;gap:7px}.boso-touch button{touch-action:none;user-select:none;-webkit-user-select:none;min-width:50px;min-height:46px;font-weight:700}.boso-touch button[data-action=attack]{background:#775137;border-color:#daa776}.boso-touch button[data-action=jump]{background:#345f60}.boso-touch button:active,.boso-touch button.is-held{filter:brightness(1.5)}
+.boso-live{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(min-width:900px) and (pointer:fine){.boso-touch{display:none}}
+@media(max-width:600px){.boso-stage canvas{aspect-ratio:1.25/1}.boso-toolbar{padding:9px 10px;gap:6px}.boso-toolbar strong{font-size:12px}.boso-toolbar-actions button{padding:6px 9px;font-size:11px;min-height:32px}.boso-overlay-card{padding:14px}.boso-overlay p{font-size:11px;margin:5px 0 10px}.boso-characters{margin-bottom:9px}.boso-help{font-size:10px;padding:7px 10px}.boso-touch{padding:0 8px 9px;gap:5px}.boso-touch-group{gap:4px}.boso-touch button{padding:7px;min-width:40px;font-size:11px}}

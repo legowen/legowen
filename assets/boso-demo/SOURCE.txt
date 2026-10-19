@@ -1,0 +1,6 @@
+Original artwork: legowen/boso (https://github.com/legowen/boso).
+Files copied unchanged from public/assets/images/world and public/assets/images/tex.
+The playable portfolio slice adapts Vacuum Closet's map layout, Vacuum King's
+suction/dust pattern and the original Bomi/Seoli movement and attack animations.
+Boss HP and a few control details are adjusted for a short standalone encounter.
+Existing ../bomi.png and ../seoli.png are the same original character sheets.

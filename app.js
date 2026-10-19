@@ -1,4 +1,4 @@
-import { mountProjectCards, mountOriginalProject } from './project-cards.js';
+import { mountProjectCards, mountOriginalProject } from './project-cards.js?v=3';
 
 const capabilities = {
   endpoints: { icon:'▣', title:'A better first login.', description:'Mac, Windows, and Android management that supports the whole device lifecycle — enrollment, configuration, application delivery, compliance, and retirement.', example:'Managed mixed Mac and Windows fleets at Sprung Studios with Jamf Pro and Intune. Built enrollment through Apple Business Manager and PreStage, and standardized profiles and application delivery.', tags:['Microsoft Intune','Jamf Pro','Apple Business Manager','Windows 11','macOS'] },
@@ -68,7 +68,7 @@ async function startRoom(){
   roomSkipped=false;roomLoading=true;roomStart.disabled=true;roomStatus.textContent='Opening the workspace…';
   const abort=new AbortController();roomAbort=abort;
   try{
-    const {mountRoom}=await import('./room3d.js?v=2');
+    const {mountRoom}=await import('./room3d.js?v=3');
     if(abort.signal.aborted)return;
     const controller=await mountRoom(roomHost,{signal:abort.signal,catsMoving,onNavigate:navigateTo,onError:()=>{roomStatus.textContent='3D unavailable. All experience and projects are still below.';}});
     if(abort.signal.aborted){controller.dispose();return;}

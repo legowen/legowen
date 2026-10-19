@@ -1,43 +1,41 @@
 # Owen Kim — Systems & Modern Workplace
 
-An English portfolio focused on systems administration, endpoint engineering, Microsoft 365, network infrastructure, Power Platform, and governed AI enablement.
+English portfolio for systems administration, endpoint engineering, Microsoft 365, infrastructure, Power Platform, and AI enablement.
 
-## Run locally
+## Run and deploy
 
-No install or build step. Serve this folder with any static HTTP server, for example:
+Serve this folder with a static HTTP server. No installation, build, API keys, backend, or paid service is needed for the portfolio. GitHub Pages publishes `main` / root; `.nojekyll` is included. Use HTTP rather than opening `index.html` directly.
 
-```sh
-python -m http.server 4173
-```
+Three.js is vendored locally with its MIT license. Google Fonts has system-font fallbacks. Project interactions and their assets run locally, without connecting to production accounts or external app deployments.
 
-Open `http://localhost:4173`. Opening `index.html` directly with `file://` will not run ES modules or fetch résumé data.
+## Interactive project slices
 
-## Hosting
+The owner requested usable excerpts of the original apps in this portfolio, with English controls. Do not replace these with video, recordings, or external-app iframes. Do not create videos for this project.
 
-Designed for free GitHub Pages from `main` / root. All asset paths are relative and support project subpaths. In repository Settings → Pages, select **Deploy from a branch**, **main**, **/(root)**. `.nojekyll` disables Jekyll processing. Future pushes update the site.
+- **Boso:** one Vacuum Closet / Vacuum King encounter adapted from the original game's map, artwork and boss mechanics. Keyboard and mobile touch controls, cat selection, health, pause, victory/defeat and retry. Original game: https://github.com/legowen/Boso.
+- **Myeongcat:** companion room and workout journal adapted from the latest local app's Home, Cat, petRoom and ExerciseEditor components. Four original cat sprites, movement/pet interactions and sample workout records. All labels are English. The private backend and real accounts are not included.
+- **LottoMax:** original pixel artwork/interface with seven unique random numbers from 1–52, a reveal, copy, and recent picks. No Keras inference or backend calls. Python/FastAPI and TensorFlow/Keras research is described separately. Source: https://github.com/legowen/lottomax-ai.
+- **Hope no Rain:** the original weather dashboard layout, with sample city selection, temperature units and five-day cards. Clearly labeled sample data, not live weather. Source: https://github.com/legowen/weather_app.
+- **Roshambo:** original hand images and two-card game interaction, with random computer choice and local score. Only this small slice of the owner's private project is included.
 
-The portfolio needs no backend, API keys, paid services, database, or build dependencies. Three.js is vendored locally with its MIT license. Google Fonts has a local system-font fallback. Original Boso and weather applications load from their existing hosts only when a visitor chooses to launch them. Those applications retain their own service requirements.
+Preview records and scores last only while a preview is open. Cat motion preferences remain local to the browser. Original application repositories are not modified by the portfolio.
 
-## Content and editing
+## Editing
 
-- `index.html`: page structure, room fallback, and contact links.
-- `app.js`: expertise examples, résumé timeline headers, navigation, and roaming cats.
-- `career.json`: responsibilities copied from the supplied résumé, preserving its text. Summaries are condensed in the timeline; expand each role or read the original PDF for the full record. Dates and job titles follow the supplied résumé. LinkedIn was consulted for professional positioning and language skills.
-- `room3d.js`: procedural Three.js workspace, clickable objects, and upright sprite-sheet cats. No Blender files or external models are required.
-- `project-cards.js` / `projects.css`: reusable project cards, original media galleries, and optional live-app embeds.
-- `assets/`: user-provided cat sprite sheets and original résumé; fallback workspace illustration, favicon, and original project captures.
-- `vendor/`: Three.js 0.186.1 browser modules, version record, and MIT license.
+- `index.html`, `style.css`, `projects.css`: page structure and responsive layout.
+- `app.js`: expertise, résumé timeline, navigation, cat companions and 3D lifecycle.
+- `career.json`: responsibilities transcribed from the supplied résumé; the original PDF is in `assets/`.
+- `room3d.js`: first-screen Three.js workspace with upright sprite cats. Skip 3D releases the renderer and takes visitors to experience. Mobile and reduced-motion visitors opt in; offscreen or hidden scenes pause.
+- `project-cards.js`: reusable project cards and lazy-loaded interactive viewers.
+- `boso-demo.*`, `myeongcat-demo.*`, `lotto-demo.*`, `utility-demos.*`: isolated local interactions and styles. Each mount function returns cleanup for timers and listeners.
+- `assets/`: original artwork, project thumbnails, résumé and licensed fonts; provenance notes accompany adapted assets where relevant.
 
-Project sources: [Boso](https://github.com/legowen/Boso), [lottomax-ai](https://github.com/legowen/lottomax-ai), and [Hope no Rain](https://github.com/legowen/weather_app). Boso launches its actual [production game](https://snowbom.vercel.app/); weather launches its [original deployment](https://hopenorain.netlify.app/).
+Experience and expertise stay ordinary HTML. All roaming cats have no floating name labels and never intercept navigation. Keyboard navigation, focus styles, reduced-motion preferences and a cat pause control are supported.
 
-Myeongcat uses screenshots and a companion-room recording from the owner's latest local application preview, with sample data. It is still in development and has no public interactive deployment. Its private application source is not included. LottoMax displays the owner's original screenshot and describes the repository's Python/FastAPI and TensorFlow/Keras research; its local backend/model is not executed on GitHub Pages. Sampling experiments do not establish improved lottery odds. Roshambo is identified as private and not deployed, pending original media or a public app URL. No replacement games or simulated app interfaces are included.
+## Verification
 
-## Design and accessibility
+Use small syntax, asset-path and interaction checks. The owner prefers to handle extensive playtesting and device testing, so avoid adding a large automated test suite. In particular check keyboard/touch boss controls, closing/reopening a preview, workout validation, random-number uniqueness, and small-screen layout.
 
-Original low-poly workspace inspired by the exploratory feel of Jesse Zhou's portfolio, with a career timeline inspired by the user-supplied reference. No artwork or code copied from either reference. Cat artwork was supplied by Owen. The first screen uses Three.js; expertise, projects, and experience remain ordinary HTML. Desktop loads the room when idle; mobile and reduced-motion visitors explicitly choose to start it. Skip 3D releases the renderer and takes visitors directly to experience.
+## Blender materials
 
-Responsive layouts, keyboard navigation, native modal focus management, reduced-motion support, visible focus states, and a persistent cat pause control are included. Cats have no floating name labels. They walk inside the 3D room on the first screen, and along the viewport edge elsewhere without intercepting pointer input. The room pauses when offscreen, hidden, or covered by a project viewer.
-
-## Lightweight manual checks
-
-Check desktop/mobile layout, room loading and Skip 3D, cat pause, original project media and live embeds, keyboard navigation, timeline expansion, résumé and external links. Basic browser and syntax checks were prioritized over a large test suite at the owner's request.
+The room's wood, plaster walls and woven rug now use original color/roughness maps baked in Blender 4.5. The six maps total approximately 518 KiB and load only with the optional 3D room. Geometry and lighting remain in Three.js; this is material authoring, not a complete Blender-modeled room or a baked room-lighting pass. Reproduction instructions and the Blender script are in `assets/materials/`. No Blender executable is included in the website.
