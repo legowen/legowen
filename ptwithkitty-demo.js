@@ -1,52 +1,52 @@
-// A self-contained slice adapted from the owner's local Myeongcat Home, Cat,
+// A self-contained slice adapted from the owner's local PT w Kitty Home, Cat,
 // petRoom and ExerciseEditor components. All records here are sample data.
 const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const initialWeek = [true, true, false, true, true, false, false];
 const characters = { seoli: 'Seoli', bomi: 'Bomi', cheese: 'Cheese tabby', white: 'White cat' };
 const frames = { idle: [0, 0, 1, 0], walk: [2, 3, 4, 5], play: [9, 10, 11, 10, 9], stretch: [12, 13, 12, 13], groom: [6, 0, 6, 1], sleep: [14], greet: [15, 1, 15] };
 const spriteURL = character => new URL(character === 'bomi' || character === 'seoli'
-  ? `./assets/${character}.png` : `./assets/myeongcat-demo/${character}.png`, import.meta.url).href;
+  ? `./assets/${character}.png` : `./assets/ptwithkitty-demo/${character}.png`, import.meta.url).href;
 
-export function mountMyeongcat(root) {
+export function mountPTwithKitty(root) {
   const controller = new AbortController();
   const signal = controller.signal;
-  root.innerHTML = `<section class="mc-demo" lang="en" aria-label="Interactive Myeongcat app preview">
-    <header class="mc-topbar"><strong class="mc-brand"><i aria-hidden="true"></i>Myeongcat</strong><span>Together between sessions</span><span class="mc-tag">EN · Sample day</span></header>
-    <div class="mc-pagehead"><p class="mc-eyebrow">YOUR DAILY COMPANION</p><h3>Good to see you, Jihoon.</h3><p>A small note, a day of growing together.</p></div>
-    <div class="mc-grid">
-      <div><section class="mc-pixel-panel">
-        <div class="mc-row mc-cat-head"><h4>Our growing room</h4><span class="mc-tag">Balance track</span></div>
-        <div class="mc-toolbar"><label>Choose your companion<select data-mc="character">${Object.entries(characters).map(([key, name]) => `<option value="${key}">${name}</option>`).join('')}</select></label><button class="mc-button mc-secondary mc-small" data-mc="pause" aria-pressed="false">Ⅱ Pause movement</button></div>
-        <div class="mc-room"><div class="mc-window" aria-hidden="true"></div><div class="mc-shelf" aria-hidden="true"></div><div class="mc-rug" aria-hidden="true"></div><div class="mc-yarn" aria-hidden="true"></div>
-          <div class="mc-speech" data-mc="speech" role="status">You're here!</div>
-          <button class="mc-cat" data-mc="cat" aria-label="Pet Seoli, no EXP reward"><span class="mc-sprite" aria-hidden="true"></span></button>
+  root.innerHTML = `<section class="pk-demo" lang="en" aria-label="Interactive PT w Kitty app preview">
+    <header class="pk-topbar"><strong class="pk-brand"><i aria-hidden="true"></i>PT w Kitty</strong><span>Together between sessions</span><span class="pk-tag">EN · Sample day</span></header>
+    <div class="pk-pagehead"><p class="pk-eyebrow">YOUR DAILY COMPANION</p><h3>Good to see you, Jihoon.</h3><p>A small note, a day of growing together.</p></div>
+    <div class="pk-grid">
+      <div><section class="pk-pixel-panel">
+        <div class="pk-row pk-cat-head"><h4>Our growing room</h4><span class="pk-tag">Balance track</span></div>
+        <div class="pk-toolbar"><label>Choose your companion<select data-pk="character">${Object.entries(characters).map(([key, name]) => `<option value="${key}">${name}</option>`).join('')}</select></label><button class="pk-button pk-secondary pk-small" data-pk="pause" aria-pressed="false">Ⅱ Pause movement</button></div>
+        <div class="pk-room"><div class="pk-window" aria-hidden="true"></div><div class="pk-shelf" aria-hidden="true"></div><div class="pk-rug" aria-hidden="true"></div><div class="pk-yarn" aria-hidden="true"></div>
+          <div class="pk-speech" data-pk="speech" role="status">You're here!</div>
+          <button class="pk-cat" data-pk="cat" aria-label="Pet Seoli, no EXP reward"><span class="pk-sprite" aria-hidden="true"></span></button>
         </div>
-        <p class="mc-help" data-mc="help">Tap your cat to chat. It takes little breaks, too.</p>
-        <div class="mc-stats"><div class="mc-row"><b>Lv.3 Junior cat</b><small>320 / 800 EXP</small></div><div class="mc-exp" role="progressbar" aria-label="Progress to the next level" aria-valuenow="320" aria-valuemin="0" aria-valuemax="800"><div></div></div><div class="mc-row"><small>Ready for today's story.</small><span class="mc-tag">4-day streak</span></div></div>
-      </section><button class="mc-button mc-log" data-mc="open-log" aria-expanded="false">＋ Log movement</button></div>
-      <div class="mc-stack">
-        <section class="mc-panel"><div class="mc-row"><h4>This week's footprints</h4><small data-mc="week-count">4 / 7 days</small></div><div class="mc-days">${days.map((day, index) => `<div><small>${day}</small><span class="mc-day ${initialWeek[index] ? 'mc-done' : ''}" data-day="${index}" aria-label="${day}: ${initialWeek[index] ? 'Recorded' : 'No record'}">${initialWeek[index] ? '✓' : '·'}</span></div>`).join('')}</div><p class="mc-note">Rest days are welcome. Go at your own pace.</p></section>
-        <section class="mc-panel"><h4>Next session</h4><div class="mc-session"><div class="mc-date">Thursday<strong>24</strong></div><div><b>7:00 PM</b><small>With trainer Moran</small></div></div><div class="mc-ticket"><div><b>My session packages</b><small>Every session accounted for</small></div><span><strong>3</strong> sessions left</span></div></section>
-        <section class="mc-panel"><h4>A note from your trainer</h4><p class="mc-message">You've kept a steady journal this week. Let's review it at our next session!</p></section>
+        <p class="pk-help" data-pk="help">Tap your cat to chat. It takes little breaks, too.</p>
+        <div class="pk-stats"><div class="pk-row"><b>Lv.3 Junior cat</b><small>320 / 800 EXP</small></div><div class="pk-exp" role="progressbar" aria-label="Progress to the next level" aria-valuenow="320" aria-valuemin="0" aria-valuemax="800"><div></div></div><div class="pk-row"><small>Ready for today's story.</small><span class="pk-tag">4-day streak</span></div></div>
+      </section><button class="pk-button pk-log" data-pk="open-log" aria-expanded="false">＋ Log movement</button></div>
+      <div class="pk-stack">
+        <section class="pk-panel"><div class="pk-row"><h4>This week's footprints</h4><small data-pk="week-count">4 / 7 days</small></div><div class="pk-days">${days.map((day, index) => `<div><small>${day}</small><span class="pk-day ${initialWeek[index] ? 'pk-done' : ''}" data-day="${index}" aria-label="${day}: ${initialWeek[index] ? 'Recorded' : 'No record'}">${initialWeek[index] ? '✓' : '·'}</span></div>`).join('')}</div><p class="pk-note">Rest days are welcome. Go at your own pace.</p></section>
+        <section class="pk-panel"><h4>Next session</h4><div class="pk-session"><div class="pk-date">Thursday<strong>24</strong></div><div><b>7:00 PM</b><small>With trainer Moran</small></div></div><div class="pk-ticket"><div><b>My session packages</b><small>Every session accounted for</small></div><span><strong>3</strong> sessions left</span></div></section>
+        <section class="pk-panel"><h4>A note from your trainer</h4><p class="pk-message">You've kept a steady journal this week. Let's review it at our next session!</p></section>
       </div>
     </div>
-    <section class="mc-panel mc-workout" data-mc="workout" hidden>
-      <div class="mc-row"><div><p class="mc-eyebrow">MY WORKOUT JOURNAL</p><h4>Log movement</h4></div><span class="mc-tag">Wednesday · sample</span></div>
-      <p class="mc-note">Record a few sets and leave a footprint in your week.</p>
-      <form data-mc="form"><label class="mc-field">Exercise<select name="exercise"><option>Goblet squat</option><option>Dumbbell row</option><option>Bench press</option><option>Bodyweight squat</option></select></label><div class="mc-sets" data-mc="sets"></div>
-        <button class="mc-button mc-secondary mc-small" type="button" data-mc="add-set">＋ Add set</button>
-        <label class="mc-field">Workout note<textarea name="note" maxlength="180" rows="2" placeholder="How did your movement feel?"></textarea></label>
-        <div class="mc-row mc-form-actions"><button type="submit" class="mc-button" data-mc="save">Save sample workout</button><button type="button" class="mc-button mc-secondary" data-mc="reset">Reset sample</button></div>
+    <section class="pk-panel pk-workout" data-pk="workout" hidden>
+      <div class="pk-row"><div><p class="pk-eyebrow">MY WORKOUT JOURNAL</p><h4>Log movement</h4></div><span class="pk-tag">Wednesday · sample</span></div>
+      <p class="pk-note">Record a few sets and leave a footprint in your week.</p>
+      <form data-pk="form"><label class="pk-field">Exercise<select name="exercise"><option>Goblet squat</option><option>Dumbbell row</option><option>Bench press</option><option>Bodyweight squat</option></select></label><div class="pk-sets" data-pk="sets"></div>
+        <button class="pk-button pk-secondary pk-small" type="button" data-pk="add-set">＋ Add set</button>
+        <label class="pk-field">Workout note<textarea name="note" maxlength="180" rows="2" placeholder="How did your movement feel?"></textarea></label>
+        <div class="pk-row pk-form-actions"><button type="submit" class="pk-button" data-pk="save">Save sample workout</button><button type="button" class="pk-button pk-secondary" data-pk="reset">Reset sample</button></div>
       </form>
-      <p class="mc-save-status" data-mc="save-status" role="status"></p>
+      <p class="pk-save-status" data-pk="save-status" role="status"></p>
     </section>
-    <p class="mc-disclaimer">Interactive excerpt from the local Myeongcat app. Sample records stay in this preview and reset when it closes.</p>
+    <p class="pk-disclaimer">Interactive excerpt from the local PT w Kitty app. Sample records stay in this preview and reset when it closes.</p>
   </section>`;
 
-  const find = name => root.querySelector(`[data-mc="${name}"]`);
-  const room = root.querySelector('.mc-room');
+  const find = name => root.querySelector(`[data-pk="${name}"]`);
+  const room = root.querySelector('.pk-room');
   const cat = find('cat');
-  const sprite = root.querySelector('.mc-sprite');
+  const sprite = root.querySelector('.pk-sprite');
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   let character = 'seoli', paused = false, focused = false, hovered = false, inView = true;
   let motion = { x: 70, y: 140, tx: 70, ty: 140, elapsed: 0, duration: 900, behavior: 'idle', facing: 1 };
@@ -139,7 +139,7 @@ export function mountMyeongcat(root) {
     if (setCount >= 5 || saved) return;
     setCount++;
     const row = document.createElement('div');
-    row.className = 'mc-set';
+    row.className = 'pk-set';
     row.innerHTML = `<b>Set ${setCount}</b><label>Weight (kg)<input name="weight-${setCount}" type="number" min="0" max="500" step="0.5" inputmode="decimal" value="20" required></label><label>Reps<input name="reps-${setCount}" type="number" min="1" max="100" step="1" inputmode="numeric" value="10" required></label>`;
     find('sets').append(row);
     find('add-set').disabled = setCount >= 5;
@@ -153,7 +153,7 @@ export function mountMyeongcat(root) {
     find('save-status').textContent = '';
     find('week-count').textContent = '4 / 7 days';
     const day = root.querySelector('[data-day="2"]');
-    day.textContent = '·'; day.classList.remove('mc-done'); day.setAttribute('aria-label', 'Wed: No record');
+    day.textContent = '·'; day.classList.remove('pk-done'); day.setAttribute('aria-label', 'Wed: No record');
     find('speech').textContent = "You're here!";
   }
   find('open-log').addEventListener('click', () => {
@@ -176,7 +176,7 @@ export function mountMyeongcat(root) {
     find('save').disabled = true; find('save').textContent = '✓ Sample workout saved'; find('add-set').disabled = true;
     find('week-count').textContent = '5 / 7 days';
     const day = root.querySelector('[data-day="2"]');
-    day.textContent = '✓'; day.classList.add('mc-done'); day.setAttribute('aria-label', 'Wed: Recorded');
+    day.textContent = '✓'; day.classList.add('pk-done'); day.setAttribute('aria-label', 'Wed: Recorded');
     find('speech').textContent = 'Growing together, one little day at a time.';
   }, { signal });
   addSet(); resize(); syncMotion();

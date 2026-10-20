@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#070b18"/><stop offset="1" stop-color="#101a36"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#2ee6ff" stroke-opacity=".09" stroke-width="1"/></pattern>
+    <radialGradient id="aura" cx=".5" cy=".47" r=".5"><stop offset="0" stop-color="#2ee6ff" stop-opacity=".28"/><stop offset="1" stop-color="#2ee6ff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2ee6ff" stop-opacity="0"/><stop offset=".5" stop-color="#2ee6ff" stop-opacity=".22"/><stop offset="1" stop-color="#2ee6ff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".75"><stop offset=".5" stop-color="#04060e" stop-opacity="0"/><stop offset="1" stop-color="#04060e" stop-opacity=".8"/></radialGradient>
+    <filter id="neon" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <rect width="640" height="360" fill="url(#grid)"/>
+  <circle cx="320" cy="170" r="190" fill="url(#aura)"/>
+  <rect y="176" width="640" height="26" fill="url(#scan)"/>
+  <!-- hexagon seal with a lock -->
+  <g filter="url(#neon)" fill="none" stroke="#2ee6ff" stroke-width="3" stroke-linejoin="round">
+    <path d="M398 170l-39 67.5h-78L242 170l39-67.5h78z"/>
+  </g>
+  <path d="M384 170l-32 55.4h-64L256 170l32-55.4h64z" fill="#0b1226" fill-opacity=".85" stroke="#2ee6ff" stroke-opacity=".45" stroke-width="1.5" stroke-dasharray="5 6"/>
+  <g filter="url(#neon)"><rect x="296" y="168" width="48" height="38" rx="6" fill="#2ee6ff"/><path d="M304 168v-12a16 16 0 0 1 32 0v12" fill="none" stroke="#2ee6ff" stroke-width="6" stroke-linecap="round"/></g>
+  <circle cx="320" cy="184" r="5" fill="#0b1226"/><rect x="318" y="186" width="4" height="10" rx="2" fill="#0b1226"/>
+  <!-- redaction bars -->
+  <g fill="#18233f" stroke="#2ee6ff" stroke-opacity=".3"><rect x="150" y="272" width="340" height="13" rx="3"/><rect x="150" y="294" width="250" height="13" rx="3"/><rect x="150" y="316" width="296" height="13" rx="3"/></g>
+  <g fill="#2ee6ff"><rect x="36" y="34" width="72" height="9" rx="2" opacity=".85"/><rect x="36" y="50" width="42" height="6" rx="2" opacity=".4"/><rect x="532" y="34" width="72" height="9" rx="2" opacity=".5"/><rect x="562" y="50" width="42" height="6" rx="2" opacity=".3"/></g>
+  <rect width="640" height="360" fill="url(#vig)"/>
+</svg>

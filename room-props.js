@@ -19,7 +19,7 @@ const HOT = {
   microsoft: { route: 'microsoft', label: 'Microsoft 365 & certifications', hint: 'AZ-900 · MS-900 · MD-102 · SC-300' },
   arcade: { route: 'project:boso', label: 'Boso', hint: 'Play a boss battle' },
   window: { route: 'project:weather', label: 'Hope no Rain', hint: 'Weather dashboard' },
-  kettlebell: { route: 'project:myeongcat', label: 'Myeongcat', hint: 'Training app with a cat room' },
+  kettlebell: { route: 'project:ptwithkitty', label: 'PT w Kitty', hint: 'Training app with a cat room' },
   lotto: { route: 'project:lotto', label: 'LottoMax', hint: 'Bomi picks the numbers' },
   rps: { route: 'project:roshambo', label: 'Roshambo', hint: 'Play a round' },
   resume: { route: 'experience', label: 'Experience', hint: 'Career timeline' },
@@ -419,7 +419,7 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
     b.cyl(M.white, 3.35, .045, -.45, .1, .07, .09, 18); b.cyl(glowMat('#7dffb2', .9), 3.35, .086, -.45, .085, .085, .004, 18);
     b.cyl(M.white, 3.62, .045, -.45, .1, .07, .09, 18); b.cyl(glowMat('#4f8bff', .9), 3.62, .086, -.45, .085, .085, .004, 18);
 
-    // kettlebell + dumbbells (Myeongcat)
+    // kettlebell + dumbbells (PT w Kitty)
     b.rbox(M.carpetB, 1.45, .012, 1.75, .55, .024, 1.3, .01);
     b.sphere(M.orange, 2.0, .2, 1.7, .18, 1, .95, 1); b.torus(M.orange, 2.0, .39, 1.7, .1, .027, { z: 0 }, Math.PI * 2, 16);
     b.cyl(M.white, 1.2, .14, 1.45, .045, .045, .26, 12); b.cyl(glowMat('#2ee6ff', 1.2), 1.2, .285, 1.45, .03, .03, .03, 12);
