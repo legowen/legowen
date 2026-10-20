@@ -8,8 +8,8 @@ import {
 } from './room-textures.js?v=5';
 import {
   createScreen, paintEndpoint, paintTerminal, paintLaptop, paintNetwork, paintArcade, paintWindow,
-  certPlaque, CERTS, rpsCard, nameSign, openSign, marqueeSign, certHeaderSign, arrowPlate, msBoardCanvas, benchLabel, tinyLabel,
-} from './room-screens.js?v=5';
+  certPlaque, CERTS, webCard, nameSign, openSign, marqueeSign, certHeaderSign, arrowPlate, msBoardCanvas, benchLabel, tinyLabel,
+} from './room-screens.js?v=6';
 import { mulberry32 } from './cat-brain.js?v=5';
 import { ROOM } from './room-layout.js?v=5';
 
@@ -21,7 +21,7 @@ const HOT = {
   window: { route: 'project:weather', label: 'Hope no Rain', hint: 'Weather dashboard' },
   kettlebell: { route: 'project:ptwithkitty', label: 'PT w Kitty', hint: 'Training app with a cat room' },
   lotto: { route: 'project:lotto', label: 'LottoMax', hint: 'Bomi picks the numbers' },
-  rps: { route: 'project:roshambo', label: 'Roshambo', hint: 'Play a round' },
+  web: { route: 'project:renu', label: 'Renu Bio Health', hint: 'Company site and online store' },
   resume: { route: 'experience', label: 'Experience', hint: 'Career timeline' },
   sign: { route: 'about', label: 'About Owen', hint: 'Curious by nature' },
   'post-systems': { route: 'sysadmin', label: 'Systems', hint: 'Capabilities and field notes' },
@@ -426,7 +426,7 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
     shadowDecal(2.0, 1.7, .7, .7, .55);
     hotspot('kettlebell', [2.0, .26, 1.7], [.55, .6, .55], { color: NEON.pink, size: 1.2, opacity: .55, y: .45, z: 1.95 }, { pin: true, pinAt: [2.0, .75, 1.7] });
 
-    // play bench: LottoMax machine and Roshambo cards
+    // play bench: LottoMax machine and the Renu web cards (site, shop, cart)
     b.rbox(M.wood, 3.2, .38, 2.0, 1.5, .06, .42, .02); for (const sx of [-.66, .66]) b.box(M.dark, 3.2 + sx, .19, 2.0, .06, .38, .36);
     b.box(G.violet, 3.2, .345, 2.215, 1.46, .012, .012);
     shadowDecal(3.2, 2.05, 1.9, .9, .45);
@@ -446,14 +446,14 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
     neonPlane(benchLabel('LOTTOMAX', NEON.amber), .5, .094, lx, ly + .03, lz + .22, 0, 1.4);
     hotspot('lotto', [lx, ly + .3, lz], [.55, .75, .5], { color: NEON.amber, size: 1.4, opacity: .55, z: lz + .3 }, { pin: true, pinAt: [lx, ly + .78, lz] });
 
-    ['rock', 'paper', 'scissors'].forEach((kind, i) => {
+    ['web', 'shop', 'cart'].forEach((kind, i) => {
       const x = 3.4 + i * .27, ry = -.12 + i * .12;
       b.rbox(M.black, x, ly + .17, 2.0, .23, .3, .03, .015, { y: ry });
-      const card = planeMesh(screenMaterial(keep(toTexture(rpsCard(kind, [NEON.violet, NEON.cyan, NEON.pink][i]), { anisotropy })), 1.15), .2, .26, x + Math.sin(ry) * .019, ly + .17, 2.019, ry, 0);
+      const card = planeMesh(screenMaterial(keep(toTexture(webCard(kind, [NEON.violet, NEON.cyan, NEON.pink][i]), { anisotropy })), 1.15), .2, .26, x + Math.sin(ry) * .019, ly + .17, 2.019, ry, 0);
       void card;
     });
     halo('#a678ff', 1.2, .22, 3.65, ly + .2, 2.2);
-    hotspot('rps', [3.67, ly + .2, 2.0], [.85, .4, .2], { color: NEON.violet, size: 1.3, opacity: .5, z: 2.3 }, { pin: true, pinAt: [3.67, ly + .52, 2.0] });
+    hotspot('web', [3.67, ly + .2, 2.0], [.85, .4, .2], { color: NEON.violet, size: 1.3, opacity: .5, z: 2.3 }, { pin: true, pinAt: [3.67, ly + .52, 2.0] });
   }
 
   /* ---------- plants ---------- */

@@ -351,22 +351,27 @@ export function tinyLabel(text, color = NEON.cyan, width = 512) {
 }
 
 // Rock / paper / scissors as small neon cards for the play bench.
-export function rpsCard(kind, color) {
+export function webCard(kind, color) {
   const width = 256, height = 320, canvas = makeCanvas(width, height), ctx = canvas.getContext('2d');
   const g = ctx.createLinearGradient(0, 0, width, height); g.addColorStop(0, '#15122e'); g.addColorStop(1, '#0a0a18');
   ctx.fillStyle = g; roundRect(ctx, 0, 0, width, height, 26); ctx.fill();
   ctx.strokeStyle = rgba(color, .85); ctx.lineWidth = 6; ctx.shadowColor = color; ctx.shadowBlur = 18; roundRect(ctx, 10, 10, width - 20, height - 20, 20); ctx.stroke(); ctx.shadowBlur = 0;
   const circle = (cx, cy, r) => Array.from({ length: 28 }, (_, i) => [cx + Math.cos(i / 28 * Math.PI * 2) * r, cy + Math.sin(i / 28 * Math.PI * 2) * r]);
-  if (kind === 'rock') {
-    paintTubeLine(ctx, [[72, 196], [60, 146], [92, 104], [142, 92], [192, 118], [204, 172], [170, 208], [112, 212]], color, 5, true);
-    paintTubeLine(ctx, [[92, 104], [118, 150], [142, 92]], color, 3); paintTubeLine(ctx, [[118, 150], [112, 212]], color, 3); paintTubeLine(ctx, [[118, 150], [192, 118]], color, 3);
-  } else if (kind === 'paper') {
-    paintTubeLine(ctx, [[72, 80], [150, 80], [188, 118], [188, 226], [72, 226]], color, 5, true);
-    paintTubeLine(ctx, [[150, 80], [150, 118], [188, 118]], color, 3);
-    [[96, 156, 92], [96, 178, 92], [96, 200, 60]].forEach(([x, y, w]) => paintTubeLine(ctx, [[x, y], [x + w, y]], color, 3));
+  if (kind === 'web') {
+    paintTubeLine(ctx, [[56, 74], [200, 74], [200, 226], [56, 226]], color, 5, true);
+    paintTubeLine(ctx, [[56, 108], [200, 108]], color, 3);
+    [74, 90, 106].forEach(x => paintTubeLine(ctx, circle(x, 91, 5), color, 3, true));
+    paintTubeLine(ctx, [[76, 134], [180, 134]], color, 3); paintTubeLine(ctx, [[76, 156], [150, 156]], color, 3);
+    paintTubeLine(ctx, [[76, 176], [124, 176], [124, 208], [76, 208]], color, 3, true);
+    paintTubeLine(ctx, [[140, 184], [180, 184]], color, 3); paintTubeLine(ctx, [[140, 202], [166, 202]], color, 3);
+  } else if (kind === 'shop') {
+    paintTubeLine(ctx, [[68, 112], [188, 112], [202, 228], [54, 228]], color, 5, true);
+    paintTubeLine(ctx, Array.from({ length: 15 }, (_, i) => { const a = Math.PI + i / 14 * Math.PI; return [128 + Math.cos(a) * 30, 112 + Math.sin(a) * 34]; }), color, 4);
+    paintTubeLine(ctx, circle(102, 136, 5), color, 3, true); paintTubeLine(ctx, circle(154, 136, 5), color, 3, true);
   } else {
-    paintTubeLine(ctx, [[84, 72], [172, 190]], color, 5); paintTubeLine(ctx, [[172, 72], [84, 190]], color, 5);
-    paintTubeLine(ctx, circle(76, 218, 22), color, 4, true); paintTubeLine(ctx, circle(180, 218, 22), color, 4, true);
+    paintTubeLine(ctx, [[48, 86], [76, 86], [98, 182], [192, 182]], color, 5);
+    paintTubeLine(ctx, [[84, 110], [206, 110], [192, 160], [94, 160]], color, 4, true);
+    paintTubeLine(ctx, circle(110, 208, 14), color, 4, true); paintTubeLine(ctx, circle(178, 208, 14), color, 4, true);
   }
   paintNeon(ctx, kind.toUpperCase(), width / 2, 276, { size: 30, color, tube: 2, outline: false, weight: 700, spacing: 4 });
   return canvas;

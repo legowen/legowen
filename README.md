@@ -4,7 +4,7 @@ IT professional in Vancouver, BC. Systems administration, endpoint engineering, 
 
 **Portfolio: https://legowen.github.io/legowen/**
 
-A neon 3D IT office, field notes from real support work, four Microsoft certifications (AZ-900, MS-900, MD-102, SC-300) and five small playable app slices: Boso, PT w Kitty, LottoMax, Hope no Rain and Roshambo. [LinkedIn](https://www.linkedin.com/in/owensykim/)
+A neon 3D IT office, field notes from real support work, four Microsoft certifications (AZ-900, MS-900, MD-102, SC-300) four small playable app slices (Boso, PT w Kitty, LottoMax, Hope no Rain), and the live company site and online store from Renu Bio Health. [LinkedIn](https://www.linkedin.com/in/owensykim/)
 
 ---
 
@@ -30,8 +30,8 @@ The first screen is a neon IT office in 3D (Three.js). It is optional. Everythin
 | 01 Systems & endpoints | Role chips, six areas, 12 field notes, working habits, career path | `sysadmin.js` (all text is data at the top of the file) |
 | 02 Microsoft & certifications | Certification plaques, Microsoft stack tiles, other tools | `credentials.json`, `microsoft.js` |
 | 03 Experience | Timeline with expandable responsibilities and the client game projects | `app.js` (`career` array), `career.json` (bullets, same order), `client-games.js` + `client-games.css` (game cards) |
-| 04 Projects | Five cards that open playable slices | `project-cards.js`, `*-demo.js` |
-| About, Contact | Short intro, Bomi and Seoli, email, links | `index.html` |
+| 04 Projects | Four cards that open playable slices, one card for the Renu Bio Health sites | `project-cards.js`, `*-demo.js`, `renu-sites.js` + `renu-sites.css` |
+| About, Contact | Short intro, Bomi and Seoli with floating photos, email, links | `index.html`, `about-photos.js` + `about-photos.css` (photos in `assets/about/`) |
 
 ## Certifications
 
@@ -64,6 +64,7 @@ Put the current file at `assets/OwenKim_Resume.pdf`. The "Résumé" links stay h
 - `room-layout.js` is the floor plan, shared by the models, the cats' world and the tests. `room-props.js` builds the furniture, signs and lights, and holds the pins and where each one links. `room-screens.js` and `room-textures.js` paint the screens, signs and textures at runtime. `room-kit.js` merges boxes into few draw calls and tracks what to dispose. Apart from the two cat sheets, the Boso screenshot and the logo SVGs, the room loads no image files.
 - Cats: `cat-brain.js` is the pure behaviour logic (pathfinding, perches, naps, play). `room-cats.js` draws them in 3D as upright sprites. `site-cats.js` runs the small page-edge cats, which hide while the room's cats are on screen.
 - The poster images in `assets/room-poster-*.webp` are what visitors see before 3D loads or when 3D is off. After changing the scene, regenerate them: open `tests/room-lab.html?q=high`, call `window.__room.setCatsMoving(false)`, and capture at 1440×750 (wide), 800×571 (mid) and 390×359 (phone). The link-preview card is `assets/og-card.jpg` (1200×630).
+- On phones and tablets, a drag that starts sideways turns and tilts the room. A swipe that starts up or down scrolls the page as usual, and the view sways a little by itself because touch screens have no hover.
 - 3D is skipped when WebGL is missing, when Data Saver is on, or when the visitor turns it off. Reduced-motion settings pause the cats and pulses. The scene pauses when it is off screen, the tab is hidden, or a project preview is open.
 
 ## Interactive project slices
@@ -74,9 +75,16 @@ The owner asked for usable excerpts of the original apps, with English controls.
 - **PT w Kitty:** companion room and workout journal adapted from the latest local app. Four original cat sprites, movement and pet interactions, sample workout records. The app's repository (`PTwithKitty`) is private, so the card has no source link. The private backend and real accounts are not included.
 - **LottoMax:** original pixel artwork and interface with seven unique random numbers from 1–52, a reveal, copy, and recent picks. No Keras inference or backend calls. Python/FastAPI and TensorFlow/Keras research is described separately. Source: https://github.com/legowen/lottomax-ai.
 - **Hope no Rain:** the original weather dashboard layout with sample city selection, temperature units and five-day cards. Clearly labelled sample data, not live weather. Source: https://github.com/legowen/weather_app.
-- **Roshambo:** original hand images and a two-card game with a random computer choice and local score. Only this small slice of the owner's private project is included.
 
 Preview records and scores last only while a preview is open. Cat preferences (`owen-cats`) and the 3D choice (`owen-3d`) are kept in the browser's local storage. Original application repositories are not modified by the portfolio.
+
+## Renu Bio Health sites
+
+The fifth project card is work, not an app slice. It opens two screenshots, the company website (https://www.renubiohealth.com/) and the Royal Canadian store on Shopify (https://www.royal-canadian.ca/collections/shop-all), with links that open in a new tab. The text sticks to what the résumé says: the owner managed both sites, built and maintained the B2B and B2C e-commerce, and automated order handling and reporting. The screenshots are from October 2026; the live sites may have changed since. Files: `renu-sites.js`, `renu-sites.css`, `assets/projects/renu-*.jpg`. In the 3D office, the bench cards marked WEB, SHOP and CART link to this card.
+
+## About photos
+
+Five photos of Bomi, Seoli and Owen float around the two pixel cats in heart and star frames (`assets/about/heart.svg`, `assets/about/star.svg`). They stay inside the cat card, pause while a photo is hovered, when the section is off screen or the tab is hidden, and stand still with reduced motion or when the visitor pauses the cats. On phones a tap shows a photo larger. The photos were cropped and re-encoded as WebP, which removes camera data such as location. To change a photo, replace the file and its line at the top of `about-photos.js`.
 
 The PT w Kitty card picture (`assets/projects/ptwithkitty.jpg`) is a screenshot of the in-site preview, not of the private app. Retake it after changing the preview.
 
