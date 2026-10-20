@@ -1,4 +1,14 @@
-# Owen Kim — Systems & Modern Workplace
+# Owen Kim — Systems, Endpoints & Microsoft 365
+
+IT professional in Vancouver, BC. Systems administration, endpoint engineering, Microsoft 365, Intune, Jamf and identity.
+
+**Portfolio: https://legowen.github.io/legowen/**
+
+A neon 3D IT office, field notes from real support work, four Microsoft certifications (AZ-900, MS-900, MD-102, SC-300) and five small playable app slices: Boso, PT w Kitty, LottoMax, Hope no Rain and Roshambo. [LinkedIn](https://www.linkedin.com/in/owensykim/)
+
+---
+
+## About this repository
 
 English portfolio for systems administration, endpoint engineering, Microsoft 365, Intune, Jamf, identity and infrastructure roles. A static site: no build step, no API keys, no backend, no paid service.
 
@@ -8,8 +18,9 @@ The first screen is a neon IT office in 3D (Three.js). It is optional. Everythin
 
 - Local preview: `python3 -m http.server 4173` in this folder, then open http://127.0.0.1:4173/. Use HTTP, not `file://`, because the page uses ES modules and `fetch`.
 - GitHub Pages: publish `main` / root. `.nojekyll` is included.
+- The repository is named `legowen`, the same as the GitHub username. GitHub therefore also shows this README on the profile page, and the site address is `https://legowen.github.io/legowen/`. To get the shorter `https://legowen.github.io/`, name the repository `legowen.github.io` instead.
 - Three.js r186 is vendored in `vendor/` (MIT, see `vendor/VERSION.txt`). Google Fonts has system-font fallbacks.
-- The link-preview image uses an absolute URL, `https://legowen.github.io/owen-portfolio/assets/og-card.jpg`. If the site moves to another address, update the two `og:image` lines in `index.html`.
+- The link-preview image uses an absolute URL, `https://legowen.github.io/legowen/assets/og-card.jpg`. If the site moves to another address, update the `og:image` line in `index.html`.
 
 ## Page map
 
@@ -18,7 +29,7 @@ The first screen is a neon IT office in 3D (Three.js). It is optional. Everythin
 | Hero | 3D office, headline, four certification chips | `index.html` (copy, chips), `room3d.js` + `room-*.js` (scene) |
 | 01 Systems & endpoints | Role chips, six areas, 12 field notes, working habits, career path | `sysadmin.js` (all text is data at the top of the file) |
 | 02 Microsoft & certifications | Certification plaques, Microsoft stack tiles, other tools | `credentials.json`, `microsoft.js` |
-| 03 Experience | Timeline with expandable responsibilities | `app.js` (`career` array), `career.json` (bullets, same order) |
+| 03 Experience | Timeline with expandable responsibilities and the client game projects | `app.js` (`career` array), `career.json` (bullets, same order), `client-games.js` + `client-games.css` (game cards) |
 | 04 Projects | Five cards that open playable slices | `project-cards.js`, `*-demo.js` |
 | About, Contact | Short intro, Bomi and Seoli, email, links | `index.html` |
 
@@ -37,6 +48,12 @@ The first screen is a neon IT office in 3D (Three.js). It is optional. Everythin
 - The four chips in the hero and the `hasCredential` list in the JSON-LD block of `index.html` are written by hand. Keep them in step with this file.
 - Associate certifications (MD-102, SC-300) renew every year. Microsoft also retires and replaces exams: the Microsoft 365 Certified: Fundamentals page on Microsoft Learn showed "retired" when this was last checked (October 2026). Look at https://learn.microsoft.com/credentials/ before changing the wording.
 
+## Client game projects
+
+The Experience timeline shows three client games under the Sprung Studios entry: an unannounced Krafton project, the Plants vs. Zombies 3 series (EA) and Minecraft Dungeons II (Mojang Studios, Microsoft). The pictures in `assets/games/` are original artwork, not official art or logos. The owner's part was IT, access and security support, so the text says that and does not claim game development.
+
+To change a card, edit the list at the top of `client-games.js`. To use another picture, point `image` at a file. Check the publisher's usage rules before using official art.
+
 ## Résumé PDF
 
 Put the current file at `assets/OwenKim_Resume.pdf`. The "Résumé" links stay hidden until the file exists, so nothing breaks without it. Check the PDF against `career.json` before publishing it.
@@ -54,23 +71,26 @@ Put the current file at `assets/OwenKim_Resume.pdf`. The "Résumé" links stay h
 The owner asked for usable excerpts of the original apps, with English controls. Do not replace these with video, recordings, or external-app iframes. Do not create videos for this project.
 
 - **Boso:** one Vacuum Closet / Vacuum King encounter adapted from the original game's map, artwork and boss mechanics. Keyboard and touch controls, cat selection, health, pause, victory/defeat and retry. Original game: https://github.com/legowen/Boso.
-- **Myeongcat:** companion room and workout journal adapted from the latest local app. Four original cat sprites, movement and pet interactions, sample workout records. The private backend and real accounts are not included.
+- **PT w Kitty:** companion room and workout journal adapted from the latest local app. Four original cat sprites, movement and pet interactions, sample workout records. The app's repository (`PTwithKitty`) is private, so the card has no source link. The private backend and real accounts are not included.
 - **LottoMax:** original pixel artwork and interface with seven unique random numbers from 1–52, a reveal, copy, and recent picks. No Keras inference or backend calls. Python/FastAPI and TensorFlow/Keras research is described separately. Source: https://github.com/legowen/lottomax-ai.
 - **Hope no Rain:** the original weather dashboard layout with sample city selection, temperature units and five-day cards. Clearly labelled sample data, not live weather. Source: https://github.com/legowen/weather_app.
 - **Roshambo:** original hand images and a two-card game with a random computer choice and local score. Only this small slice of the owner's private project is included.
 
 Preview records and scores last only while a preview is open. Cat preferences (`owen-cats`) and the 3D choice (`owen-3d`) are kept in the browser's local storage. Original application repositories are not modified by the portfolio.
 
+The PT w Kitty card picture (`assets/projects/ptwithkitty.jpg`) is a screenshot of the in-site preview, not of the private app. Retake it after changing the preview.
+
 ## Writing rules for the content
 
 - Plain, short sentences. Say what was done, not how impressive it was.
 - The field notes in `sysadmin.js` are sanitised: no client names, hostnames, IPs, case numbers, configs or screenshots. Only items that were resolved or diagnosed appear, and anything unfinished is worded as "started" or "scoped".
-- Do not attach NDA-sensitive details to client names. Do not publish incident details.
+- Client names (Krafton, EA, Mojang Studios) appear only in the Experience section, with the owner's approval. Before adding contract terms, configurations or incident details next to a client name, check the NDA. Do not publish incident details.
+- Titles follow the owner's choice. Sprung Studios is shown as "IT Specialist".
 - Kubernetes and GPU servers were operated and maintained, not designed. Dataverse, Power BI and Fabric belong to the earlier role, not the studio role.
 
 ## Logos and trademarks
 
-Logo files live in `assets/logos/` with their sources and notes in `assets/logos/LICENSES.txt`. The Microsoft section carries a trademark note. Plaques are original artwork, not official badges.
+Logo files live in `assets/logos/` with their sources and notes in `assets/logos/LICENSES.txt`. The Microsoft section carries a trademark note. Plaques are original artwork, not official badges. Client and game names (Krafton, EA, Mojang Studios, Microsoft, Plants vs. Zombies, Minecraft) belong to their owners and are used only to say which projects the studio worked on. The game pictures are original artwork and carry no official logos.
 
 ## Verification
 

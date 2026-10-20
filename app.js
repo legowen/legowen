@@ -1,5 +1,6 @@
 // Page wiring. The résumé, systems and project sections are ordinary HTML and work without the optional 3D office.
-import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=3';
+import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=4';
+import { createClientGames } from './client-games.js?v=1';
 import { mountSysadmin } from './sysadmin.js?v=5';
 import { mountMicrosoft } from './microsoft.js?v=5';
 import { createSiteCats } from './site-cats.js?v=5';
@@ -18,7 +19,7 @@ mountMicrosoft($('#ms-root'));
 
 /* ---------- Experience timeline ---------- */
 const career = [
-  ['SS', 'Mar 2026 — Sep 2026', 'Sprung Studios', 'IT Engineering Specialist', 'Vancouver, BC', 'Led Microsoft 365 migration, hybrid identity, endpoint management, and network security across the Vancouver and Brighton studios.'],
+  ['SS', 'Mar 2026 — Sep 2026', 'Sprung Studios', 'IT Specialist', 'Vancouver, BC', 'Led Microsoft 365 migration, hybrid identity, endpoint management, and network security across the Vancouver and Brighton studios.'],
   ['FT', 'Mar 2025 — Mar 2026', 'Sunia Technology Inc.', 'IT Infrastructure Engineer', 'Burnaby, BC · Rebranded as FluxInk', 'Supported nine international offices at Tier 3, with Tier 4 vendor escalation. Operated Microsoft data platforms, cloud infrastructure, networks, and AI workload environments.'],
   ['RB', 'Aug 2023 — Feb 2025', 'Renu Bio Health Ltd.', 'IT Specialist', 'Burnaby, BC', 'Moved from full-stack development into IT operations, connecting cloud services, Microsoft 365, network infrastructure, and business systems.'],
   ['CN', 'Jun 2023 — Dec 2023', 'Code Ninjas', 'Coding Instructor', 'Burnaby, BC', 'Taught programming logic, problem solving, and debugging. Helped maintain the curriculum and track student progress.'],
@@ -32,6 +33,8 @@ career.forEach(([mark, date, company, title, location, summary], i) => {
   article.innerHTML = `<span class="time-mobile">${date}</span><h3>${company}</h3><p class="timeline-role">${title}</p><p class="timeline-location">${location}</p><p>${summary}</p><details><summary>Read responsibilities</summary><ul id="career-${i}"></ul></details>`;
   timeline.append(article);
 });
+// Sprung's client game projects sit between the summary and the responsibilities list.
+$('[data-mark="SS"] details', timeline)?.before(createClientGames());
 fetch('./career.json')
   .then(response => { if (!response.ok) throw new Error('Résumé details unavailable'); return response.json(); })
   .then(data => data.forEach((bullets, i) => {
@@ -147,7 +150,7 @@ async function startRoom() {
   roomLoading = true; updateRoomToggle(); say('Opening the office…');
   const abort = new AbortController(); roomAbort = abort;
   try {
-    const { mountRoom } = await import('./room3d.js?v=5');
+    const { mountRoom } = await import('./room3d.js?v=6');
     if (abort.signal.aborted) return;
     const controller = await mountRoom(roomHost, {
       signal: abort.signal, catsMoving, onNavigate: handleRoute,
