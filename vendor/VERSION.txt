@@ -1,1 +1,2 @@
 three@0.186.1 (MIT). Source: npm package three, jsDelivr distribution.
+addons/ (postprocessing, shaders, objects/Reflector, geometries/RoundedBoxGeometry): three@0.186.1 examples/jsm, MIT, copied unmodified from the npm package.
