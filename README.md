@@ -35,7 +35,7 @@ The first screen is a neon IT office in 3D (Three.js). It is optional. Everythin
 - `status` is `earned` or `in-progress`. The section label counts them automatically.
 - `issued` (`"2026-05"`) and `verifyUrl` (a Credly or Microsoft Learn share link, `https://` only) are optional. When set, the plaque shows the month and a Verify link. They are empty now because no dates or links were provided.
 - The four chips in the hero and the `hasCredential` list in the JSON-LD block of `index.html` are written by hand. Keep them in step with this file.
-- Associate certifications (MD-102, SC-300) renew every year. Microsoft also retires and replaces exams: MS-900 showed as retired on Microsoft Learn when this was last checked. Look at https://learn.microsoft.com/credentials/ before changing the wording.
+- Associate certifications (MD-102, SC-300) renew every year. Microsoft also retires and replaces exams: the Microsoft 365 Certified: Fundamentals page on Microsoft Learn showed "retired" when this was last checked (October 2026). Look at https://learn.microsoft.com/credentials/ before changing the wording.
 
 ## Résumé PDF
 
