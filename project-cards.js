@@ -4,15 +4,15 @@ export const projects = [
   {id:'ptwithkitty', number:'02 / PERSONAL TRAINING', title:'PT w Kitty', status:'Try the app', image:'assets/projects/ptwithkitty.jpg', alt:'PT w Kitty’s companion room, workout records and session overview.', description:'A little training, a little company. Try the cat room and workout journal from the app’s current local build.', tags:['Workout journal','Cat companions','Interactive preview'], detail:'An English interactive slice of the original local app, using sample records. Your changes stay in this preview.'},
   {id:'lotto', number:'03 / DATA EXPLORATION', title:'LottoMax · Bomi’s number picker', status:'Generate a random pick', image:'assets/projects/lottomax.png', alt:'LottoMax’s original pixel-art number picker with Bomi.', description:'Let Bomi pick seven numbers. The original pixel-art interface, with a working random generator and recent picks.', tags:['Random generator','Original pixel art','Python / Keras project'], source:'https://github.com/legowen/lottomax-ai', detail:'Try the number-picker screen right here. This version generates random combinations locally; the original project’s Python model is separate.', notes:'The original project uses Python/FastAPI and TensorFlow/Keras. One research model processes 20 multi-hot draws with an LSTM (32 units), a 32-unit dense layer, and 52 sigmoid outputs, compared with a constant-probability baseline. This browser demo uses random sampling, with no model inference or claim of improved odds.'},
   {id:'weather', number:'04 / EVERYDAY UTILITY', title:'Hope no Rain', status:'Explore the dashboard', image:'assets/projects/weather.png', alt:'The original Hope no Rain weather dashboard.', description:'Explore the weather dashboard, switch cities, and compare a five-day outlook using sample data.', tags:['City explorer','Sample forecast','React project'], source:'https://github.com/legowen/weather_app', detail:'A compact interactive version of the original dashboard. Choose a sample city, select a day, or switch temperature units.'},
-  {id:'roshambo', number:'05 / INTERACTION & STATE', title:'Roshambo', status:'Play a round', description:'Rock, paper, scissors — with the original hand artwork and two-player result cards. Make your move.', tags:['Original artwork','Game state','React project'], detail:'Play the original rock–paper–scissors interaction, adapted to fit this portfolio. Your score resets when you close the preview.'}
+  {id:'renu', number:'05 / WEBSITE OPERATIONS', title:'Renu Bio Health · Web & store', status:'See the live sites', image:'assets/projects/renu-sites.jpg', alt:'The Renu Bio Health company website and the Royal Canadian online store.', description:'The company website and the Royal Canadian supplement store I managed at Renu Bio Health. Both are live.', tags:['Company website','Shopify store','Live sites'], detail:'Two live sites from my time at Renu Bio Health. Have a look here, or open them in a new tab.'}
 ];
 
 const loaders = {
   boso: () => import('./boso-demo.js?v=3').then(m => m.mountBoso),
   ptwithkitty: () => import('./ptwithkitty-demo.js?v=4').then(m => m.mountPTwithKitty),
   lotto: () => import('./lotto-demo.js?v=3').then(m => m.mountLotto),
-  weather: () => import('./utility-demos.js?v=3').then(m => m.mountWeather),
-  roshambo: () => import('./utility-demos.js?v=3').then(m => m.mountRoshambo)
+  weather: () => import('./utility-demos.js?v=4').then(m => m.mountWeather),
+  renu: () => import('./renu-sites.js?v=1').then(m => m.mountRenuSites)
 };
 
 export function mountProjectCards(root, onOpen) {
@@ -21,7 +21,6 @@ export function mountProjectCards(root, onOpen) {
     const button=document.createElement('button');button.className='project-open';button.dataset.project=project.id;button.setAttribute('aria-label',`Try ${project.title}`);
     const visual=document.createElement('div');visual.className='original-visual';
     if(project.image){const img=document.createElement('img');img.src=project.image;img.alt=project.alt;img.loading='lazy';img.decoding='async';visual.append(img);}
-    else {visual.classList.add('roshambo-thumbnail');visual.innerHTML=['rock','paper','scissors'].map(c=>`<img src="assets/roshambo-demo/${c}.png" alt="${c}" loading="lazy">`).join('');}
     const status=document.createElement('span');status.className='original-status';status.textContent=project.status;visual.append(status);
     const info=document.createElement('div');info.className='project-info';info.innerHTML=`<span class="project-number">${project.number}</span><h3>${project.title}<span>↗</span></h3><p>${project.description}</p><div class="tags">${project.tags.map(t=>`<span>${t}</span>`).join('')}</div>`;
     button.append(visual,info);button.addEventListener('click',()=>onOpen(project,button));article.append(button);root.append(article);

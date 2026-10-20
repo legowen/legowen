@@ -1,0 +1,20 @@
+/* Renu Bio Health: the company website and the Royal Canadian store, shown in the project viewer. */
+.renu-sites{color:var(--text)}
+.renu-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.renu-site{display:flex;flex-direction:column;gap:6px;min-width:0}
+.renu-shot{margin:0 0 10px;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 18px 40px #0008,0 0 0 1px #ffffff1f}
+.renu-bar{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#e9ebef}
+.renu-bar i{width:9px;height:9px;border-radius:50%;background:#ff5f57}.renu-bar i:nth-child(2){background:#febc2e}.renu-bar i:nth-child(3){background:#28c840}
+.renu-bar span{margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:2px 10px;border-radius:10px;background:#fff;color:#4a4f5a;font-size:10px}
+.renu-shot img{display:block;width:100%;height:auto}
+.renu-kind{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--mint)}
+.renu-site h3{margin:0;font-size:20px}
+.renu-site p{margin:0;font-size:12px;line-height:1.6;color:var(--muted)}
+.renu-link{align-self:flex-start;margin-top:6px;font-size:12px;color:var(--lav);border-bottom:1px solid #bfaff166}
+.renu-link:hover{color:var(--mint);border-color:var(--mint)}
+.renu-work{margin-top:26px;padding:18px 20px;border:1px solid #ffffff14;border-radius:12px;background:#ffffff08}
+.renu-work h4{margin:0 0 8px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--lav)}
+.renu-work ul{margin:0;padding-left:18px}
+.renu-work li{margin:6px 0;font-size:12px;line-height:1.6;color:#c9cdd6}
+.renu-note{margin:14px 0 0;font-size:10.5px;color:#8a909c}
+@media(max-width:760px){.renu-grid{grid-template-columns:1fr;gap:28px}.renu-work{padding:16px}}

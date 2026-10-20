@@ -1,12 +1,12 @@
 // Owen's night-shift room. A neon-lit, reflective little office rendered with Three.js.
 // mountRoom(container, options) → controller. Everything is procedural except the cat sheets,
-// the Boso screenshot, the Roshambo art and the logo SVGs.
+// the Boso screenshot and the logo SVGs.
 import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { buildRoom } from './room-props.js?v=6';
+import { buildRoom } from './room-props.js?v=7';
 import { createRoomCats } from './room-cats.js?v=5';
 import { backdropTexture } from './room-textures.js?v=5';
 import { Disposer, clamp } from './room-kit.js?v=5';
@@ -21,7 +21,7 @@ const ORDER = ['high', 'medium', 'low'];
 
 const BASE = { azimuth: .34, elevation: .5, fov: 30 };
 const LOOK_AT = new THREE.Vector3(.2, 1.15, -.1);
-const MAX_YAW = .34, MAX_PITCH = .09;
+const MAX_YAW = .34, MAX_PITCH = .15;
 
 function pickTier(options) {
   const forced = options.quality || new URLSearchParams(location.search).get('q');
@@ -86,6 +86,7 @@ export async function mountRoom(container, options = {}) {
   let catsMoving = options.catsMoving !== false && !reducedMotion.matches;
   const size = { w: 0, h: 0, pr: 1 };
   const view = { dragYaw: 0, dragPitch: 0, hoverYaw: 0, hoverPitch: 0, yaw: 0, pitch: 0 };
+  const noHover = matchMedia('(hover: none)').matches;
   const fitState = { distance: 24, mobile: false };
   let composer = null, bloomPass = null, room = null, cats = null;
 
@@ -269,7 +270,9 @@ export async function mountRoom(container, options = {}) {
       if (drag.touch && !drag.moved && Math.abs(dy) > Math.abs(dx) * 1.2) { drag = null; return; }
       drag.moved = true; tip.hidden = true;
       view.dragYaw = clamp(drag.yaw - dx * .0035, -MAX_YAW, MAX_YAW);
-      if (!drag.touch) view.dragPitch = clamp(drag.pitch + dy * .0016, -MAX_PITCH, MAX_PITCH);
+      // Touch drags that start sideways may also tilt the view, like a mouse drag. A swipe that starts
+      // up or down is left to the browser (touch-action: pan-y), so the page still scrolls.
+      view.dragPitch = clamp(drag.pitch + dy * (drag.touch ? .0024 : .0016), -MAX_PITCH, MAX_PITCH);
       canvas.style.cursor = 'grabbing'; dirty = true; scheduleFrame(); return;
     }
     if (event.pointerType === 'mouse') {
@@ -340,6 +343,8 @@ export async function mountRoom(container, options = {}) {
       time += animating ? dt : 0;
       // ease the camera toward its target offsets
       const ease = 1 - Math.pow(.0015, dt);
+      // Phones and tablets have no hover, so the view sways gently by itself instead.
+      if (noHover && animating && !drag) { view.hoverYaw = Math.sin(time * .23) * .05; view.hoverPitch = Math.sin(time * .17 + 1) * .03; }
       const ty = clamp(view.dragYaw + (reducedMotion.matches ? 0 : view.hoverYaw), -MAX_YAW - .06, MAX_YAW + .06), tp = clamp(view.dragPitch + (reducedMotion.matches ? 0 : view.hoverPitch), -MAX_PITCH - .03, MAX_PITCH + .03);
       view.yaw += (ty - view.yaw) * ease; view.pitch += (tp - view.pitch) * ease;
       updateCamera();

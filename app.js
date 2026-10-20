@@ -1,5 +1,6 @@
 // Page wiring. The résumé, systems and project sections are ordinary HTML and work without the optional 3D office.
-import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=4';
+import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=5';
+import { mountAboutPhotos } from './about-photos.js?v=1';
 import { createClientGames } from './client-games.js?v=1';
 import { mountSysadmin } from './sysadmin.js?v=5';
 import { mountMicrosoft } from './microsoft.js?v=5';
@@ -107,10 +108,13 @@ function updateCatToggle() {
   catToggle.setAttribute('aria-pressed', String(catsMoving));
   catToggle.setAttribute('aria-label', catsMoving ? 'Pause roaming cats' : 'Let cats roam');
 }
-function setCatsMoving(value) { catsMoving = value; siteCats.setMoving(value); roomController?.setCatsMoving(value); updateCatToggle(); }
+function setCatsMoving(value) { catsMoving = value; siteCats.setMoving(value); roomController?.setCatsMoving(value); aboutPhotos.setMoving(value); updateCatToggle(); }
 catToggle.addEventListener('click', () => { setCatsMoving(!catsMoving); store.set('owen-cats', catsMoving ? 'on' : 'off'); });
 reducedMotion.addEventListener('change', event => { if (event.matches) setCatsMoving(false); });
 siteCats.setMoving(catsMoving); updateCatToggle();
+
+/* ---------- Photos of Bomi and Seoli floating around the About card ---------- */
+const aboutPhotos = mountAboutPhotos($('.cat-family'), { moving: catsMoving });
 
 /* ---------- The 3D office ---------- */
 let roomController = null, roomAbort = null, roomLoading = false, heroRatio = 1;
@@ -150,7 +154,7 @@ async function startRoom() {
   roomLoading = true; updateRoomToggle(); say('Opening the office…');
   const abort = new AbortController(); roomAbort = abort;
   try {
-    const { mountRoom } = await import('./room3d.js?v=6');
+    const { mountRoom } = await import('./room3d.js?v=7');
     if (abort.signal.aborted) return;
     const controller = await mountRoom(roomHost, {
       signal: abort.signal, catsMoving, onNavigate: handleRoute,

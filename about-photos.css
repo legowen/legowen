@@ -1,0 +1,16 @@
+/* Photos of Bomi, Seoli and Owen floating around the pixel cats in the About section. */
+/* The card is a little taller so the photos can pass above and below the cats without covering their names. */
+.cat-family{min-height:430px}
+.cat-family .photo-orbit{position:absolute;inset:0;margin:0;padding:0;list-style:none;pointer-events:none}
+.orbit-photo{position:absolute;left:0;top:0;width:var(--photo,88px);height:var(--photo,88px);pointer-events:auto;will-change:transform;opacity:0;transition:opacity .8s ease;filter:drop-shadow(0 0 6px var(--glow)) drop-shadow(0 8px 12px #0009)}
+.photo-orbit.is-ready .orbit-photo{opacity:1}
+.orbit-frame{display:block;width:100%;height:100%;background:linear-gradient(145deg,#fff 10%,var(--glow) 70%);transition:transform .35s ease;-webkit-mask:var(--shape) center/contain no-repeat;mask:var(--shape) center/contain no-repeat}
+.orbit-frame img{display:block;width:100%;height:100%;object-fit:cover;-webkit-mask:var(--shape) center/84% no-repeat;mask:var(--shape) center/84% no-repeat}
+.orbit-photo.is-heart{--shape:url('assets/about/heart.svg')}
+.orbit-photo.is-star{--shape:url('assets/about/star.svg')}
+.orbit-photo:hover{z-index:4!important}
+.orbit-photo:hover .orbit-frame{transform:scale(1.35)}
+.orbit-photo.is-zoomed{z-index:5!important}
+.orbit-photo.is-zoomed .orbit-frame{transform:scale(1.9)}
+@media(max-width:760px){.cat-family{min-height:390px}}
+@media(prefers-reduced-motion:reduce){.orbit-photo,.orbit-frame{transition:none}}
