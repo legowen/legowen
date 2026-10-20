@@ -1,0 +1,23 @@
+Logo files in this folder
+========================
+
+Microsoft marks (microsoft-azure.svg, microsoft-icon.svg, microsoft-onedrive.svg,
+microsoft-power-bi.svg, microsoft-teams.svg, microsoft-windows-icon.svg)
+  Source: the "SVG Logos" collection by Gil Barbara, as distributed in the Iconify
+  "logos" icon set. The collection is released under CC0 1.0 (public domain dedication).
+  microsoft-windows-icon.svg is the four-pane part of the Windows logo from that set,
+  cropped to a square.
+
+Tool marks (bitdefender.svg, bitwarden.svg, paloaltonetworks.svg, ubiquiti.svg)
+  Source: Simple Icons (https://simpleicons.org), released under CC0 1.0.
+
+Trademarks
+  The files are not covered by a trademark licence. Microsoft, Windows, Azure, Teams,
+  OneDrive, Power BI and the Microsoft logo are trademarks of the Microsoft group of
+  companies. Bitdefender, Bitwarden, Palo Alto Networks and Ubiquiti (UniFi) belong to
+  their owners. They appear on the site only to name the tools the site owner works with.
+  The site is not affiliated with or endorsed by any vendor. The certification plaques
+  on the site are original artwork, not official Microsoft badges.
+
+To remove a logo: delete its file, then in microsoft.js either replace the item's `logo`
+field with a `glyph` from icons.js (STACK) or delete the `logo` field (TOOLBOX).

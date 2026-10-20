@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Room lab (development only)</title>
+<script type="importmap">{"imports":{"three":"../vendor/three.module.js","three/addons/":"../vendor/addons/"}}</script>
+<style>
+html,body{margin:0;height:100%;background:#07070f;overflow:hidden;font:13px system-ui,sans-serif;color:#cde}
+#host{position:absolute;inset:0}
+.room-pins{position:absolute;inset:0;pointer-events:none}
+.room-pin{position:absolute;left:0;top:0;width:0;height:0;border:0;padding:0;background:none;pointer-events:auto}
+.room-pin i{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:#2ee6ff;box-shadow:0 0 12px #2ee6ff}
+.room-pin span{display:none}
+.room-tip{position:absolute;left:0;top:0;background:#0b0b1ae0;border:1px solid #2ee6ff88;padding:6px 10px;border-radius:10px;pointer-events:none}
+.room-tip strong,.room-tip span{display:block}
+</style></head>
+<body>
+<div id="host"></div>
+<script type="module">
+  import { mountRoom } from '../room3d.js?v=5';
+  window.__navigated = [];
+  try {
+    window.__room = await mountRoom(document.getElementById('host'), {
+      onNavigate: route => window.__navigated.push(route),
+      onError: error => { window.__error = String(error && error.message || error); },
+      catsMoving: new URLSearchParams(location.search).get('cats') !== 'off',
+      noGovernor: true,
+    });
+    window.__ready = true;
+  } catch (error) { window.__error = String(error && error.stack || error); window.__ready = false; }
+</script>
+</body></html>
