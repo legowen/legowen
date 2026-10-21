@@ -1,12 +1,12 @@
 // Microsoft section: four certifications (data lives in credentials.json) and the stack I use.
 // The plaques are drawn for this site. They are not Microsoft's badge artwork.
-import { ICONS } from './icons.js?v=5';
+import { ICONS } from './icons.js?v=6';
 
 const esc = text => String(text).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 const STACK = [
   { name: 'Microsoft 365', logo: 'microsoft-icon', use: 'Tenant admin, licensing and governance.' },
-  { name: 'Entra ID', glyph: 'identity', use: 'Hybrid identity, Conditional Access and MFA.' },
+  { name: 'Entra ID', glyph: 'identity', use: 'Hybrid identity, Conditional Access, MFA and PIM.' },
   { name: 'Intune', glyph: 'endpoints', use: 'Android Enterprise and device policy.' },
   { name: 'Windows & Windows Server', logo: 'microsoft-windows-icon', use: 'Group Policy, LAPS, Hyper-V and Active Directory.' },
   { name: 'Azure', logo: 'microsoft-azure', use: 'AKS, Automation runbooks and Azure DevOps.' },
@@ -16,14 +16,21 @@ const STACK = [
   { name: 'OneDrive', logo: 'microsoft-onedrive', use: 'Tenant domain rename with Microsoft Support.' },
   { name: 'Power Platform', glyph: 'power', use: 'Power Apps, Power Automate and Copilot Studio.' },
   { name: 'Power BI', logo: 'microsoft-power-bi', use: 'Reports on Dataverse and Fabric.' },
+  { name: 'Dataverse', logo: 'microsoft-dataverse', use: 'Business data for reporting and analysis.' },
+  { name: 'Microsoft Fabric', glyph: 'data', use: 'Data and reporting stack I built and maintained.' },
+  { name: 'Dynamics 365 Business Central', logo: 'microsoft-dynamics-365', use: 'ERP rollout with outside consultants.' },
+  { name: 'Dynamics 365 Sales', logo: 'microsoft-dynamics-365', use: 'CRM rollout with outside consultants.' },
   { name: 'PowerShell', glyph: 'terminal', use: 'Automation for AD, Exchange Online and Entra Connect.' },
 ];
 
 // Other tools in the same toolbox. Square icon marks are drawn in one quiet colour; names without a square mark stay text only.
 const TOOLBOX = [
-  { name: 'Jamf Pro' }, { name: 'Apple Business Manager' },
-  { name: 'Palo Alto Networks', logo: 'paloaltonetworks' }, { name: 'UniFi', logo: 'ubiquiti' }, { name: 'Synology' },
-  { name: 'VMware' }, { name: 'AWS' }, { name: 'Bitwarden', logo: 'bitwarden' }, { name: 'Bitdefender', logo: 'bitdefender' },
+  { name: 'Jamf Pro' }, { name: 'Apple Business Manager', logo: 'apple' }, { name: 'Microsoft Defender' }, { name: 'Bitdefender', logo: 'bitdefender' },
+  { name: 'Bitwarden', logo: 'bitwarden' }, { name: 'Palo Alto Networks', logo: 'paloaltonetworks' }, { name: 'UniFi', logo: 'ubiquiti' },
+  { name: 'Juniper' }, { name: 'Cloudflare', logo: 'cloudflare' }, { name: 'VMware' }, { name: 'Synology' },
+  { name: 'AWS', logo: 'aws' }, { name: 'Linux', logo: 'linux' }, { name: 'Docker', logo: 'docker' }, { name: 'Kubernetes', logo: 'kubernetes' },
+  { name: 'GitLab', logo: 'gitlab' }, { name: 'Grafana', logo: 'grafana' }, { name: 'Prometheus', logo: 'prometheus' }, { name: 'Python', logo: 'python' },
+  { name: 'Google Workspace' }, { name: 'Jira', logo: 'jira' }, { name: 'Confluence', logo: 'confluence' }, { name: 'Shopify', logo: 'shopify' },
 ];
 
 const NUMBER_WORDS = ['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT'];
@@ -95,5 +102,5 @@ export async function mountMicrosoft(root) {
       <p class="mini-label">ALSO IN THE TOOLBOX</p>
       <ul class="toolbox-list">${TOOLBOX.map(toolboxItem).join('')}</ul>
     </div>
-    <p class="trademark-note">Microsoft, Windows, Azure, Teams, OneDrive, Power BI and the Microsoft logo are trademarks of the Microsoft group of companies. Other product names and logos belong to their owners. They appear here only to name the tools I work with. This site is not affiliated with or endorsed by any vendor. The certification plaques are my own design, not official badges.</p>`;
+    <p class="trademark-note">Microsoft, Windows, Azure, Teams, OneDrive, Power BI, Dataverse, Fabric, Dynamics 365 and the Microsoft logo are trademarks of the Microsoft group of companies. Other product names and logos belong to their owners. They appear here only to name the tools I work with. This site is not affiliated with or endorsed by any vendor. The certification plaques are my own design, not official badges.</p>`;
 }

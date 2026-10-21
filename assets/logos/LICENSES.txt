@@ -8,14 +8,20 @@ microsoft-power-bi.svg, microsoft-teams.svg, microsoft-windows-icon.svg)
   microsoft-windows-icon.svg is the four-pane part of the Windows logo from that set,
   cropped to a square.
 
-Tool marks (bitdefender.svg, bitwarden.svg, paloaltonetworks.svg, ubiquiti.svg)
-  Source: Simple Icons (https://simpleicons.org), released under CC0 1.0.
+Tool marks (bitdefender.svg, bitwarden.svg, paloaltonetworks.svg, ubiquiti.svg, apple.svg, aws.svg,
+cloudflare.svg, confluence.svg, docker.svg, gitlab.svg, grafana.svg, jira.svg, kubernetes.svg,
+linux.svg, prometheus.svg, python.svg, shopify.svg) and the Dataverse and
+Dynamics 365 marks (microsoft-dataverse.svg, microsoft-dynamics-365.svg)
+  Source: Simple Icons (https://simpleicons.org), released under CC0 1.0, as distributed in the
+  Iconify "simple-icons" set. The Dataverse and Dynamics 365 marks are drawn in a single colour.
+  Wordmark-only logos (Juniper, VMware, Synology) are left out because they are unreadable at chip size.
+  Microsoft Fabric has no open-licence mark, so the site uses its own line icon for it.
 
 Trademarks
   The files are not covered by a trademark licence. Microsoft, Windows, Azure, Teams,
-  OneDrive, Power BI and the Microsoft logo are trademarks of the Microsoft group of
-  companies. Bitdefender, Bitwarden, Palo Alto Networks and Ubiquiti (UniFi) belong to
-  their owners. They appear on the site only to name the tools the site owner works with.
+  OneDrive, Power BI, Dataverse, Fabric, Dynamics 365 and the Microsoft logo are trademarks of the Microsoft group of
+  companies. Bitdefender, Bitwarden, Palo Alto Networks, Ubiquiti (UniFi) and the other tool marks
+  belong to their owners. They appear on the site only to name the tools the site owner works with.
   The site is not affiliated with or endorsed by any vendor. The certification plaques
   on the site are original artwork, not official Microsoft badges.
 

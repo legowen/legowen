@@ -2,7 +2,7 @@
 // Everything here is written in general terms on purpose: no hostnames, tickets, configs or client names.
 // Items that were still open when a role ended are described as "started" or "scoped", never as finished.
 
-import { ICONS } from './icons.js?v=5';
+import { ICONS } from './icons.js?v=6';
 
 export const capabilities = [
   {
