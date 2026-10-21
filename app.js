@@ -2,8 +2,8 @@
 import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=5';
 import { mountAboutPhotos } from './about-photos.js?v=1';
 import { createClientGames } from './client-games.js?v=1';
-import { mountSysadmin } from './sysadmin.js?v=5';
-import { mountMicrosoft } from './microsoft.js?v=5';
+import { mountSysadmin } from './sysadmin.js?v=6';
+import { mountMicrosoft } from './microsoft.js?v=6';
 import { createSiteCats } from './site-cats.js?v=5';
 
 const $ = (selector, root = document) => root.querySelector(selector);

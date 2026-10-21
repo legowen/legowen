@@ -8,6 +8,7 @@ export const ICONS = {
   network: icon('<path d="M12 3 19.5 6v5.5c0 4.6-3.1 8-7.5 9.5-4.4-1.5-7.5-4.9-7.5-9.5V6L12 3Z"/><path d="m9 12 2.2 2.2 4.3-4.4"/>'),
   servers: icon('<rect x="4" y="4" width="16" height="6" rx="1.6"/><rect x="4" y="14" width="16" height="6" rx="1.6"/><path d="M7.5 7h.01M7.5 17h.01M12 7h5M12 17h5"/>'),
   automation: icon('<path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.6 5l-3.2 14"/>'),
+  data: icon('<path d="M12 3.5 20.5 8 12 12.5 3.5 8 12 3.5Z"/><path d="m3.5 12 8.5 4.5 8.5-4.5M3.5 16l8.5 4.5 8.5-4.5"/>'),
   sites: icon('<rect x="4" y="4" width="7" height="7" rx="1.4"/><rect x="13" y="4" width="7" height="7" rx="1.4"/><rect x="4" y="13" width="7" height="7" rx="1.4"/><path d="M13 16.5h7M13 19.5h4.5"/>'),
   power: icon('<circle cx="12" cy="12" r="8.6"/><path d="m13.2 6.6-4 6h3.4l-1.4 4.8 4.6-6.4h-3.5l.9-4.4Z"/>'),
   terminal: icon('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m7 10 3 2.5L7 15M12.5 15.2H17"/>'),
