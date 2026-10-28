@@ -2,14 +2,14 @@
 .timeline-item .client-games{margin:18px 0 4px;padding:14px;border:1px solid #ffffff12;border-radius:10px;background:#171b25}
 .timeline-item .client-games-title{margin:0 0 12px;font:600 10px/1.2 var(--heading);letter-spacing:1.4px;text-transform:uppercase;color:var(--mint)}
 .timeline-item .client-games-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.timeline-item .client-games-list li.game-card{margin:0;display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;align-items:center}
-.game-art{display:block;width:112px;height:63px;object-fit:cover;border-radius:7px;border:1px solid var(--game-line,#ffffff30);box-shadow:0 0 14px var(--game-glow,transparent);background:#0e1118}
+.timeline-item .client-games-list li.game-card{margin:0;display:grid;grid-template-columns:66px minmax(0,1fr);gap:14px;align-items:center}
+.game-art{display:block;width:66px;height:88px;object-fit:cover;border-radius:7px;border:1px solid var(--game-line,#ffffff30);box-shadow:0 0 14px var(--game-glow,transparent);background:#0e1118}
 .game-text{display:grid;gap:2px;min-width:0}
 .game-client{font-size:10px;line-height:1.4;letter-spacing:.9px;text-transform:uppercase;color:var(--game-accent,var(--mint))}
 .game-title{font:600 13px/1.35 var(--heading);color:var(--text);text-wrap:balance}
 .timeline-item .client-games-note{margin:12px 0 0;font-size:11px;line-height:1.55;color:#9097a5}
 @media(max-width:400px){
   .timeline-item .client-games{padding:12px}
-  .timeline-item .client-games-list li.game-card{grid-template-columns:88px minmax(0,1fr);gap:10px}
-  .game-art{width:88px;height:50px}
+  .timeline-item .client-games-list li.game-card{grid-template-columns:58px minmax(0,1fr);gap:12px}
+  .game-art{width:58px;height:78px}
 }

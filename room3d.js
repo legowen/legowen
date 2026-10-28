@@ -6,16 +6,16 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { buildRoom } from './room-props.js?v=7';
-import { createRoomCats } from './room-cats.js?v=5';
+import { buildRoom } from './room-props.js?v=8';
+import { createRoomCats } from './room-cats.js?v=6';
 import { backdropTexture } from './room-textures.js?v=5';
 import { Disposer, clamp } from './room-kit.js?v=5';
-import { ROOM } from './room-layout.js?v=5';
+import { ROOM } from './room-layout.js?v=6';
 
 const TIERS = {
   high: { name: 'high', dpr: 1.75, maxPixels: 3.4e6, reflection: true, reflectionScale: .5, bloom: true, bloomStrength: .8, samples: 4, lights: 5, dust: 90 },
   medium: { name: 'medium', dpr: 1.4, maxPixels: 2.2e6, reflection: false, reflectionScale: .35, bloom: true, bloomStrength: .7, samples: 2, lights: 4, dust: 40 },
-  low: { name: 'low', dpr: 1, maxPixels: 1.2e6, reflection: false, reflectionScale: .3, bloom: false, bloomStrength: 0, samples: 0, lights: 4, dust: 0, fpsCap: 30 },
+  low: { name: 'low', dpr: 1, maxPixels: 1.2e6, reflection: false, reflectionScale: .3, bloom: false, bloomStrength: 0, samples: 0, lights: 4, dust: 0 },
 };
 const ORDER = ['high', 'medium', 'low'];
 
@@ -75,17 +75,19 @@ export async function mountRoom(container, options = {}) {
   const root = new THREE.Group(); scene.add(root);
 
   /* ---------- assets ---------- */
-  const [bomi, seoli, boso] = await Promise.all([
+  const [bomi, seoli, boso, deskPhoto] = await Promise.all([
     loadImage(here('./assets/bomi.png'), 12000), loadImage(here('./assets/seoli.png'), 12000), loadImage(here('./assets/projects/boso.png'), 12000),
+    loadImage(here('./assets/room/desk-photo.jpg'), 12000),
   ]);
   if (signal?.aborted) { renderer.dispose(); canvas.remove(); throw new DOMException('Room loading cancelled', 'AbortError'); }
-  const assets = { boso, logos: null };
+  const assets = { boso, deskPhoto, logos: null };
 
   /* ---------- state ---------- */
   let disposed = false, active = true, raf = 0, lastTime = 0, time = 0, dirty = true, lastRender = 0;
   let catsMoving = options.catsMoving !== false && !reducedMotion.matches;
   const size = { w: 0, h: 0, pr: 1 };
   const view = { dragYaw: 0, dragPitch: 0, hoverYaw: 0, hoverPitch: 0, yaw: 0, pitch: 0 };
+  let settleUntil = 0, resScale = 1;
   const noHover = matchMedia('(hover: none)').matches;
   const fitState = { distance: 24, mobile: false };
   let composer = null, bloomPass = null, room = null, cats = null;
@@ -171,9 +173,10 @@ export async function mountRoom(container, options = {}) {
     for (const pin of pins) {
       pinVec.copy(pin.point).project(camera);
       const visible = pinVec.z < 1 && Math.abs(pinVec.x) < 1.02 && Math.abs(pinVec.y) < 1.02;
-      pin.button.style.visibility = visible ? 'visible' : 'hidden';
+      if (pin.visible !== visible) { pin.visible = visible; pin.button.style.visibility = visible ? 'visible' : 'hidden'; }
       if (!visible) continue;
-      pin.button.style.transform = `translate(${(pinVec.x * .5 + .5) * size.w}px, ${(-pinVec.y * .5 + .5) * size.h}px)`;
+      const transform = `translate(${((pinVec.x * .5 + .5) * size.w).toFixed(1)}px, ${((-pinVec.y * .5 + .5) * size.h).toFixed(1)}px)`;
+      if (pin.transform !== transform) { pin.transform = transform; pin.button.style.transform = transform; }
       // labels open toward the middle so they never run off the edge
       const side = pinVec.x > .35 ? 'left' : 'right';
       if (pin.side !== side) { pin.side = side; pin.button.dataset.side = side; }
@@ -197,7 +200,7 @@ export async function mountRoom(container, options = {}) {
     composer = null; bloomPass = null;
   }
   function applySize() {
-    size.pr = Math.min(devicePixelRatio || 1, tier.dpr, Math.sqrt(tier.maxPixels / Math.max(1, size.w * size.h)));
+    size.pr = Math.max(.75, Math.min(devicePixelRatio || 1, tier.dpr, Math.sqrt(tier.maxPixels / Math.max(1, size.w * size.h))) * resScale);
     renderer.setPixelRatio(size.pr); renderer.setSize(size.w, size.h, false);
     if (composer) { composer.setPixelRatio(size.pr); composer.setSize(size.w, size.h); }
     if (room?.reflector) { const [rw, rh] = qualityFor().reflectionSize; room.reflector.getRenderTarget().setSize(rw, rh); }
@@ -316,18 +319,18 @@ export async function mountRoom(container, options = {}) {
   canvas.tabIndex = 0; canvas.addEventListener('keydown', keyDown);
 
   /* ---------- loop ---------- */
-  const governor = { frames: 0, total: 0, warm: 0, drops: 0 };
+  // Frame-time guard. Slow frames first lower the render resolution in small steps (cheap and smooth);
+  // only if that is not enough does the whole quality tier drop. Fast frames win resolution back slowly.
+  const governor = { frames: 0, total: 0, warm: 0, good: 0 };
   function governorTick(dt) {
-    governor.warm += dt; if (governor.warm < 2.5) return;
+    governor.warm += dt; if (governor.warm < 2.5 || options.noGovernor) return;
     governor.frames++; governor.total += dt;
-    if (governor.frames >= 90) {
-      const average = governor.total / governor.frames;
-      governor.frames = 0; governor.total = 0;
-      if (average > .036 && !options.noGovernor) {
-        const next = ORDER[ORDER.indexOf(tier.name) + 1];
-        if (next) { governor.warm = 0; setTier(next, `${(average * 1000).toFixed(0)} ms per frame`); }
-      }
-    }
+    if (governor.frames < 45) return;
+    const average = governor.total / governor.frames;
+    governor.frames = 0; governor.total = 0;
+    if (average > .021 && resScale > .62) { resScale = Math.max(.6, resScale * .85); governor.good = 0; governor.warm = 1.5; applySize(); dirty = true; console.info(`[room] resolution ${Math.round(resScale * 100)}% (${(average * 1000).toFixed(0)} ms per frame)`); }
+    else if (average > .034) { const next = ORDER[ORDER.indexOf(tier.name) + 1]; if (next) { governor.warm = 0; resScale = 1; setTier(next, `${(average * 1000).toFixed(0)} ms per frame`); } }
+    else if (average < .0135 && resScale < 1 && ++governor.good >= 4) { governor.good = 0; resScale = Math.min(1, resScale / .9); applySize(); dirty = true; }
   }
   function renderOnce() {
     if (composer) composer.render(); else renderer.render(scene, camera);
@@ -336,13 +339,12 @@ export async function mountRoom(container, options = {}) {
     raf = 0;
     if (disposed || !active || document.hidden) return;
     const animating = !reducedMotion.matches;
-    if (tier.fpsCap && now - lastRender < 1000 / tier.fpsCap - 2 && !dirty) { scheduleFrame(); return; }
     lastRender = now;
     const dt = lastTime ? Math.min((now - lastTime) / 1000, .05) : 0; lastTime = now;
     if (animating || dirty) {
       time += animating ? dt : 0;
       // ease the camera toward its target offsets
-      const ease = 1 - Math.pow(.0015, dt);
+      const ease = 1 - Math.pow(time < settleUntil ? .2 : .0015, dt);
       // Phones and tablets have no hover, so the view sways gently by itself instead.
       if (noHover && animating && !drag) { view.hoverYaw = Math.sin(time * .23) * .05; view.hoverPitch = Math.sin(time * .17 + 1) * .03; }
       const ty = clamp(view.dragYaw + (reducedMotion.matches ? 0 : view.hoverYaw), -MAX_YAW - .06, MAX_YAW + .06), tp = clamp(view.dragPitch + (reducedMotion.matches ? 0 : view.hoverPitch), -MAX_PITCH - .03, MAX_PITCH + .03);
@@ -351,7 +353,10 @@ export async function mountRoom(container, options = {}) {
       cats.update(animating ? dt : 0, azimuth);
       for (const fn of room.updaters) fn(time, dt);
       room.hoverUpdater(dt);
-      room.updateScreens(time);
+      // Repainting a canvas screen and uploading it to the GPU is the most expensive thing in a frame.
+      // Skip it while the camera moves, so turning the room stays smooth.
+      const moving = !!drag?.moved || Math.abs(ty - view.yaw) > .004 || Math.abs(tp - view.pitch) > .004;
+      if (!moving) room.updateScreens(time);
       updatePins();
       renderOnce();
       governorTick(dt);
@@ -398,6 +403,7 @@ export async function mountRoom(container, options = {}) {
     setCatsMoving(value) { catsMoving = !!value; cats.setPaused(!catsMoving || reducedMotion.matches); lastTime = 0; dirty = true; scheduleFrame(); },
     setActive(value) { active = !!value; if (active) { lastTime = 0; scheduleFrame(); } else pauseLoop(); },
     resetView() { view.dragYaw = 0; view.dragPitch = 0; dirty = true; scheduleFrame(); },
+    introSweep() { if (reducedMotion.matches) return; view.yaw = .3; view.pitch = .14; settleUntil = time + 2.2; dirty = true; scheduleFrame(); },
     get quality() { return tier.name; },
     setQuality(name) { setTier(name, 'manual'); },
     debug: {

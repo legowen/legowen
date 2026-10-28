@@ -20,6 +20,7 @@ export const OBSTACLES = [
   { id: 'bench',     x: 3.2,   z: 2.0,   w: 1.5,  d: .42 },
   { id: 'plantS',    x: 1.9,   z: -2.6,  r: .14 },
   { id: 'kettlebell',x: 2.0,   z: 1.7,   r: .22 },
+  { id: 'soccer',    x: -2.05, z: 2.3,   r: .24 },
 ];
 
 // Floor spots a cat likes. `face` is a point to look toward. `acts` are [animation, weight].

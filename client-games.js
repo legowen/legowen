@@ -1,10 +1,11 @@
 // Client game projects shown under the Sprung Studios entry in the Experience timeline.
-// The pictures are original artwork (assets/games/*.svg), not official game art or logos.
-// To use a different picture, change `image`. Check the publisher's usage rules before adding official art.
+// Plants vs. Zombies 3 and Minecraft Dungeons II use the games' key art, supplied by Owen; the art belongs to
+// EA / PopCap and Mojang Studios / Microsoft. The Krafton card is original artwork because the project is unannounced.
+// To use a different picture, change `image`. `position` picks which part of the art shows in the cover frame.
 export const clientGames = [
-  { client: 'Krafton', title: 'Unannounced project', image: 'assets/games/krafton-unannounced.svg', accent: '#2ee6ff' },
-  { client: 'EA', title: 'Plants vs. Zombies 3 series', image: 'assets/games/ea-pvz3.svg', accent: '#4dff9a' },
-  { client: 'Mojang Studios (Microsoft)', title: 'Minecraft Dungeons II', image: 'assets/games/mojang-dungeons-ii.svg', accent: '#ffb347' },
+  { client: 'Krafton', title: 'Unannounced project', image: 'assets/games/krafton-unannounced.svg', position: '50% 50%', accent: '#2ee6ff' },
+  { client: 'EA', title: 'Plants vs. Zombies 3 series', image: 'assets/games/ea-pvz3.jpg', position: '50% 60%', accent: '#4dff9a' },
+  { client: 'Mojang Studios (Microsoft)', title: 'Minecraft Dungeons II', image: 'assets/games/mojang-dungeons-ii.jpg', position: '50% 0%', accent: '#ffb347' },
 ];
 
 const NOTE = 'Sprung is a game UX research and playtesting studio. My part was IT, access, and security support for the studio teams working on these projects.';
@@ -25,7 +26,8 @@ export function createClientGames() {
     item.style.setProperty('--game-glow', `${game.accent}40`);
     const art = document.createElement('img');
     art.className = 'game-art';
-    art.src = game.image; art.alt = ''; art.width = 640; art.height = 360;
+    art.src = game.image; art.alt = ''; art.width = 240; art.height = 320;
+    art.style.objectPosition = game.position || '50% 50%';
     art.loading = 'lazy'; art.decoding = 'async';
     const text = document.createElement('div');
     text.className = 'game-text';

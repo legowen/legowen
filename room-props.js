@@ -11,7 +11,7 @@ import {
   certPlaque, CERTS, webCard, nameSign, openSign, marqueeSign, certHeaderSign, arrowPlate, msBoardCanvas, benchLabel, tinyLabel,
 } from './room-screens.js?v=6';
 import { mulberry32 } from './cat-brain.js?v=5';
-import { ROOM } from './room-layout.js?v=5';
+import { ROOM } from './room-layout.js?v=6';
 
 const HOT = {
   systems: { route: 'sysadmin', label: 'Systems & endpoints', hint: 'Intune · Jamf · Windows Server' },
@@ -22,11 +22,15 @@ const HOT = {
   kettlebell: { route: 'project:ptwithkitty', label: 'PT w Kitty', hint: 'Training app with a cat room' },
   lotto: { route: 'project:lotto', label: 'LottoMax', hint: 'Bomi picks the numbers' },
   web: { route: 'project:renu', label: 'Renu Bio Health', hint: 'Company site and online store' },
+  soccer: { route: 'project:soccer', label: 'Soccerbee zone model', hint: 'Sports data project' },
+  baseball: { route: 'project:baseball', label: 'MLB 9 Innings model', hint: 'Pitch and timing data' },
+  tennis: { route: 'about', label: 'Tennis', hint: 'Soccer, baseball and tennis off the clock' },
+  photo: { route: 'about', label: 'Family photo', hint: 'Bomi, Seoli and their humans' },
   resume: { route: 'experience', label: 'Experience', hint: 'Career timeline' },
   sign: { route: 'about', label: 'About Owen', hint: 'Curious by nature' },
   'post-systems': { route: 'sysadmin', label: 'Systems', hint: 'Capabilities and field notes' },
   'post-microsoft': { route: 'microsoft', label: 'Microsoft', hint: 'Stack and certifications' },
-  'post-projects': { route: 'projects', label: 'Projects', hint: 'Five small things to try' },
+  'post-projects': { route: 'projects', label: 'Projects', hint: 'Apps, data models and sites' },
   'post-experience': { route: 'experience', label: 'Experience', hint: 'Career timeline' },
   'post-contact': { route: 'contact', label: 'Contact', hint: 'Say hello' },
 };
@@ -198,14 +202,14 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
     const base = new THREE.Mesh(keep(new THREE.BoxGeometry(.46, .018, .26)), M.metal); base.position.set(0, 1.109 - y, .02); g.add(base);
     return g;
   }
-  const endpointScreen = createScreen(1280, 720, paintEndpoint, { fps: 8, anisotropy }); screens.push(endpointScreen);
-  const terminalScreen = createScreen(1024, 576, paintTerminal, { fps: 12, anisotropy }); screens.push(terminalScreen);
+  const endpointScreen = createScreen(1280, 720, paintEndpoint, { fps: 4, anisotropy }); screens.push(endpointScreen);
+  const terminalScreen = createScreen(1024, 576, paintTerminal, { fps: 6, anisotropy }); screens.push(terminalScreen);
   monitor(-2.52, 1.79, -2.8, 1.5, .84, endpointScreen.texture, .1);
   monitor(-1.1, 1.72, -2.8, 1.15, .65, terminalScreen.texture, .22);
   hotspot('systems', [-1.85, 1.75, -2.75], [2.9, 1.0, .5], { color: NEON.cyan, size: 3.6, opacity: .4, y: 1.7, z: -2.4 }, { pin: true, pinAt: [-1.85, 2.45, -2.7] });
 
   // laptop (Jamf-style screen), keyboard, mouse, mug, duck
-  const laptopScreen = createScreen(512, 320, paintLaptop, { fps: 4, anisotropy }); screens.push(laptopScreen);
+  const laptopScreen = createScreen(512, 320, paintLaptop, { fps: 2, anisotropy }); screens.push(laptopScreen);
   const laptop = new THREE.Group(); laptop.position.set(-3.08, 1.1, -2.2); laptop.rotation.y = .55; root.add(laptop);
   const lbase = new THREE.Mesh(keep(new THREE.BoxGeometry(.42, .02, .29)), M.steel); lbase.position.y = .01; laptop.add(lbase);
   const lid = new THREE.Group(); lid.position.set(0, .02, -.14); lid.rotation.x = -.22; laptop.add(lid);
@@ -238,6 +242,30 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
   const clipTex = keep(toTexture(clipCanvas, { anisotropy })); const clipFace = new THREE.Mesh(keep(new THREE.PlaneGeometry(.17, .234)), keep(new THREE.MeshBasicMaterial({ map: clipTex, color: new THREE.Color(.9, .9, .95) })));
   clipFace.rotation.x = -Math.PI / 2; clipFace.position.y = .0125; clip.add(clipFace);
   hotspot('resume', [-.72, 1.17, -2.52], [.3, .12, .36], { color: NEON.white, size: .9, opacity: .5, y: 1.35, z: -2.4 }, { pin: true, pinAt: [-.72, 1.4, -2.52] });
+
+  // framed photo next to the monitor (assets/room/desk-photo.jpg; a painted placeholder if it is missing)
+  {
+    const photoCanvas = makeCanvas(512, 384), pc = photoCanvas.getContext('2d');
+    const photo = assets.deskPhoto;
+    if (photo) {
+      const k = Math.max(512 / photo.naturalWidth, 384 / photo.naturalHeight), w = photo.naturalWidth * k, h = photo.naturalHeight * k;
+      pc.drawImage(photo, (512 - w) / 2, (384 - h) / 2, w, h);
+    } else {
+      pc.fillStyle = '#1b1530'; pc.fillRect(0, 0, 512, 384); paintNeon(pc, '♥', 256, 170, { size: 120, color: NEON.pink, tube: 3 });
+    }
+    const frame = new THREE.Group(); frame.position.set(-.34, 1.106, -2.68); frame.rotation.y = .42; frame.scale.setScalar(1.3); root.add(frame);
+    const tilt = new THREE.Group(); tilt.rotation.x = -.16; frame.add(tilt);
+    const back = new THREE.Mesh(keep(new THREE.BoxGeometry(.38, .3, .024)), M.black); back.position.y = .155; tilt.add(back);
+    const face = new THREE.Mesh(keep(new THREE.PlaneGeometry(.33, .248)), keep(new THREE.MeshBasicMaterial({ map: keep(toTexture(photoCanvas, { anisotropy })), color: new THREE.Color(.92, .92, .92), toneMapped: false })));
+    face.position.set(0, .155, .0125); tilt.add(face);
+    const trim = glowMat('#ff6fae', 1.3);
+    for (const [w, h, x, y] of [[.38, .008, 0, .007], [.38, .008, 0, .303], [.008, .3, -.186, .155], [.008, .3, .186, .155]]) {
+      const bar = new THREE.Mesh(keep(new THREE.BoxGeometry(w, h, .006)), trim); bar.position.set(x, y, .014); tilt.add(bar);
+    }
+    const leg = new THREE.Mesh(keep(new THREE.BoxGeometry(.03, .22, .012)), M.dark); leg.position.set(0, .1, -.07); leg.rotation.x = .45; frame.add(leg);
+    halo('#ff6fae', .8, .22, -.34, 1.3, -2.58);
+    hotspot('photo', [-.34, 1.3, -2.66], [.52, .42, .22], null, { ry: .42 });
+  }
 
   /* ---------- the chair ---------- */
   {
@@ -290,7 +318,7 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
   }
 
   // wall display above the rack
-  const networkScreen = createScreen(1280, 720, paintNetwork, { fps: 6, anisotropy }); screens.push(networkScreen);
+  const networkScreen = createScreen(1280, 720, paintNetwork, { fps: 3, anisotropy }); screens.push(networkScreen);
   {
     const x = 3.64, y = 2.72, z = -3.06;
     b.rbox(M.black, x, y, z, 1.52, .9, .05, .02);
@@ -300,7 +328,7 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
   }
 
   /* ---------- the arcade cabinet (Boso) ---------- */
-  const arcadeScreen = createScreen(512, 448, paintArcade, { fps: 6, state: { image: assets.boso }, anisotropy }); screens.push(arcadeScreen);
+  const arcadeScreen = createScreen(512, 448, paintArcade, { fps: 4, state: { image: assets.boso }, anisotropy }); screens.push(arcadeScreen);
   {
     const x = .875, z = -2.5;
     b.rbox(M.arcade, x, .5, z, .85, 1.0, .75, .03);
@@ -353,7 +381,7 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
   }
 
   /* ---------- left wall: window and Microsoft board ---------- */
-  const windowScreen = createScreen(512, 640, paintWindow, { fps: 14, anisotropy }); screens.push(windowScreen);
+  const windowScreen = createScreen(512, 640, paintWindow, { fps: 6, anisotropy }); screens.push(windowScreen);
   {
     const wz = -1.15, wy = 2.18, ww = 1.7, wh = 2.1, fx = minX + .05;
     planeMesh(screenMaterial(windowScreen.texture, 1.1), ww - .1, wh - .1, minX + .012, wy, wz, Math.PI / 2, 0);
@@ -426,6 +454,46 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
     shadowDecal(2.0, 1.7, .7, .7, .55);
     hotspot('kettlebell', [2.0, .26, 1.7], [.55, .6, .55], { color: NEON.pink, size: 1.2, opacity: .55, y: .45, z: 1.95 }, { pin: true, pinAt: [2.0, .75, 1.7] });
 
+    // sports corner: soccer ball, baseball and a tennis racket (Owen's hobbies; the balls open the sports projects)
+    {
+      const sx = -2.05, sz = 2.3;
+      // soccer ball: black pentagons where an icosahedron's 12 corners land on the sphere
+      const ballCanvas = makeCanvas(512, 256), bc = ballCanvas.getContext('2d');
+      bc.fillStyle = '#f2f2f6'; bc.fillRect(0, 0, 512, 256); bc.fillStyle = '#15151c';
+      const phi = (1 + Math.sqrt(5)) / 2, corners = [];
+      for (const [a, b] of [[1, phi], [-1, phi], [1, -phi], [-1, -phi]]) corners.push([0, a, b], [a, b, 0], [b, 0, a]);
+      for (const [x, y, z] of corners) {
+        const len = Math.hypot(x, y, z), lat = Math.asin(y / len), lon = Math.atan2(z, x);
+        const u = (lon / (Math.PI * 2) + .5) * 512, v = (.5 - lat / Math.PI) * 256, rx = 26 / Math.max(.25, Math.cos(lat)), ry = 26;
+        for (const du of [-512, 0, 512]) { bc.beginPath(); for (let i = 0; i < 5; i++) { const t = i / 5 * Math.PI * 2 - Math.PI / 2; bc.lineTo(u + du + Math.cos(t) * rx, v + Math.sin(t) * ry); } bc.closePath(); bc.fill(); }
+      }
+      const soccer = new THREE.Mesh(keep(new THREE.SphereGeometry(.18, 28, 20)), keep(new THREE.MeshStandardMaterial({ map: keep(toTexture(ballCanvas, { anisotropy })), roughness: .55 })));
+      soccer.position.set(sx, .18, sz); soccer.rotation.set(.4, .8, .2); root.add(soccer);
+      shadowDecal(sx, sz, .55, .55, .55);
+      // baseball: white with a red seam that winds twice around
+      const bbCanvas = makeCanvas(512, 256), bb = bbCanvas.getContext('2d');
+      bb.fillStyle = '#f4f1ea'; bb.fillRect(0, 0, 512, 256); bb.strokeStyle = '#d8312f'; bb.lineWidth = 5;
+      for (const side of [0, 1]) { bb.beginPath(); for (let i = 0; i <= 64; i++) { const u = i / 64 * 512, v = 128 + Math.sin(i / 64 * Math.PI * 4 + side * Math.PI) * 52; i ? bb.lineTo(u, v) : bb.moveTo(u, v); } bb.stroke(); }
+      const baseball = new THREE.Mesh(keep(new THREE.SphereGeometry(.075, 20, 14)), keep(new THREE.MeshStandardMaterial({ map: keep(toTexture(bbCanvas, { anisotropy })), roughness: .7 })));
+      baseball.position.set(sx + .46, .075, sz + .26); baseball.rotation.set(.3, -.6, .5); root.add(baseball);
+      shadowDecal(sx + .46, sz + .26, .26, .26, .5);
+      // tennis racket lying on the floor, with a ball
+      const racket = new THREE.Group(); racket.position.set(sx + .55, .018, sz - .28); racket.rotation.y = -.55; racket.scale.setScalar(1.35); root.add(racket);
+      const head = new THREE.Mesh(keep(new THREE.TorusGeometry(.13, .012, 8, 36)), keep(new THREE.MeshStandardMaterial({ color: '#2ee6ff', emissive: '#0b6f80', emissiveIntensity: .6, roughness: .4, metalness: .3 })));
+      head.rotation.x = -Math.PI / 2; head.scale.set(1, 1.28, 1); head.position.set(0, 0, -.2); racket.add(head);
+      const stringsCanvas = makeCanvas(128, 160), st = stringsCanvas.getContext('2d'); st.strokeStyle = '#e9edf7'; st.lineWidth = 2;
+      for (let x = 10; x < 128; x += 13) { st.beginPath(); st.moveTo(x, 0); st.lineTo(x, 160); st.stroke(); } for (let y = 10; y < 160; y += 13) { st.beginPath(); st.moveTo(0, y); st.lineTo(128, y); st.stroke(); }
+      const strings = new THREE.Mesh(keep(new THREE.CircleGeometry(.125, 32)), keep(new THREE.MeshBasicMaterial({ map: keep(toTexture(stringsCanvas, { anisotropy })), transparent: true, opacity: .75, depthWrite: false })));
+      strings.rotation.x = -Math.PI / 2; strings.scale.set(1, 1.28, 1); strings.position.set(0, .002, -.2); racket.add(strings);
+      const handle = new THREE.Mesh(keep(new THREE.CylinderGeometry(.016, .018, .26, 10)), M.black); handle.rotation.x = Math.PI / 2; handle.position.set(0, .002, .1); racket.add(handle);
+      const throat = new THREE.Mesh(keep(new THREE.CylinderGeometry(.01, .01, .1, 8)), M.steel); throat.rotation.x = Math.PI / 2; throat.position.set(0, 0, -.02); racket.add(throat);
+      b.sphere(keep(new THREE.MeshStandardMaterial({ color: '#d7f04a', roughness: .8 })), sx + 1.05, .045, sz - .02, .045);
+      shadowDecal(sx + .55, sz - .38, .4, .6, .35);
+      hotspot('soccer', [sx, .18, sz], [.42, .38, .42], { color: NEON.mint, size: 1, opacity: .35, y: .2, z: sz + .24 });
+      hotspot('baseball', [sx + .46, .08, sz + .26], [.24, .2, .24], { color: NEON.pink, size: .6, opacity: .35, y: .09, z: sz + .4 });
+      hotspot('tennis', [sx + .55, .04, sz - .3], [.34, .1, .55], null, { ry: -.55 });
+    }
+
     // play bench: LottoMax machine and the Renu web cards (site, shop, cart)
     b.rbox(M.wood, 3.2, .38, 2.0, 1.5, .06, .42, .02); for (const sx of [-.66, .66]) b.box(M.dark, 3.2 + sx, .19, 2.0, .06, .38, .36);
     b.box(G.violet, 3.2, .345, 2.215, 1.46, .012, .012);
@@ -495,7 +563,12 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
     }
   };
 
-  function updateScreens(t, force = false) { for (const s of screens) s.update(t, force); }
+  // At most one screen repaints per frame, taking turns, so uploads never pile up in a single frame.
+  let screenTurn = 0;
+  function updateScreens(t, force = false) {
+    if (force) { for (const s of screens) s.update(t, true); return; }
+    for (let i = 0; i < screens.length; i++) { const k = (screenTurn + i) % screens.length; if (screens[k].update(t)) { screenTurn = k + 1; return; } }
+  }
   function refreshLogos(newAssets) {
     if (newAssets?.logos) { const ctx = msBoard.canvas.getContext('2d'); const fresh = msBoardCanvas(newAssets.logos); ctx.clearRect(0, 0, fresh.width, fresh.height); ctx.drawImage(fresh, 0, 0); msBoard.texture.needsUpdate = true; }
   }
