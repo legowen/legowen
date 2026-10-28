@@ -1,0 +1,36 @@
+/* Sports-data case studies shown in the project viewer (no playable demo). */
+.case-study{color:var(--text)}
+.cs-gallery{display:flex;gap:16px;align-items:stretch;margin-bottom:22px}
+.cs-shot{margin:0;flex:1 1 0;min-width:0;border-radius:12px;overflow:hidden;background:#0d1019;border:1px solid #ffffff14;box-shadow:0 14px 34px #0007}
+.cs-shot img{display:block;width:100%;height:100%;max-height:340px;object-fit:cover}
+.cs-shot.is-narrow{flex:0 0 auto;width:min(30%,200px)}
+.cs-shot.is-logo{flex:0 0 auto;width:min(44%,280px);align-self:flex-start;display:grid;place-items:center;background:#fff;padding:22px}
+.cs-shot.is-logo img{height:auto;max-height:70px;object-fit:contain}
+.cs-intro{font-size:15px;line-height:1.6;margin:0 0 18px;max-width:72ch}
+.cs-heading{margin:0 0 8px;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--lav)}
+.cs-steps{margin:0 0 24px;padding-left:20px;max-width:78ch}
+.cs-steps li{margin:6px 0;font-size:12.5px;line-height:1.6;color:#c9cdd6}
+.cs-charts{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cs-figure{margin:0;padding:16px 16px 12px;border-radius:12px;background:#171b25;border:1px solid #ffffff12;min-width:0}
+.cs-figure figcaption{display:grid;gap:3px;margin-bottom:10px}
+.cs-figure figcaption strong{font:600 14px var(--heading)}
+.cs-figure figcaption span{font-size:11px;color:var(--muted)}
+.cs-chart{display:block;width:100%;height:auto;font:12px var(--body)}
+.cs-chart text{fill:#f1f0eb;font-size:13px}
+.cs-chart .cs-axis{fill:#a7adb8;font-size:12px}
+.cs-chart .cs-strong{font-weight:700;font-size:14px}
+.cs-chart .cs-cell:hover rect,.cs-chart .cs-dot:hover circle:first-child{stroke:#f1f0eb;stroke-width:2}
+.cs-numbers{margin-top:8px;font-size:11px;color:var(--muted)}
+.cs-numbers summary{cursor:pointer;color:var(--lav)}
+.cs-numbers table{width:100%;margin-top:8px;border-collapse:collapse;font-size:11px;color:#c9cdd6}
+.cs-numbers caption{text-align:left;margin-bottom:6px;color:var(--muted)}
+.cs-numbers th,.cs-numbers td{padding:4px 6px;border-bottom:1px solid #ffffff12;text-align:left}
+.cs-skills{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:22px 0 0;font-size:12px}
+.cs-skills b{background:#f1f0eb;color:#0e1118;padding:3px 8px;border-radius:4px;font-size:11px;letter-spacing:.6px;text-transform:uppercase}
+.cs-skills span{padding:4px 10px;border-radius:999px;border:1px solid #ffffff22;color:#cfd5e2}
+@media(max-width:760px){
+  .cs-charts{grid-template-columns:1fr}
+  .cs-gallery{gap:10px}
+  .cs-shot.is-narrow{width:34%}
+  .cs-shot.is-logo{padding:14px}
+}

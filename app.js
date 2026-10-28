@@ -1,7 +1,7 @@
 // Page wiring. The résumé, systems and project sections are ordinary HTML and work without the optional 3D office.
-import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=5';
+import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=6';
 import { mountAboutPhotos } from './about-photos.js?v=1';
-import { createClientGames } from './client-games.js?v=1';
+import { createClientGames } from './client-games.js?v=2';
 import { mountSysadmin } from './sysadmin.js?v=6';
 import { mountMicrosoft } from './microsoft.js?v=6';
 import { createSiteCats } from './site-cats.js?v=5';
@@ -87,7 +87,7 @@ const navObserver = new IntersectionObserver(entries => {
   for (const entry of entries) if (entry.isIntersecting) $$('.topbar nav a').forEach(a => a.classList.toggle('active', a.hash === `#${entry.target.id}`));
 }, { rootMargin: '-20% 0px -50% 0px' });
 $$('main>section').forEach(section => navObserver.observe(section));
-addEventListener('load', () => { if (location.hash.length > 1) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView(); });
+addEventListener('load', () => { if (location.hash.length > 1) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({ behavior: 'instant' }); });
 function navigateTo(id) {
   const target = document.getElementById(id);
   if (!target) return;
@@ -117,6 +117,8 @@ siteCats.setMoving(catsMoving); updateCatToggle();
 const aboutPhotos = mountAboutPhotos($('.cat-family'), { moving: catsMoving });
 
 /* ---------- The 3D office ---------- */
+// Tells the opening screen (intro.js) how far loading has got.
+const signalIntro = (type, detail) => dispatchEvent(new CustomEvent(type, { detail }));
 let roomController = null, roomAbort = null, roomLoading = false, heroRatio = 1;
 const stage = $('#hero-stage'), roomHost = $('#room-canvas'), roomStatus = $('#room-status'), roomReset = $('#reset-room'), roomToggle = $('#toggle-3d');
 const saveData = !!navigator.connection?.saveData;
@@ -154,8 +156,9 @@ async function startRoom() {
   roomLoading = true; updateRoomToggle(); say('Opening the office…');
   const abort = new AbortController(); roomAbort = abort;
   try {
-    const { mountRoom } = await import('./room3d.js?v=7');
+    const { mountRoom } = await import('./room3d.js?v=8');
     if (abort.signal.aborted) return;
+    signalIntro('owen:progress', .72);
     const controller = await mountRoom(roomHost, {
       signal: abort.signal, catsMoving, onNavigate: handleRoute,
       onPet: name => say(`${name} purrs.`),
@@ -166,8 +169,10 @@ async function startRoom() {
     stage.classList.add('is-live'); roomReset.hidden = false;
     say('Drag to look around. Tap a glowing dot to jump. Tap the floor to call the cats.');
     syncRoomVisibility();
+    signalIntro('owen:ready');
   } catch (error) {
     if (!abort.signal.aborted) { releaseRoom(); say('3D is not available on this device. Everything is still below.'); }
+    signalIntro('owen:ready');
   } finally {
     if (roomAbort === abort) roomLoading = false;
     updateRoomToggle();
@@ -186,4 +191,9 @@ if (want3d) {
   // Let the first paint finish before the scene is built.
   const go = () => requestAnimationFrame(() => setTimeout(startRoom, 0));
   if (document.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
-} else say(saveData ? 'Data Saver is on, so the 3D office is off. Turn it on if you like.' : '3D is off. Turn it on whenever you like.');
+} else {
+  say(saveData ? 'Data Saver is on, so the 3D office is off. Turn it on if you like.' : '3D is off. Turn it on whenever you like.');
+  signalIntro('owen:ready');
+}
+// When the visitor presses START on the opening screen, the camera settles into the room.
+addEventListener('owen:start', () => roomController?.introSweep?.());

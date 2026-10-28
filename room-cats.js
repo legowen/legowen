@@ -1,7 +1,7 @@
 // Bomi and Seoli inside the 3D room: sprite-sheet billboards driven by cat-brain.js.
 import * as THREE from 'three';
 import { ANIM, frameAt, frameCell, createWorld, createActor, updateActor, callCats, petCat } from './cat-brain.js?v=5';
-import { CAT_BOUNDS, OBSTACLES, POIS, PERCHES, CAT_START } from './room-layout.js?v=5';
+import { CAT_BOUNDS, OBSTACLES, POIS, PERCHES, CAT_START } from './room-layout.js?v=6';
 import { glowTexture, shadowTexture, heartTexture } from './room-textures.js?v=5';
 import { clamp, lerp } from './room-kit.js?v=5';
 

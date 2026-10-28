@@ -1,0 +1,37 @@
+/* Opening screen: a cat naps on the monitor while the office boots, then START. */
+.intro{position:fixed;inset:0;margin:0;z-index:100;display:none;place-items:center;background:radial-gradient(ellipse at 50% 45%,#141327 0,#07070f 62%);color:#f1f0eb;transition:opacity .7s ease,visibility .7s}
+html.intro-open,html.intro-open body{overflow:hidden}
+html.intro-open .intro,.intro.is-leaving{display:grid}
+.intro-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.intro.is-leaving{opacity:0;visibility:hidden}
+.intro-stage{display:grid;justify-items:center;gap:22px;transition:opacity .45s ease,transform .45s ease}
+.intro.is-ready .intro-stage{opacity:0;transform:translateY(-8px);pointer-events:none}
+.intro-art{width:min(340px,78vw);height:auto;overflow:visible;filter:drop-shadow(0 0 12px #bfaff14d)}
+.intro-art .ink{fill:#f1f0eb}
+.intro-art .line{fill:none;stroke:#f1f0eb;stroke-linecap:round;stroke-linejoin:round}
+.intro-art .bar{fill:#2ee6ff;filter:drop-shadow(0 0 6px #2ee6ffaa)}
+.intro-status{margin:0;font:500 clamp(17px,2.4vw,22px)/1.3 var(--heading);letter-spacing:.4px;color:#d9d6e8;font-variant-numeric:tabular-nums}
+.intro-status b{font-weight:600;color:#fff;display:inline-block;min-width:3.2ch;text-align:right}
+.intro-start{position:absolute;inset:0;margin:auto;width:max-content;height:max-content;padding:14px 34px;border:0;background:none;color:#fff;font:300 clamp(34px,6vw,56px)/1 var(--heading);letter-spacing:.32em;text-indent:.32em;cursor:pointer;opacity:0;transition:opacity .6s ease .15s,text-shadow .3s ease}
+.intro.is-ready .intro-start{opacity:1}
+.intro-start:hover,.intro-start:focus-visible{text-shadow:0 0 18px #2ee6ff,0 0 42px #ff3d9a99}
+.intro-start:focus-visible{outline:none;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:12px;text-decoration-color:#2ee6ff99}
+.intro-hint{position:absolute;left:0;right:0;bottom:max(22px,env(safe-area-inset-bottom));margin:0;text-align:center;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:#7f8496}
+/* the little animations */
+.intro-tail{transform-origin:200px 64px;animation:intro-tail 2.4s ease-in-out infinite}
+.intro-z{animation:intro-z 3s ease-in infinite;opacity:0}
+.intro-z.z2{animation-delay:1.5s}
+.intro-steam{animation:intro-steam 2.6s ease-out infinite;opacity:0}
+.intro-steam.s2{animation-delay:.85s}.intro-steam.s3{animation-delay:1.7s}
+.intro-cursor{animation:intro-blink 1s steps(1) infinite}
+.intro-chest{transform-origin:160px 74px;animation:intro-breathe 3.2s ease-in-out infinite}
+@keyframes intro-tail{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(12deg)}}
+@keyframes intro-z{0%{opacity:0;transform:translate(0,0) scale(.7)}25%{opacity:1}100%{opacity:0;transform:translate(14px,-30px) scale(1.15)}}
+@keyframes intro-steam{0%{opacity:0;transform:translate(0,10px) scale(.6)}30%{opacity:.9}100%{opacity:0;transform:translate(4px,-34px) scale(1.25)}}
+@keyframes intro-blink{50%{opacity:0}}
+@keyframes intro-breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.07)}}
+@media(prefers-reduced-motion:reduce){
+  .intro-tail,.intro-z,.intro-steam,.intro-cursor,.intro-chest{animation:none}
+  .intro-z,.intro-steam{opacity:.8}
+  .intro,.intro-stage,.intro-start{transition:none}
+}
