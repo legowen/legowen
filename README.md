@@ -101,6 +101,8 @@ The last project card (07) is work, not an app slice. It opens two screenshots, 
 
 Five photos of Bomi, Seoli and Owen float around the two pixel cats in heart and star frames (`assets/about/heart.svg`, `assets/about/star.svg`). They stay inside the cat card, pause while a photo is hovered, when the section is off screen or the tab is hidden, and stand still with reduced motion or when the visitor pauses the cats. On phones a tap shows a photo larger. The photos were cropped and re-encoded as WebP, which removes camera data such as location. To change a photo, replace the file and its line at the top of `about-photos.js`.
 
+The family portrait beside the "Curious by nature" heading is `assets/about/family-portrait.webp` (a 360 px copy of `assets/room/family-portrait.jpg`, the same picture as the desk frame in the 3D office). When the column has room it sits next to the heading and its size follows the free space (about 96–146 px); on narrower columns and phones it floats beside the first paragraph so the heading keeps its lines. Styles are at the end of `about-photos.css`.
+
 The PT w Kitty card picture (`assets/projects/ptwithkitty.jpg`) is a screenshot of the in-site preview, not of the private app. Retake it after changing the preview.
 
 ## Writing rules for the content
