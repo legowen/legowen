@@ -13,4 +13,16 @@
 .orbit-photo.is-zoomed{z-index:5!important}
 .orbit-photo.is-zoomed .orbit-frame{transform:scale(1.9)}
 @media(max-width:760px){.cat-family{min-height:390px}}
-@media(prefers-reduced-motion:reduce){.orbit-photo,.orbit-frame{transition:none}}
+/* The family portrait beside "Curious by nature." It sits next to the heading when the column has room
+   (its size follows the free space), and otherwise floats beside the first paragraph so the heading keeps its two lines. */
+.about-note{container-type:inline-size;display:flow-root}
+.about-head{display:contents}
+.about-portrait{float:right;width:104px;width:clamp(84px,24cqi,120px);margin:4px 2px 12px 20px;padding:4px;border-radius:14px;background:#fff8e9;transform:rotate(2.5deg);box-shadow:0 0 0 1px #ff6fae66,0 0 20px #ff6fae4d,0 14px 26px #0009;transition:transform .35s ease}
+.about-portrait img{display:block;width:100%;height:auto;aspect-ratio:1;border-radius:10px}
+.about-portrait:hover{transform:rotate(0) scale(1.05)}
+@container (min-width:520px){
+  .about-head{display:flex;align-items:center;gap:22px;margin-bottom:32px}
+  .about-head h2{margin:0;min-width:0}
+  .about-portrait{float:none;order:2;flex:0 0 auto;width:clamp(96px,calc(100cqi - 444px),146px);margin:0 4px 0 0}
+}
+@media(prefers-reduced-motion:reduce){.orbit-photo,.orbit-frame,.about-portrait{transition:none}}
