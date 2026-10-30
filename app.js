@@ -156,7 +156,7 @@ async function startRoom() {
   roomLoading = true; updateRoomToggle(); say('Opening the office…');
   const abort = new AbortController(); roomAbort = abort;
   try {
-    const { mountRoom } = await import('./room3d.js?v=8');
+    const { mountRoom } = await import('./room3d.js?v=9');
     if (abort.signal.aborted) return;
     signalIntro('owen:progress', .72);
     const controller = await mountRoom(roomHost, {

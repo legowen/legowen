@@ -243,12 +243,13 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
   clipFace.rotation.x = -Math.PI / 2; clipFace.position.y = .0125; clip.add(clipFace);
   hotspot('resume', [-.72, 1.17, -2.52], [.3, .12, .36], { color: NEON.white, size: .9, opacity: .5, y: 1.35, z: -2.4 }, { pin: true, pinAt: [-.72, 1.4, -2.52] });
 
-  // framed photo next to the monitor (assets/room/desk-photo.jpg; a painted placeholder if it is missing)
+  // Framed family portrait; contain the square illustration so all four faces remain visible.
   {
     const photoCanvas = makeCanvas(512, 384), pc = photoCanvas.getContext('2d');
     const photo = assets.deskPhoto;
     if (photo) {
-      const k = Math.max(512 / photo.naturalWidth, 384 / photo.naturalHeight), w = photo.naturalWidth * k, h = photo.naturalHeight * k;
+      pc.fillStyle = '#fff8e9'; pc.fillRect(0, 0, 512, 384);
+      const k = Math.min(512 / photo.naturalWidth, 384 / photo.naturalHeight), w = photo.naturalWidth * k, h = photo.naturalHeight * k;
       pc.drawImage(photo, (512 - w) / 2, (384 - h) / 2, w, h);
     } else {
       pc.fillStyle = '#1b1530'; pc.fillRect(0, 0, 512, 384); paintNeon(pc, '♥', 256, 170, { size: 120, color: NEON.pink, tube: 3 });

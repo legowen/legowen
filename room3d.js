@@ -6,7 +6,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { buildRoom } from './room-props.js?v=8';
+import { buildRoom } from './room-props.js?v=9';
 import { createRoomCats } from './room-cats.js?v=6';
 import { backdropTexture } from './room-textures.js?v=5';
 import { Disposer, clamp } from './room-kit.js?v=5';
@@ -77,7 +77,7 @@ export async function mountRoom(container, options = {}) {
   /* ---------- assets ---------- */
   const [bomi, seoli, boso, deskPhoto] = await Promise.all([
     loadImage(here('./assets/bomi.png'), 12000), loadImage(here('./assets/seoli.png'), 12000), loadImage(here('./assets/projects/boso.png'), 12000),
-    loadImage(here('./assets/room/desk-photo.jpg'), 12000),
+    loadImage(here('./assets/room/family-portrait.jpg'), 12000),
   ]);
   if (signal?.aborted) { renderer.dispose(); canvas.remove(); throw new DOMException('Room loading cancelled', 'AbortError'); }
   const assets = { boso, deskPhoto, logos: null };
