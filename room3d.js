@@ -6,7 +6,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { buildRoom } from './room-props.js?v=9';
+import { buildRoom } from './room-props.js?v=10';
 import { createRoomCats } from './room-cats.js?v=6';
 import { backdropTexture } from './room-textures.js?v=5';
 import { Disposer, clamp } from './room-kit.js?v=5';

@@ -14,8 +14,8 @@ import { mulberry32 } from './cat-brain.js?v=5';
 import { ROOM } from './room-layout.js?v=6';
 
 const HOT = {
-  systems: { route: 'sysadmin', label: 'Systems & endpoints', hint: 'Intune · Jamf · Windows Server' },
-  rack: { route: 'sysadmin', label: 'The rack', hint: 'Network, servers, identity' },
+  monitors: { route: 'experience', label: 'Experience', hint: 'Career timeline' },
+  rack: { route: 'sysadmin', label: 'Systems & endpoints', hint: 'Network, servers, identity' },
   microsoft: { route: 'microsoft', label: 'Microsoft 365 & certifications', hint: 'AZ-900 · MS-900 · MD-102 · SC-300' },
   arcade: { route: 'project:boso', label: 'Boso', hint: 'Play a boss battle' },
   window: { route: 'project:weather', label: 'Hope no Rain', hint: 'Weather dashboard' },
@@ -25,7 +25,7 @@ const HOT = {
   soccer: { route: 'project:soccer', label: 'Soccerbee zone model', hint: 'Sports data project' },
   baseball: { route: 'project:baseball', label: 'MLB 9 Innings model', hint: 'Pitch and timing data' },
   tennis: { route: 'about', label: 'Tennis', hint: 'Soccer, baseball and tennis off the clock' },
-  photo: { route: 'about', label: 'Family photo', hint: 'Bomi, Seoli and their humans' },
+  photo: { route: 'about', label: 'Curious by nature', hint: 'About Owen, Bomi and Seoli' },
   resume: { route: 'experience', label: 'Experience', hint: 'Career timeline' },
   sign: { route: 'about', label: 'About Owen', hint: 'Curious by nature' },
   'post-systems': { route: 'sysadmin', label: 'Systems', hint: 'Capabilities and field notes' },
@@ -206,7 +206,7 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
   const terminalScreen = createScreen(1024, 576, paintTerminal, { fps: 6, anisotropy }); screens.push(terminalScreen);
   monitor(-2.52, 1.79, -2.8, 1.5, .84, endpointScreen.texture, .1);
   monitor(-1.1, 1.72, -2.8, 1.15, .65, terminalScreen.texture, .22);
-  hotspot('systems', [-1.85, 1.75, -2.75], [2.9, 1.0, .5], { color: NEON.cyan, size: 3.6, opacity: .4, y: 1.7, z: -2.4 }, { pin: true, pinAt: [-1.85, 2.45, -2.7] });
+  hotspot('monitors', [-1.85, 1.75, -2.75], [2.9, 1.0, .5], { color: NEON.cyan, size: 3.6, opacity: .4, y: 1.7, z: -2.4 }, { pin: true, pinAt: [-1.85, 2.45, -2.7] });
 
   // laptop (Jamf-style screen), keyboard, mouse, mug, duck
   const laptopScreen = createScreen(512, 320, paintLaptop, { fps: 2, anisotropy }); screens.push(laptopScreen);
@@ -241,7 +241,8 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
   cc.fillStyle = '#23244a'; cc.font = '700 15px sans-serif'; cc.fillText('OWEN KIM', 12, 24); cc.fillStyle = '#8d93b8'; for (let i = 0; i < 12; i++) cc.fillRect(12, 40 + i * 11, i % 4 === 3 ? 60 : 100, 4);
   const clipTex = keep(toTexture(clipCanvas, { anisotropy })); const clipFace = new THREE.Mesh(keep(new THREE.PlaneGeometry(.17, .234)), keep(new THREE.MeshBasicMaterial({ map: clipTex, color: new THREE.Color(.9, .9, .95) })));
   clipFace.rotation.x = -Math.PI / 2; clipFace.position.y = .0125; clip.add(clipFace);
-  hotspot('resume', [-.72, 1.17, -2.52], [.3, .12, .36], { color: NEON.white, size: .9, opacity: .5, y: 1.35, z: -2.4 }, { pin: true, pinAt: [-.72, 1.4, -2.52] });
+  // the clipboard still opens Experience, but the monitors carry the Experience pin so the desk has one dot per section
+  hotspot('resume', [-.72, 1.17, -2.52], [.3, .12, .36], { color: NEON.white, size: .9, opacity: .5, y: 1.35, z: -2.4 });
 
   // Framed family portrait; contain the square illustration so all four faces remain visible.
   {
@@ -265,7 +266,7 @@ export function buildRoom({ root, disposer, quality, assets = {}, anisotropy = 4
     }
     const leg = new THREE.Mesh(keep(new THREE.BoxGeometry(.03, .22, .012)), M.dark); leg.position.set(0, .1, -.07); leg.rotation.x = .45; frame.add(leg);
     halo('#ff6fae', .8, .22, -.34, 1.3, -2.58);
-    hotspot('photo', [-.34, 1.3, -2.66], [.52, .42, .22], null, { ry: .42 });
+    hotspot('photo', [-.34, 1.3, -2.66], [.52, .42, .22], null, { ry: .42, pin: true, pinAt: [-.34, 1.62, -2.66] });
   }
 
   /* ---------- the chair ---------- */
