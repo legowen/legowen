@@ -24,7 +24,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .contact-link span{margin-left:24px}
 .section{max-width:1440px;padding:112px 5.3%;margin:auto}
 .eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:600;display:flex;align-items:center;gap:8px;line-height:1.8}
-.live-dot{display:inline-block;background:var(--mint);width:6px;height:6px;border-radius:50%;box-shadow:0 0 10px #c9edb755;flex-shrink:0}
+.live-dot{display:inline-block;background:var(--mint);width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .divider{opacity:.4;margin:0 4px}
 h1,h2,h3,p{margin-top:0}
 h1,h2,h3{font-family:var(--heading);font-weight:500}

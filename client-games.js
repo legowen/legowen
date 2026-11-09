@@ -22,8 +22,6 @@ export function createClientGames() {
     const item = document.createElement('li');
     item.className = 'game-card';
     item.style.setProperty('--game-accent', game.accent);
-    item.style.setProperty('--game-line', `${game.accent}8c`);
-    item.style.setProperty('--game-glow', `${game.accent}40`);
     const art = document.createElement('img');
     art.className = 'game-art';
     art.src = game.image; art.alt = ''; art.width = 240; art.height = 320;
