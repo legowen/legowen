@@ -146,7 +146,7 @@ export function mountSysadmin(root) {
   const tabIds = capabilities.map(c => c.id);
   root.innerHTML = `
     <div class="role-fit">
-      <p class="mini-label" id="fit-label">WHERE I FIT · TAP A ROLE</p>
+      <p class="mini-label" id="fit-label">Where I fit · tap a role</p>
       <ul class="role-chips" aria-labelledby="fit-label">${roles.map(([name, tab]) => `<li><button type="button" class="role-chip" data-tab="${tab}" aria-controls="capability-panel">${esc(name)}</button></li>`).join('')}</ul>
     </div>
     <div class="capability-layout">
@@ -156,7 +156,7 @@ export function mountSysadmin(root) {
     </div>
     <div class="notes-block" id="field-notes">
       <div class="block-head">
-        <div><p class="eyebrow">FIELD NOTES</p><h3>Real problems. Plain answers.</h3></div>
+        <div><p class="eyebrow">Field notes</p><h3>Real problems. Plain answers.</h3></div>
         <p>Short write-ups of problems I solved. General terms only: no hostnames, tickets, configs or client details.</p>
       </div>
       <div class="note-filters" role="group" aria-label="Filter field notes">${domains.map(([id, label], i) => `<button type="button" class="note-filter" data-domain="${id}" aria-pressed="${i === 0}">${esc(label)}</button>`).join('')}</div>
@@ -164,11 +164,11 @@ export function mountSysadmin(root) {
       <div class="notes-foot"><p id="notes-count" role="status"></p><button type="button" class="more-button" id="notes-more" hidden></button></div>
     </div>
     <div class="principles-block">
-      <div class="block-head"><div><p class="eyebrow">HOW I WORK</p><h3>Small habits that stop big problems.</h3></div></div>
+      <div class="block-head"><div><p class="eyebrow">How I work</p><h3>Small habits that stop big problems.</h3></div></div>
       <ol class="principles">${principles.map(([title, text], i) => `<li><span>${String(i + 1).padStart(2, '0')}</span><h4>${esc(title)}</h4><p>${esc(text)}</p></li>`).join('')}</ol>
     </div>
     <div class="path-block">
-      <div class="block-head"><div><p class="eyebrow">HOW I GOT HERE</p><h3>From cars to code to computers to whole workplaces.</h3></div></div>
+      <div class="block-head"><div><p class="eyebrow">How I got here</p><h3>From cars to code to computers to whole workplaces.</h3></div></div>
       <ol class="path-strip">${path.map(([years, role, place, text]) => `<li><span class="path-years">${esc(years)}</span><strong>${esc(role)}</strong><em>${esc(place)}</em><p>${esc(text)}</p></li>`).join('')}</ol>
     </div>`;
 
@@ -183,7 +183,7 @@ export function mountSysadmin(root) {
     panel.innerHTML = `
       <div class="panel-head"><div class="panel-icon">${ICONS[item.id]}</div><div><h3>${esc(item.title)}</h3><p class="panel-lead">${esc(item.lead)}</p></div></div>
       <ul class="do-list">${item.does.map(text => `<li>${esc(text)}</li>`).join('')}</ul>
-      <div class="case-note"><strong>IN PRACTICE</strong><p>${esc(item.practice)}</p></div>
+      <div class="case-note"><strong>In practice</strong><p>${esc(item.practice)}</p></div>
       <div class="tags">${item.tags.map(tag => `<span>${esc(tag)}</span>`).join('')}</div>
       ${item.cert ? `<p class="cert-tie"><span class="cert-dot" aria-hidden="true"></span> Certified: <a href="#microsoft">${esc(item.cert.code)} · ${esc(item.cert.name)} ↗</a></p>` : ''}`;
   }
@@ -212,7 +212,7 @@ export function mountSysadmin(root) {
       <article class="note">
         <header><span class="note-domain">${esc(labelFor(note.domain))}</span><span class="note-status">${esc(note.status || 'Resolved')}</span></header>
         <h4>${esc(note.title)}</h4>
-        <dl><div><dt>SYMPTOM</dt><dd>${esc(note.symptom)}</dd></div><div><dt>CAUSE</dt><dd>${esc(note.cause)}</dd></div><div><dt>FIX</dt><dd>${esc(note.fix)}</dd></div></dl>
+        <dl><div><dt>Symptom</dt><dd>${esc(note.symptom)}</dd></div><div><dt>Cause</dt><dd>${esc(note.cause)}</dd></div><div><dt>Fix</dt><dd>${esc(note.fix)}</dd></div></dl>
         <div class="tags">${note.tags.map(tag => `<span>${esc(tag)}</span>`).join('')}</div>
       </article>`).join('');
     count.textContent = `Showing ${shown.length} of ${all.length} notes`;

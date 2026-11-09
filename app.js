@@ -1,9 +1,9 @@
 // Page wiring. The résumé, systems and project sections are ordinary HTML and work without the optional 3D office.
-import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=6';
+import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=7';
 import { mountAboutPhotos } from './about-photos.js?v=1';
-import { createClientGames } from './client-games.js?v=2';
-import { mountSysadmin } from './sysadmin.js?v=6';
-import { mountMicrosoft } from './microsoft.js?v=6';
+import { createClientGames } from './client-games.js?v=3';
+import { mountSysadmin } from './sysadmin.js?v=7';
+import { mountMicrosoft } from './microsoft.js?v=7';
 import { createSiteCats } from './site-cats.js?v=5';
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -98,13 +98,15 @@ function navigateTo(id) {
 }
 
 /* ---------- Bomi and Seoli at the page edge ---------- */
+// Paw icon: Lucide "paw-print" (ISC licence, see assets/logos/LICENSES.txt), drawn with the site's 1.6 stroke.
+const PAW_ICON = '<svg class="paw" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg>';
 let catsMoving = !reducedMotion.matches;
 const storedCats = store.get('owen-cats');
 if (storedCats !== null) catsMoving = storedCats === 'on' && !reducedMotion.matches;
 const siteCats = createSiteCats({ layer: catLayer, getMax: () => Math.max(0, dialog.open ? dialog.clientWidth - 85 : innerWidth - 165) });
 const catToggle = $('#cat-toggle');
 function updateCatToggle() {
-  catToggle.innerHTML = `<span class="paw" aria-hidden="true">🐾</span><span class="cat-label">${catsMoving ? 'Cats on' : 'Cats resting'}</span>`;
+  catToggle.innerHTML = `${PAW_ICON}<span class="cat-label">${catsMoving ? 'Cats on' : 'Cats resting'}</span>`;
   catToggle.setAttribute('aria-pressed', String(catsMoving));
   catToggle.setAttribute('aria-label', catsMoving ? 'Pause roaming cats' : 'Let cats roam');
 }
