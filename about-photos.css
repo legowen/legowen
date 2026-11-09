@@ -21,7 +21,7 @@
 .about-portrait img{display:block;width:100%;height:auto;aspect-ratio:1;border-radius:10px}
 .about-portrait:hover{transform:rotate(0) scale(1.05)}
 @container (min-width:520px){
-  .about-head{display:flex;align-items:center;gap:22px;margin-bottom:32px}
+  .about-head{display:flex;align-items:center;gap:24px;margin-bottom:32px}
   .about-head h2{margin:0;min-width:0}
   .about-portrait{float:none;order:2;flex:0 0 auto;width:clamp(96px,calc(100cqi - 444px),146px);margin:0 4px 0 0}
 }
