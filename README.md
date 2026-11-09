@@ -113,6 +113,17 @@ The PT w Kitty card picture (`assets/projects/ptwithkitty.jpg`) is a screenshot 
 - Titles follow the owner's choice. Sprung Studios is shown as "IT Specialist".
 - Kubernetes and GPU servers were operated and maintained, not designed. Dataverse, Power BI and Fabric belong to the earlier role, not the studio role.
 
+## Design rules
+
+The 2D sections (everything below the 3D room) were tidied with the unslop skill in its polish mode, keeping the palette, fonts, layout and content. Keep new work inside these rules:
+
+- **Type scale:** 12, 14, 16, 18, 20, 24, 32, 40 and 48 px, plus fluid headlines that run between those steps (hero up to 56, contact up to 96). Labels and meta are 12, card copy 14, body 16. Weights 400–600, no 700.
+- **Labels:** sentence case with normal letter spacing, no `text-transform: uppercase` and no labels typed in capitals.
+- **Spacing:** padding, margin and gap are multiples of 4 px; a 2 px nudge is fine inside small controls.
+- **Colour:** no coloured glows, glowing text or hue-to-hue gradients in the 2D sections; borders are quiet hairlines (cert plaques keep their accent at 45%). Colour and glow belong to the three "moments": the 3D room, the opening screen and the cat card in About.
+- **Icons:** line icons only, no emoji in the interface. Section icons come from `icons.js`; the paw is Lucide's `paw-print` (ISC, see `assets/logos/LICENSES.txt`) drawn with the same 1.6 stroke.
+- The design before this pass is kept on the branch `archive/v1-design`.
+
 ## Logos and trademarks
 
 Logo files live in `assets/logos/` with their sources and notes in `assets/logos/LICENSES.txt`. The Microsoft section carries a trademark note. Plaques are original artwork, not official badges. Client and game names (Krafton, EA, Mojang Studios, Microsoft, Plants vs. Zombies, Minecraft) belong to their owners and are used only to say which projects the studio worked on. The Plants vs. Zombies 3, Minecraft Dungeons II and MLB 9 Innings key art and the Baseball Reference logo were supplied by the owner and belong to their publishers; they are shown only to say which projects or tools are meant. The Krafton picture is original artwork.
