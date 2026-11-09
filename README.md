@@ -117,7 +117,7 @@ The PT w Kitty card picture (`assets/projects/ptwithkitty.jpg`) is a screenshot 
 
 The 2D sections (everything below the 3D room) were tidied with the unslop skill in its polish mode, keeping the palette, fonts, layout and content. Keep new work inside these rules:
 
-- **Type scale:** 12, 14, 16, 18, 20, 24, 32, 40 and 48 px, plus fluid headlines that run between those steps (hero up to 56, contact up to 96). Labels and meta are 12, card copy 14, body 16. Weights 400–600, no 700.
+- **Type scale:** 12, 14, 16, 18, 20, 24, 32, 40 and 48 px, plus fluid headlines that run between those steps (hero up to 56, contact up to 96). Labels and meta are 12, card copy 14, body 16. The wordmark is 24 (18 on phones, 16 below 375 px) and never wraps. Weights 400–600, no 700.
 - **Labels:** sentence case with normal letter spacing, no `text-transform: uppercase` and no labels typed in capitals.
 - **Spacing:** padding, margin and gap are multiples of 4 px; a 2 px nudge is fine inside small controls.
 - **Colour:** no coloured glows, glowing text or hue-to-hue gradients in the 2D sections; borders are quiet hairlines (cert plaques keep their accent at 45%). Colour and glow belong to the three "moments": the 3D room, the opening screen and the cat card in About.
