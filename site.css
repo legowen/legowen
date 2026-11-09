@@ -169,7 +169,6 @@ body.room-live:not(.modal-open) #cat-layer{opacity:0;visibility:hidden;transitio
   .hero-shade{background:linear-gradient(0deg,var(--bg) 0,#0e111800 14%),linear-gradient(180deg,var(--bg) 0,#0e111800 9%)}
   .room-controls{left:5%;right:5%;bottom:10px;max-width:none;justify-content:space-between}
   .room-controls p{text-align:left;flex:1 1 150px}
-  .nav-spacer{display:none}
 }
 @media(max-width:1000px){
   .capability-layout{grid-template-columns:1fr;gap:22px}
