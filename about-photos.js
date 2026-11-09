@@ -1,4 +1,4 @@
-// Photos of Bomi, Seoli and Owen that float around the two pixel cats in the About section.
+// Photos of Bomi, Seoli and Owen that circle slowly around the two pixel cats in the About section.
 // They circle the cats inside the card only, pause when the section is off screen or a photo is
 // hovered, and stand still when the visitor prefers reduced motion or has paused the cats.
 const PHOTOS = [
@@ -29,7 +29,7 @@ export function mountAboutPhotos(card, { moving = true } = {}) {
   });
   card.append(list);
 
-  let geo = null, angle = -Math.PI / 2, time = 0, last = 0, raf = 0, inView = false, held = false, allowed = moving;
+  let geo = null, angle = -Math.PI / 2, last = 0, raf = 0, inView = false, held = false, allowed = moving;
 
   // The orbit is centred on the two cats and stays inside the card on every screen size.
   function measure() {
@@ -51,10 +51,10 @@ export function mountAboutPhotos(card, { moving = true } = {}) {
     items.forEach((item, i) => {
       const a = angle + i * Math.PI * 2 / items.length;
       const sin = Math.sin(a);
-      const bob = still ? 0 : Math.sin(time * 1.1 + i * 1.7) * 5;
-      const tilt = still ? (i % 2 ? 6 : -6) : Math.sin(time * .7 + i) * 8;
+      // Each photo keeps a fixed tilt; only the slow lap moves (no bobbing or wobbling on top of it).
+      const tilt = i % 2 ? 6 : -6;
       const x = geo.cx + Math.cos(a) * geo.rx - geo.size / 2;
-      const y = geo.cy + sin * (sin < 0 ? geo.up : geo.down) - geo.size / 2 + bob;
+      const y = geo.cy + sin * (sin < 0 ? geo.up : geo.down) - geo.size / 2;
       const scale = .9 + (sin + 1) * .06; // a little larger at the front of the lap
       item.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) rotate(${tilt.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
       item.style.zIndex = String(sin > 0 ? 3 : 2);
@@ -64,7 +64,7 @@ export function mountAboutPhotos(card, { moving = true } = {}) {
   function frame(now) {
     raf = 0;
     const dt = last ? Math.min((now - last) / 1000, .05) : 0; last = now;
-    time += dt; angle += dt * Math.PI * 2 / TURN_SECONDS;
+    angle += dt * Math.PI * 2 / TURN_SECONDS;
     place();
     schedule();
   }
