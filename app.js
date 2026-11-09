@@ -1,6 +1,6 @@
 // Page wiring. The résumé, systems and project sections are ordinary HTML and work without the optional 3D office.
 import { mountProjectCards, mountOriginalProject, projects } from './project-cards.js?v=7';
-import { mountAboutPhotos } from './about-photos.js?v=1';
+import { mountAboutPhotos } from './about-photos.js?v=2';
 import { createClientGames } from './client-games.js?v=3';
 import { mountSysadmin } from './sysadmin.js?v=7';
 import { mountMicrosoft } from './microsoft.js?v=7';
@@ -20,12 +20,12 @@ mountMicrosoft($('#ms-root'));
 
 /* ---------- Experience timeline ---------- */
 const career = [
-  ['SS', 'Mar 2026 — Sep 2026', 'Sprung Studios', 'IT Specialist', 'Vancouver, BC', 'Led Microsoft 365 migration, hybrid identity, endpoint management, and network security across the Vancouver and Brighton studios.'],
-  ['FT', 'Mar 2025 — Mar 2026', 'Sunia Technology Inc.', 'IT Infrastructure Engineer', 'Burnaby, BC · Rebranded as FluxInk', 'Supported nine international offices at Tier 3, with Tier 4 vendor escalation. Operated Microsoft data platforms, cloud infrastructure, networks, and AI workload environments.'],
-  ['RB', 'Aug 2023 — Feb 2025', 'Renu Bio Health Ltd.', 'IT Specialist', 'Burnaby, BC', 'Moved from full-stack development into IT operations, connecting cloud services, Microsoft 365, network infrastructure, and business systems.'],
-  ['CN', 'Jun 2023 — Dec 2023', 'Code Ninjas', 'Coding Instructor', 'Burnaby, BC', 'Taught programming logic, problem solving, and debugging. Helped maintain the curriculum and track student progress.'],
-  ['AU', 'Dec 2020 — Jul 2023', 'Audi Canada', 'Technician', 'North Vancouver, BC', 'Performed diagnostic programming and electric vehicle system setup, alongside workshop IT support and connectivity troubleshooting.'],
-  ['DE', 'Jan 2016 — Aug 2016', 'Daesung Energy Co., Ltd.', 'IT Intern', 'Daegu, Korea', 'Built interactive components for internal web applications and supported system configuration and application testing.'],
+  ['SS', 'Mar 2026 – Sep 2026', 'Sprung Studios', 'IT Specialist', 'Vancouver, BC', 'Led Microsoft 365 migration, hybrid identity, endpoint management, and network security across the Vancouver and Brighton studios.'],
+  ['FT', 'Mar 2025 – Mar 2026', 'Sunia Technology Inc.', 'IT Infrastructure Engineer', 'Burnaby, BC · Rebranded as FluxInk', 'Supported nine international offices at Tier 3, with Tier 4 vendor escalation. Operated Microsoft data platforms, cloud infrastructure, networks, and AI workload environments.'],
+  ['RB', 'Aug 2023 – Feb 2025', 'Renu Bio Health Ltd.', 'IT Specialist', 'Burnaby, BC', 'Moved from full-stack development into IT operations, connecting cloud services, Microsoft 365, network infrastructure, and business systems.'],
+  ['CN', 'Jun 2023 – Dec 2023', 'Code Ninjas', 'Coding Instructor', 'Burnaby, BC', 'Taught programming logic, problem solving, and debugging. Helped maintain the curriculum and track student progress.'],
+  ['AU', 'Dec 2020 – Jul 2023', 'Audi Canada', 'Technician', 'North Vancouver, BC', 'Performed diagnostic programming and electric vehicle system setup, alongside workshop IT support and connectivity troubleshooting.'],
+  ['DE', 'Jan 2016 – Aug 2016', 'Daesung Energy Co., Ltd.', 'IT Intern', 'Daegu, Korea', 'Built interactive components for internal web applications and supported system configuration and application testing.'],
 ];
 const timeline = $('#timeline');
 career.forEach(([mark, date, company, title, location, summary], i) => {
@@ -115,7 +115,22 @@ catToggle.addEventListener('click', () => { setCatsMoving(!catsMoving); store.se
 reducedMotion.addEventListener('change', event => { if (event.matches) setCatsMoving(false); });
 siteCats.setMoving(catsMoving); updateCatToggle();
 
-/* ---------- Photos of Bomi and Seoli floating around the About card ---------- */
+// The floating toggle sits in the bottom strip of the screen on phones and tablets. While the hero
+// buttons are inside that strip, it steps aside (CSS hides it) so it never covers them.
+const heroActions = $('.hero .hero-actions');
+let actionsObserver = null, actionsTimer = 0;
+function watchHeroActions() {
+  actionsObserver?.disconnect();
+  if (!heroActions || !('IntersectionObserver' in window)) return;
+  const band = 72;
+  actionsObserver = new IntersectionObserver(([entry]) => document.body.classList.toggle('toggle-clear', entry.isIntersecting),
+    { rootMargin: `-${Math.max(0, innerHeight - band)}px 0px 0px 0px` });
+  actionsObserver.observe(heroActions);
+}
+watchHeroActions();
+addEventListener('resize', () => { clearTimeout(actionsTimer); actionsTimer = setTimeout(watchHeroActions, 150); });
+
+/* ---------- Photos of Bomi and Seoli circling the About card ---------- */
 const aboutPhotos = mountAboutPhotos($('.cat-family'), { moving: catsMoving });
 
 /* ---------- The 3D office ---------- */

@@ -4,8 +4,7 @@
 .original-card{grid-column:span 3}
 .project-open{display:block;width:100%;height:100%;padding:0;border:0;background:none;text-align:left}
 .original-visual{height:296px;background:#222936;position:relative;overflow:hidden}
-.original-visual>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s}
-.project-open:hover .original-visual>img{transform:scale(1.025)}
+.original-visual>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .project-ptwithkitty .original-visual>img{object-position:left top}
 .project-lotto .original-visual>img{object-fit:contain;background:#141431}
 .project-weather .original-visual>img{object-fit:cover}

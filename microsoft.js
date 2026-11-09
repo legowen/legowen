@@ -5,22 +5,22 @@ import { ICONS } from './icons.js?v=6';
 const esc = text => String(text).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 const STACK = [
-  { name: 'Microsoft 365', logo: 'microsoft-icon', use: 'Tenant admin, licensing and governance.' },
-  { name: 'Entra ID', glyph: 'identity', use: 'Hybrid identity, Conditional Access, MFA and PIM.' },
-  { name: 'Intune', glyph: 'endpoints', use: 'Android Enterprise and device policy.' },
-  { name: 'Windows & Windows Server', logo: 'microsoft-windows-icon', use: 'Group Policy, LAPS, Hyper-V and Active Directory.' },
-  { name: 'Azure', logo: 'microsoft-azure', use: 'AKS, Automation runbooks and Azure DevOps.' },
-  { name: 'Teams', logo: 'microsoft-teams', use: 'Governance, guest access and sign-in.' },
-  { name: 'SharePoint', glyph: 'sites', use: 'Intranet design and a service desk list.' },
-  { name: 'Exchange Online', glyph: 'm365', use: 'Mailboxes, migrations and PowerShell.' },
-  { name: 'OneDrive', logo: 'microsoft-onedrive', use: 'Tenant domain rename with Microsoft Support.' },
-  { name: 'Power Platform', glyph: 'power', use: 'Power Apps, Power Automate and Copilot Studio.' },
-  { name: 'Power BI', logo: 'microsoft-power-bi', use: 'Reports on Dataverse and Fabric.' },
-  { name: 'Dataverse', logo: 'microsoft-dataverse', use: 'Business data for reporting and analysis.' },
-  { name: 'Microsoft Fabric', glyph: 'data', use: 'Data and reporting stack I built and maintained.' },
-  { name: 'Dynamics 365 Business Central', logo: 'microsoft-dynamics-365', use: 'ERP rollout with outside consultants.' },
-  { name: 'Dynamics 365 Sales', logo: 'microsoft-dynamics-365', use: 'CRM rollout with outside consultants.' },
-  { name: 'PowerShell', glyph: 'terminal', use: 'Automation for AD, Exchange Online and Entra Connect.' },
+  { name: 'Microsoft 365', logo: 'microsoft-icon', use: 'Tenant admin, licensing and governance' },
+  { name: 'Entra ID', glyph: 'identity', use: 'Hybrid identity, Conditional Access, MFA and PIM' },
+  { name: 'Intune', glyph: 'endpoints', use: 'Android Enterprise and device policy' },
+  { name: 'Windows & Windows Server', logo: 'microsoft-windows-icon', use: 'Group Policy, LAPS, Hyper-V and Active Directory' },
+  { name: 'Azure', logo: 'microsoft-azure', use: 'AKS, Automation runbooks and Azure DevOps' },
+  { name: 'Teams', logo: 'microsoft-teams', use: 'Governance, guest access and sign-in' },
+  { name: 'SharePoint', glyph: 'sites', use: 'Intranet design and a service desk list' },
+  { name: 'Exchange Online', glyph: 'm365', use: 'Mailboxes, migrations and PowerShell' },
+  { name: 'OneDrive', logo: 'microsoft-onedrive', use: 'Tenant domain rename with Microsoft Support' },
+  { name: 'Power Platform', glyph: 'power', use: 'Power Apps, Power Automate and Copilot Studio' },
+  { name: 'Power BI', logo: 'microsoft-power-bi', use: 'Reports on Dataverse and Fabric' },
+  { name: 'Dataverse', logo: 'microsoft-dataverse', use: 'Business data for reporting and analysis' },
+  { name: 'Microsoft Fabric', glyph: 'data', use: 'Data and reporting stack I built and maintained' },
+  { name: 'Dynamics 365 Business Central', logo: 'microsoft-dynamics-365', use: 'ERP rollout with outside consultants' },
+  { name: 'Dynamics 365 Sales', logo: 'microsoft-dynamics-365', use: 'CRM rollout with outside consultants' },
+  { name: 'PowerShell', glyph: 'terminal', use: 'Automation for AD, Exchange Online and Entra Connect' },
 ];
 
 // Other tools in the same toolbox. Square icon marks are drawn in one quiet colour; names without a square mark stay text only.
@@ -82,7 +82,7 @@ function toolboxItem(item) {
 export async function mountMicrosoft(root) {
   let certs = [];
   try {
-    const response = await fetch('./credentials.json');
+    const response = await fetch('./credentials.json?v=2');
     if (!response.ok) throw new Error('credentials unavailable');
     certs = await response.json();
   } catch { certs = []; }
