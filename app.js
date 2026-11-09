@@ -20,12 +20,12 @@ mountMicrosoft($('#ms-root'));
 
 /* ---------- Experience timeline ---------- */
 const career = [
-  ['SS', 'Mar 2026 — Sep 2026', 'Sprung Studios', 'IT Specialist', 'Vancouver, BC', 'Led Microsoft 365 migration, hybrid identity, endpoint management, and network security across the Vancouver and Brighton studios.'],
-  ['FT', 'Mar 2025 — Mar 2026', 'Sunia Technology Inc.', 'IT Infrastructure Engineer', 'Burnaby, BC · Rebranded as FluxInk', 'Supported nine international offices at Tier 3, with Tier 4 vendor escalation. Operated Microsoft data platforms, cloud infrastructure, networks, and AI workload environments.'],
-  ['RB', 'Aug 2023 — Feb 2025', 'Renu Bio Health Ltd.', 'IT Specialist', 'Burnaby, BC', 'Moved from full-stack development into IT operations, connecting cloud services, Microsoft 365, network infrastructure, and business systems.'],
-  ['CN', 'Jun 2023 — Dec 2023', 'Code Ninjas', 'Coding Instructor', 'Burnaby, BC', 'Taught programming logic, problem solving, and debugging. Helped maintain the curriculum and track student progress.'],
-  ['AU', 'Dec 2020 — Jul 2023', 'Audi Canada', 'Technician', 'North Vancouver, BC', 'Performed diagnostic programming and electric vehicle system setup, alongside workshop IT support and connectivity troubleshooting.'],
-  ['DE', 'Jan 2016 — Aug 2016', 'Daesung Energy Co., Ltd.', 'IT Intern', 'Daegu, Korea', 'Built interactive components for internal web applications and supported system configuration and application testing.'],
+  ['SS', 'Mar 2026 – Sep 2026', 'Sprung Studios', 'IT Specialist', 'Vancouver, BC', 'Led Microsoft 365 migration, hybrid identity, endpoint management, and network security across the Vancouver and Brighton studios.'],
+  ['FT', 'Mar 2025 – Mar 2026', 'Sunia Technology Inc.', 'IT Infrastructure Engineer', 'Burnaby, BC · Rebranded as FluxInk', 'Supported nine international offices at Tier 3, with Tier 4 vendor escalation. Operated Microsoft data platforms, cloud infrastructure, networks, and AI workload environments.'],
+  ['RB', 'Aug 2023 – Feb 2025', 'Renu Bio Health Ltd.', 'IT Specialist', 'Burnaby, BC', 'Moved from full-stack development into IT operations, connecting cloud services, Microsoft 365, network infrastructure, and business systems.'],
+  ['CN', 'Jun 2023 – Dec 2023', 'Code Ninjas', 'Coding Instructor', 'Burnaby, BC', 'Taught programming logic, problem solving, and debugging. Helped maintain the curriculum and track student progress.'],
+  ['AU', 'Dec 2020 – Jul 2023', 'Audi Canada', 'Technician', 'North Vancouver, BC', 'Performed diagnostic programming and electric vehicle system setup, alongside workshop IT support and connectivity troubleshooting.'],
+  ['DE', 'Jan 2016 – Aug 2016', 'Daesung Energy Co., Ltd.', 'IT Intern', 'Daegu, Korea', 'Built interactive components for internal web applications and supported system configuration and application testing.'],
 ];
 const timeline = $('#timeline');
 career.forEach(([mark, date, company, title, location, summary], i) => {

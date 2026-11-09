@@ -122,14 +122,14 @@ export const notes = [
 ];
 
 export const principles = [
-  ['Find the cause first.', 'I confirm the root cause before I change anything. Then I write down what I found.'],
-  ['Check the vendor first.', 'A status page takes one minute. It can save an hour of troubleshooting.'],
-  ['Test small, then go wide.', 'One device first. A backup and a dry run before wipes, bulk deletes or firewall commits.'],
-  ['Ask who owns it.', 'A service on a personal account is a risk. I find it and move it to a documented account.'],
-  ['Smallest safe fix first.', 'Bigger changes become their own project, with approval.'],
-  ['Do not weaken security for comfort.', 'If a control blocks someone, I change the method. I do not switch the control off.'],
-  ['Keep secrets in the vault.', 'Passwords do not belong in tickets or shared files.'],
-  ['Say what is done.', 'I say what is finished, what is started and what is only planned.'],
+  ['Find the cause first', 'I confirm the root cause before I change anything. Then I write down what I found.'],
+  ['Check the vendor first', 'A status page takes one minute. It can save an hour of troubleshooting.'],
+  ['Test small, then go wide', 'One device first. A backup and a dry run before wipes, bulk deletes or firewall commits.'],
+  ['Ask who owns it', 'A service on a personal account is a risk. I find it and move it to a documented account.'],
+  ['Smallest safe fix first', 'Bigger changes become their own project, with approval.'],
+  ['Do not weaken security for comfort', 'If a control blocks someone, I change the method. I do not switch the control off.'],
+  ['Keep secrets in the vault', 'Passwords do not belong in tickets or shared files.'],
+  ['Say what is done', 'I say what is finished, what is started and what is only planned.'],
 ];
 
 export const path = [
