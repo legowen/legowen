@@ -27,3 +27,11 @@ Trademarks
 
 To remove a logo: delete its file, then in microsoft.js either replace the item's `logo`
 field with a `glyph` from icons.js (STACK) or delete the `logo` field (TOOLBOX).
+
+Paw icon (cat toggle and the hero note)
+  "paw-print" from Lucide (lucide-static 1.70.0), redrawn with this site's 1.6 stroke.
+  ISC License. Copyright (c) 2026 Lucide Icons and Contributors.
+  Permission to use, copy, modify, and/or distribute this software for any purpose with
+  or without fee is hereby granted, provided that the above copyright notice and this
+  permission notice appear in all copies. THE SOFTWARE IS PROVIDED "AS IS" AND THE
+  AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE.
