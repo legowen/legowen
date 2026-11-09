@@ -14,9 +14,9 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .skip{position:fixed;top:-100px;left:20px;z-index:99;background:var(--mint);color:var(--bg);padding:12px}
 .skip:focus{top:10px}
 .topbar{height:96px;padding:0 5.3%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12;background:#0e1118e8;backdrop-filter:blur(15px);position:sticky;top:0;z-index:20}
-.wordmark{font:600 24px var(--heading);letter-spacing:-.02em}
+.wordmark{flex:none;white-space:nowrap;font:600 24px var(--heading);letter-spacing:-.02em}
 .wordmark span{color:var(--lav);font-weight:400}
-.wordmark i{font-size:12px;vertical-align:top;display:inline-block;margin:4px 0 0 4px;font-style:normal}
+.wordmark i{font-size:.5em;vertical-align:top;display:inline-block;margin:.16em 0 0 .16em;font-style:normal}
 .topbar nav{display:flex;gap:36px;font-size:14px}
 .topbar nav a{color:#c5c8ce}
 .topbar nav a:hover,.topbar nav a.active{color:var(--mint)}
@@ -140,7 +140,7 @@ body.modal-open .cat-toggle{display:none}
 }
 @media(max-width:760px){
   .topbar{height:76px;padding:0 6%}
-  .wordmark{font-size:24px}
+  .wordmark{font-size:18px}
   .topbar nav{gap:16px;font-size:12px}
   .contact-link{display:none}
   .section{padding:76px 6%}
