@@ -117,6 +117,10 @@ The PT w Kitty card picture (`assets/projects/ptwithkitty.jpg`) is a screenshot 
 
 Logo files live in `assets/logos/` with their sources and notes in `assets/logos/LICENSES.txt`. The Microsoft section carries a trademark note. Plaques are original artwork, not official badges. Client and game names (Krafton, EA, Mojang Studios, Microsoft, Plants vs. Zombies, Minecraft) belong to their owners and are used only to say which projects the studio worked on. The Plants vs. Zombies 3, Minecraft Dungeons II and MLB 9 Innings key art and the Baseball Reference logo were supplied by the owner and belong to their publishers; they are shown only to say which projects or tools are meant. The Krafton picture is original artwork.
 
+## Design tooling
+
+`.claude/skills/unslop/` is the [unslop](https://github.com/heydamir/unslop) skill by Damir Sokolovsky ([@heydamir](https://x.com/heydamir)), licensed CC BY 4.0 (licence text in that folder). It is copied unchanged from commit `97daa3e` so Claude Code sessions on this repo can run `/unslop` for design passes, one section at a time. The site never loads it. To update it, copy `skills/unslop/` from a newer commit of that repo over the folder and note the commit here.
+
 ## Verification
 
 - Pure cat logic: `node --test tests/*.test.mjs` (22 small tests, no packages to install).
