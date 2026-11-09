@@ -121,6 +121,9 @@ The 2D sections (everything below the 3D room) were tidied with the unslop skill
 - **Labels:** sentence case with normal letter spacing, no `text-transform: uppercase` and no labels typed in capitals.
 - **Spacing:** padding, margin and gap are multiples of 4 px; a 2 px nudge is fine inside small controls.
 - **Colour:** no coloured glows, glowing text or hue-to-hue gradients in the 2D sections; borders are quiet hairlines (cert plaques keep their accent at 45%). Colour and glow belong to the three "moments": the 3D room, the opening screen and the cat card in About.
+- **Copy:** captions, labels, buttons and card titles have no trailing period; full sentences, multi-sentence headlines and the big editorial headlines (with their coloured periods) keep theirs. Date ranges use an en dash (Mar 2026 – Sep 2026). No exclamation marks or hype words.
+- **Motion:** nothing loops forever outside the 3D room's cats, the roaming page cats and the opening screen. Room pins pulse three times and rest; the About photos circle slowly without bobbing. Hover is a colour, border or brightness change (no lifting or zooming); buttons press down slightly. One easing curve (`--ease`) and one short duration (`--quick`) for feedback.
+- **Status:** states are a small mint dot plus text (Resolved, Open to opportunities, Certified), not tinted pills.
 - **Icons:** line icons only, no emoji in the interface. Section icons come from `icons.js`; the paw is Lucide's `paw-print` (ISC, see `assets/logos/LICENSES.txt`) drawn with the same 1.6 stroke.
 - The design before this pass is kept on the branch `archive/v1-design`.
 
