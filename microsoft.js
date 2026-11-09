@@ -33,13 +33,13 @@ const TOOLBOX = [
   { name: 'Google Workspace' }, { name: 'Jira', logo: 'jira' }, { name: 'Confluence', logo: 'confluence' }, { name: 'Shopify', logo: 'shopify' },
 ];
 
-const NUMBER_WORDS = ['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT'];
+const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
 function certLabel(certs) {
-  if (!certs.length) return 'CERTIFICATIONS';
+  if (!certs.length) return 'Certifications';
   const earned = certs.filter(cert => cert.status === 'earned').length;
   const word = count => NUMBER_WORDS[count] || String(count);
-  if (earned === certs.length) return `CERTIFICATIONS · ${certs.length === 1 ? 'EARNED' : `ALL ${word(certs.length)} EARNED`}`;
-  return `CERTIFICATIONS · ${earned} EARNED · ${certs.length - earned} IN PROGRESS`;
+  if (earned === certs.length) return `Certifications · ${certs.length === 1 ? 'earned' : `all ${word(certs.length)} earned`}`;
+  return `Certifications · ${earned} earned · ${certs.length - earned} in progress`;
 }
 
 const month = value => {
@@ -54,7 +54,7 @@ function plaque(cert) {
   const verify = cert.verifyUrl && /^https:\/\//.test(cert.verifyUrl) ? `<a class="cert-verify" href="${esc(cert.verifyUrl)}" target="_blank" rel="noopener noreferrer">Verify ↗</a>` : '';
   return `
     <article class="cert" style="--accent:${esc(cert.accent || '#2ee6ff')}">
-      <div class="cert-head"><span class="cert-vendor"><img src="assets/logos/microsoft-icon.svg" alt="" width="13" height="13" decoding="async"> MICROSOFT CERTIFIED</span><span class="cert-level">${esc(String(cert.level).toUpperCase())}</span></div>
+      <div class="cert-head"><span class="cert-vendor"><img src="assets/logos/microsoft-icon.svg" alt="" width="13" height="13" decoding="async"> Microsoft Certified</span><span class="cert-level">${esc(String(cert.level))}</span></div>
       <h3>${esc(cert.code)}</h3>
       <p class="cert-short">${esc(cert.short)}</p>
       <p class="cert-covers">${esc(cert.covers)}</p>
@@ -94,12 +94,12 @@ export async function mountMicrosoft(root) {
         ${certs.length ? `<div class="cert-grid">${certs.map(plaque).join('')}</div>` : '<p class="cert-fallback">AZ-900 Azure Fundamentals · MS-900 Microsoft 365 Fundamentals · MD-102 Endpoint Administrator Associate · SC-300 Identity and Access Administrator Associate</p>'}
       </div>
       <div class="stack-block">
-        <p class="mini-label">THE STACK I WORK IN</p>
+        <p class="mini-label">The stack I work in</p>
         <ul class="stack-grid">${STACK.map(tile).join('')}</ul>
       </div>
     </div>
     <div class="toolbox">
-      <p class="mini-label">ALSO IN THE TOOLBOX</p>
+      <p class="mini-label">Also in the toolbox</p>
       <ul class="toolbox-list">${TOOLBOX.map(toolboxItem).join('')}</ul>
     </div>
     <p class="trademark-note">Microsoft, Windows, Azure, Teams, OneDrive, Power BI, Dataverse, Fabric, Dynamics 365 and the Microsoft logo are trademarks of the Microsoft group of companies. Other product names and logos belong to their owners. They appear here only to name the tools I work with. This site is not affiliated with or endorsed by any vendor. The certification plaques are my own design, not official badges.</p>`;
