@@ -115,7 +115,22 @@ catToggle.addEventListener('click', () => { setCatsMoving(!catsMoving); store.se
 reducedMotion.addEventListener('change', event => { if (event.matches) setCatsMoving(false); });
 siteCats.setMoving(catsMoving); updateCatToggle();
 
-/* ---------- Photos of Bomi and Seoli floating around the About card ---------- */
+// The floating toggle sits in the bottom strip of the screen on phones and tablets. While the hero
+// buttons are inside that strip, it steps aside (CSS hides it) so it never covers them.
+const heroActions = $('.hero .hero-actions');
+let actionsObserver = null, actionsTimer = 0;
+function watchHeroActions() {
+  actionsObserver?.disconnect();
+  if (!heroActions || !('IntersectionObserver' in window)) return;
+  const band = 72;
+  actionsObserver = new IntersectionObserver(([entry]) => document.body.classList.toggle('toggle-clear', entry.isIntersecting),
+    { rootMargin: `-${Math.max(0, innerHeight - band)}px 0px 0px 0px` });
+  actionsObserver.observe(heroActions);
+}
+watchHeroActions();
+addEventListener('resize', () => { clearTimeout(actionsTimer); actionsTimer = setTimeout(watchHeroActions, 150); });
+
+/* ---------- Photos of Bomi and Seoli circling the About card ---------- */
 const aboutPhotos = mountAboutPhotos($('.cat-family'), { moving: catsMoving });
 
 /* ---------- The 3D office ---------- */
